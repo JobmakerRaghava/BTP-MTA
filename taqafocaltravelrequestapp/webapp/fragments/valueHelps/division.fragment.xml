@@ -1,0 +1,24 @@
+<c:FragmentDefinition xmlns="sap.m"
+    xmlns:c="sap.ui.core">
+    <TableSelectDialog search="onFODivisionTableSelectDialogSearch"  confirm="onFODivisionTableSelectDialogConfirm" cancel="onFODivisionTableSelectDialogConfirm" items="{path:'/FODivision',
+    sorter:{path:'externalCode'}}" multiSelect="true" contentWidth="40%" contentHeight="70%" >
+        <columns>
+            <Column >
+                <Label text="{i18n>Division}"></Label>
+            </Column>
+            <Column >
+                <Label text="{i18n>name}"></Label>
+            </Column>
+            <Column >
+                <Label text="{i18n>description}"></Label>
+            </Column>
+        </columns>
+        <items>
+            <ColumnListItem >
+                <ObjectNumber number="{externalCode}"></ObjectNumber>
+                <Text text="{name}"></Text>
+                <Text text="{description}"></Text>
+            </ColumnListItem>
+        </items>
+    </TableSelectDialog>
+</c:FragmentDefinition>

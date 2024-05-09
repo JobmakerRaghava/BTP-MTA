@@ -1,0 +1,528 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Common.xml" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Alias="Common" Namespace="com.sap.vocabularies.Common.v1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Core.V1.xml" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Alias="Core" Namespace="Org.OData.Core.V1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/UI.xml" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Alias="UI" Namespace="com.sap.vocabularies.UI.v1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Validation.V1.xml" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Alias="Validation" Namespace="Org.OData.Validation.V1"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="taqa.srv.TaqaDbService" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityContainer Name="EntityContainer" m:IsDefaultEntityContainer="true">
+                <EntitySet Name="TimeSheetDetails" EntityType="taqa.srv.TaqaDbService.TimeSheetDetails"/>
+                <EntitySet Name="Allowance" EntityType="taqa.srv.TaqaDbService.Allowance"/>
+                <EntitySet Name="ColumnInfo" EntityType="taqa.srv.TaqaDbService.ColumnInfo"/>
+                <EntitySet Name="RowInfo" EntityType="taqa.srv.TaqaDbService.RowInfo"/>
+                <EntitySet Name="TravelDetails" EntityType="taqa.srv.TaqaDbService.TravelDetails"/>
+                <EntitySet Name="ClaimDetails" EntityType="taqa.srv.TaqaDbService.ClaimDetails"/>
+                <AssociationSet Name="TimeSheetDetails_ItsAllowances" Association="taqa.srv.TaqaDbService.TimeSheetDetails_ItsAllowances">
+                    <End Role="TimeSheetDetails" EntitySet="TimeSheetDetails"/>
+                    <End Role="Allowance" EntitySet="Allowance"/>
+                </AssociationSet>
+            </EntityContainer>
+            <EntityType Name="TimeSheetDetails">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="createdBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="modifiedAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="modifiedBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="DELETED" Type="Edm.Boolean"/>
+                <Property Name="ID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="AppID" Type="Edm.String" MaxLength="10"/>
+                <Property Name="Date" Type="Edm.String" MaxLength="10"/>
+                <Property Name="EmployeeID" Type="Edm.String" MaxLength="10"/>
+                <Property Name="EmployeeName" Type="Edm.String" MaxLength="80"/>
+                <Property Name="Division" Type="Edm.String" MaxLength="80"/>
+                <Property Name="DivisionDesc" Type="Edm.String" MaxLength="200"/>
+                <Property Name="Department" Type="Edm.String" MaxLength="80"/>
+                <Property Name="DepartmentDesc" Type="Edm.String" MaxLength="200"/>
+                <Property Name="StartDate" Type="Edm.String" MaxLength="10"/>
+                <Property Name="EndDate" Type="Edm.String" MaxLength="10"/>
+                <Property Name="Location" Type="Edm.String" MaxLength="100"/>
+                <Property Name="CostCenter" Type="Edm.String" MaxLength="100"/>
+                <Property Name="InternalOrder" Type="Edm.String" MaxLength="100"/>
+                <Property Name="WbsCode" Type="Edm.String" MaxLength="100"/>
+                <Property Name="JobTitle" Type="Edm.String" MaxLength="200"/>
+                <Property Name="JobCode" Type="Edm.String" MaxLength="80"/>
+                <Property Name="OvertimeHours" Type="Edm.String" MaxLength="10"/>
+                <Property Name="OvertimeTotalAmount" Type="Edm.String" MaxLength="10"/>
+                <Property Name="Day" Type="Edm.String" MaxLength="10"/>
+                <Property Name="WorkType" Type="Edm.String" MaxLength="80"/>
+                <Property Name="RegularHours" Type="Edm.String" MaxLength="10"/>
+                <Property Name="WorkedHours" Type="Edm.String" MaxLength="10"/>
+                <Property Name="TotalHours" Type="Edm.String" MaxLength="10"/>
+                <Property Name="Absence" Type="Edm.String" MaxLength="100"/>
+                <Property Name="Status" Type="Edm.String" MaxLength="50"/>
+                <Property Name="Comment" Type="Edm.String" MaxLength="100"/>
+                <Property Name="Attachment" Type="Edm.String" MaxLength="10"/>
+                <Property Name="SaleOfHours" Type="Edm.String" MaxLength="10"/>
+                <Property Name="HourlyRate" Type="Edm.String" MaxLength="10"/>
+                <Property Name="Religion" Type="Edm.String" MaxLength="50"/>
+                <Property Name="EmployeeIs" Type="Edm.String" MaxLength="50"/>
+                <Property Name="PayGrade" Type="Edm.String" MaxLength="10"/>
+                <Property Name="RotationalLeaveBalance" Type="Edm.String" MaxLength="10"/>
+                <Property Name="CustomerName" Type="Edm.String" MaxLength="50"/>
+                <Property Name="ExternalCode" Type="Edm.String" MaxLength="80"/>
+                <Property Name="CompanyCode" Type="Edm.String" MaxLength="10"/>
+                <Property Name="Workschedule" Type="Edm.String" MaxLength="50"/>
+                <Property Name="WbsCodeCode" Type="Edm.String" MaxLength="20"/>
+                <Property Name="InternalOrderCode" Type="Edm.String" MaxLength="20"/>
+                <Property Name="CostCenterCode" Type="Edm.String" MaxLength="20"/>
+                <Property Name="LocationCode" Type="Edm.String" MaxLength="20"/>
+                <NavigationProperty Name="ItsAllowances" Relationship="taqa.srv.TaqaDbService.TimeSheetDetails_ItsAllowances" FromRole="TimeSheetDetails" ToRole="Allowance"/>
+            </EntityType>
+            <EntityType Name="Allowance">
+                <Key>
+                    <PropertyRef Name="EmployeeID"/>
+                    <PropertyRef Name="Date"/>
+                    <PropertyRef Name="AllowanceID"/>
+                </Key>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="createdBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="modifiedAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="modifiedBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="DELETED" Type="Edm.Boolean"/>
+                <Property Name="EmployeeID" Type="Edm.String" MaxLength="10" Nullable="false"/>
+                <Property Name="Date" Type="Edm.String" MaxLength="10" Nullable="false"/>
+                <Property Name="AllowanceID" Type="Edm.String" MaxLength="40" Nullable="false"/>
+                <Property Name="AllowanceDesc" Type="Edm.String" MaxLength="40"/>
+                <Property Name="Amount" Type="Edm.String" MaxLength="40"/>
+            </EntityType>
+            <EntityType Name="ColumnInfo">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="createdBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="modifiedAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="modifiedBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="DELETED" Type="Edm.Boolean"/>
+                <Property Name="ID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="TableName" Type="Edm.String" MaxLength="40"/>
+                <Property Name="Column1" Type="Edm.String" MaxLength="20"/>
+                <Property Name="Column2" Type="Edm.String" MaxLength="20"/>
+                <Property Name="Column3" Type="Edm.String" MaxLength="20"/>
+                <Property Name="Column4" Type="Edm.String" MaxLength="20"/>
+                <Property Name="Column5" Type="Edm.String" MaxLength="20"/>
+                <Property Name="Column6" Type="Edm.String" MaxLength="20"/>
+                <Property Name="Column7" Type="Edm.String" MaxLength="20"/>
+                <Property Name="Column8" Type="Edm.String" MaxLength="20"/>
+                <Property Name="Column9" Type="Edm.String" MaxLength="20"/>
+                <Property Name="Column10" Type="Edm.String" MaxLength="20"/>
+                <Property Name="Column11" Type="Edm.String" MaxLength="20"/>
+                <Property Name="Column12" Type="Edm.String" MaxLength="20"/>
+                <Property Name="Column13" Type="Edm.String" MaxLength="20"/>
+                <Property Name="Column14" Type="Edm.String" MaxLength="20"/>
+                <Property Name="Column15" Type="Edm.String" MaxLength="20"/>
+                <Property Name="Column16" Type="Edm.String" MaxLength="20"/>
+            </EntityType>
+            <EntityType Name="RowInfo">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="createdBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="modifiedAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="modifiedBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="DELETED" Type="Edm.Boolean"/>
+                <Property Name="ID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="TableName" Type="Edm.String" MaxLength="40"/>
+                <Property Name="Column1" Type="Edm.String" MaxLength="20"/>
+                <Property Name="Column2" Type="Edm.String" MaxLength="20"/>
+                <Property Name="Column3" Type="Edm.String" MaxLength="20"/>
+                <Property Name="Column4" Type="Edm.String" MaxLength="20"/>
+                <Property Name="Column5" Type="Edm.String" MaxLength="20"/>
+                <Property Name="Column6" Type="Edm.String" MaxLength="20"/>
+                <Property Name="Column7" Type="Edm.String" MaxLength="20"/>
+                <Property Name="Column8" Type="Edm.String" MaxLength="20"/>
+                <Property Name="Column9" Type="Edm.String" MaxLength="20"/>
+                <Property Name="Column10" Type="Edm.String" MaxLength="20"/>
+                <Property Name="Column11" Type="Edm.String" MaxLength="20"/>
+                <Property Name="Column12" Type="Edm.String" MaxLength="20"/>
+                <Property Name="Column13" Type="Edm.String" MaxLength="20"/>
+                <Property Name="Column14" Type="Edm.String" MaxLength="20"/>
+                <Property Name="Column15" Type="Edm.String" MaxLength="20"/>
+                <Property Name="Column16" Type="Edm.String" MaxLength="20"/>
+            </EntityType>
+            <EntityType Name="TravelDetails">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="createdBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="modifiedAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="modifiedBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="DELETED" Type="Edm.Boolean"/>
+                <Property Name="ID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="EmployeeID" Type="Edm.String" MaxLength="40"/>
+                <Property Name="EmployeeFirstName" Type="Edm.String" MaxLength="80"/>
+                <Property Name="EmployeeMiddleName" Type="Edm.String" MaxLength="80"/>
+                <Property Name="EmployeeLastName" Type="Edm.String" MaxLength="80"/>
+                <Property Name="Gender" Type="Edm.String" MaxLength="40"/>
+                <Property Name="Position" Type="Edm.String" MaxLength="40"/>
+                <Property Name="LeaveSchedule" Type="Edm.String" MaxLength="40"/>
+                <Property Name="CompanyCode" Type="Edm.String" MaxLength="40"/>
+                <Property Name="HomeCountry" Type="Edm.String" MaxLength="40"/>
+                <Property Name="Deparment" Type="Edm.String" MaxLength="40"/>
+                <Property Name="Division" Type="Edm.String" MaxLength="40"/>
+                <Property Name="Function" Type="Edm.String" MaxLength="40"/>
+                <Property Name="DateOfBirth" Type="Edm.String" MaxLength="40"/>
+                <Property Name="ContactNo" Type="Edm.String" MaxLength="40"/>
+                <Property Name="ReportingManager" Type="Edm.String" MaxLength="40"/>
+                <Property Name="FocalPerson" Type="Edm.String" MaxLength="40"/>
+                <Property Name="TravelDetails" Type="Edm.String" MaxLength="40"/>
+                <Property Name="DepartureDate" Type="Edm.String" MaxLength="40"/>
+                <Property Name="Sector" Type="Edm.String" MaxLength="40"/>
+                <Property Name="Time" Type="Edm.String" MaxLength="40"/>
+                <Property Name="ReturnDate" Type="Edm.String" MaxLength="40"/>
+                <Property Name="TravelCountry" Type="Edm.String" MaxLength="40"/>
+                <Property Name="AirportCity" Type="Edm.String" MaxLength="40"/>
+                <Property Name="ReasonForTravel" Type="Edm.String" MaxLength="40"/>
+                <Property Name="LocalModbileNumber" Type="Edm.String" MaxLength="40"/>
+                <Property Name="OverseasMobileNumber" Type="Edm.String" MaxLength="40"/>
+                <Property Name="SeatPreference" Type="Edm.String" MaxLength="40"/>
+                <Property Name="MealPreference" Type="Edm.String" MaxLength="40"/>
+                <Property Name="VisaRequirement" Type="Edm.String" MaxLength="40"/>
+                <Property Name="FrequentFlyerNumber" Type="Edm.String" MaxLength="40"/>
+                <Property Name="Transportation" Type="Edm.String" MaxLength="40"/>
+                <Property Name="Class" Type="Edm.String" MaxLength="40"/>
+                <Property Name="CodeDiv" Type="Edm.String" MaxLength="40"/>
+                <Property Name="ExpenseCode" Type="Edm.String" MaxLength="40"/>
+                <Property Name="ProjectCode" Type="Edm.String" MaxLength="40"/>
+                <Property Name="Designation" Type="Edm.String" MaxLength="40"/>
+                <Property Name="Age" Type="Edm.String" MaxLength="40"/>
+                <Property Name="Region" Type="Edm.String" MaxLength="40"/>
+                <Property Name="BusStartDate" Type="Edm.String" MaxLength="40"/>
+                <Property Name="BusEndDate" Type="Edm.String" MaxLength="40"/>
+                <Property Name="Hotel" Type="Edm.String" MaxLength="40"/>
+                <Property Name="ExitReEntry" Type="Edm.String" MaxLength="40"/>
+                <Property Name="TrainingStartDate" Type="Edm.String" MaxLength="40"/>
+                <Property Name="TrainingEndDate" Type="Edm.String" MaxLength="40"/>
+                <Property Name="Email" Type="Edm.String" MaxLength="40"/>
+                <Property Name="ReferenceNo" Type="Edm.String" MaxLength="40"/>
+                <Property Name="TicketCount" Type="Edm.String" MaxLength="40"/>
+                <Property Name="PrevFareAmt" Type="Edm.String" MaxLength="40"/>
+                <Property Name="JobDetails" Type="Edm.String" MaxLength="40"/>
+                <Property Name="Location" Type="Edm.String" MaxLength="40"/>
+                <Property Name="Grade" Type="Edm.String" MaxLength="40"/>
+                <Property Name="TravelId" Type="Edm.String" MaxLength="40"/>
+                <Property Name="TravelType" Type="Edm.String" MaxLength="40"/>
+                <Property Name="Status" Type="Edm.String" MaxLength="40"/>
+                <Property Name="ReissuranceRefNo" Type="Edm.String" MaxLength="40"/>
+            </EntityType>
+            <EntityType Name="ClaimDetails">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="createdBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="modifiedAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="modifiedBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="DELETED" Type="Edm.Boolean"/>
+                <Property Name="ID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="EmployeeId" Type="Edm.String" MaxLength="10"/>
+                <Property Name="ClaimId" Type="Edm.String" MaxLength="40"/>
+                <Property Name="ClaimName" Type="Edm.String" MaxLength="80"/>
+                <Property Name="ClaimDesc" Type="Edm.String" MaxLength="100"/>
+                <Property Name="Value" Type="Edm.String" MaxLength="20"/>
+                <Property Name="Date" Type="Edm.String" MaxLength="10"/>
+                <Property Name="CostCenter" Type="Edm.String" MaxLength="100"/>
+                <Property Name="InternalOrder" Type="Edm.String" MaxLength="100"/>
+                <Property Name="WbsCode" Type="Edm.String" MaxLength="100"/>
+                <Property Name="TotalAmount" Type="Edm.String" MaxLength="40"/>
+                <Property Name="Status" Type="Edm.String" MaxLength="10"/>
+                <Property Name="ClaimNumber" Type="Edm.String" MaxLength="40"/>
+                <Property Name="TripNumber" Type="Edm.String" MaxLength="40"/>
+                <Property Name="ClaimType" Type="Edm.String" MaxLength="40"/>
+                <Property Name="ExpenseType" Type="Edm.String" MaxLength="40"/>
+                <Property Name="Remarks" Type="Edm.String" MaxLength="40"/>
+                <Property Name="InvoiceNumber" Type="Edm.String" MaxLength="40"/>
+                <Property Name="Attachment" Type="Edm.String" MaxLength="40"/>
+                <Property Name="EmployeeComment" Type="Edm.String" MaxLength="40"/>
+                <Property Name="EmployeeRole" Type="Edm.String" MaxLength="40"/>
+                <Property Name="EmployeeRelation" Type="Edm.String" MaxLength="40"/>
+                <Property Name="LoanNumber" Type="Edm.String" MaxLength="40"/>
+                <Property Name="NumberOfInstallments" Type="Edm.String" MaxLength="40"/>
+                <Property Name="FinalEmiAmount" Type="Edm.String" MaxLength="40"/>
+                <Property Name="Nationality" Type="Edm.String" MaxLength="40"/>
+                <Property Name="FromDate" Type="Edm.String" MaxLength="40"/>
+                <Property Name="ToDate" Type="Edm.String" MaxLength="40"/>
+                <Property Name="Institution" Type="Edm.String" MaxLength="40"/>
+                <Property Name="Location" Type="Edm.String" MaxLength="40"/>
+                <Property Name="JustificationOfTheRequest" Type="Edm.String" MaxLength="40"/>
+                <Property Name="VisaType" Type="Edm.String" MaxLength="40"/>
+                <Property Name="VisaValidity" Type="Edm.String" MaxLength="40"/>
+                <Property Name="VisaAmount" Type="Edm.String" MaxLength="40"/>
+                <Property Name="DependentCount" Type="Edm.String" MaxLength="40"/>
+                <Property Name="DependentsIncluded" Type="Edm.String" MaxLength="40"/>
+                <Property Name="EntitlementAmount" Type="Edm.String" MaxLength="40"/>
+                <Property Name="FinancialYear" Type="Edm.String" MaxLength="40"/>
+                <Property Name="ProbationCompletion" Type="Edm.String" MaxLength="40"/>
+                <Property Name="TravelReason" Type="Edm.String" MaxLength="40"/>
+                <Property Name="Destination" Type="Edm.String" MaxLength="40"/>
+                <Property Name="TravelType" Type="Edm.String" MaxLength="40"/>
+                <Property Name="TermOfClaim" Type="Edm.String" MaxLength="40"/>
+                <Property Name="CompanyCode" Type="Edm.String" MaxLength="40"/>
+                <Property Name="EmployeeName" Type="Edm.String" MaxLength="80"/>
+                <Property Name="WageType" Type="Edm.String" MaxLength="40"/>
+                <Property Name="WageDescription" Type="Edm.String" MaxLength="40"/>
+                <Property Name="Currency" Type="Edm.String" MaxLength="40"/>
+            </EntityType>
+            <Association Name="TimeSheetDetails_ItsAllowances">
+                <End Role="TimeSheetDetails" Type="taqa.srv.TaqaDbService.TimeSheetDetails" Multiplicity="*"/>
+                <End Role="Allowance" Type="taqa.srv.TaqaDbService.Allowance" Multiplicity="*"/>
+            </Association>
+            <Annotations Target="taqa.srv.TaqaDbService.TimeSheetDetails/createdAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Created On"/>
+            </Annotations>
+            <Annotations Target="taqa.srv.TaqaDbService.TimeSheetDetails/createdBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Created By"/>
+            </Annotations>
+            <Annotations Target="taqa.srv.TaqaDbService.TimeSheetDetails/modifiedAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Changed On"/>
+            </Annotations>
+            <Annotations Target="taqa.srv.TaqaDbService.TimeSheetDetails/modifiedBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Changed By"/>
+            </Annotations>
+            <Annotations Target="taqa.srv.TaqaDbService.TimeSheetDetails/DELETED" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Validation.AllowedValues">
+                    <Collection>
+                        <Record Type="Validation.AllowedValue">
+                            <Annotation Term="Core.SymbolicName" String="Yes"/>
+                            <PropertyValue Property="Value" Bool="true"/>
+                        </Record>
+                        <Record Type="Validation.AllowedValue">
+                            <Annotation Term="Core.SymbolicName" String="No"/>
+                            <PropertyValue Property="Value" Bool="false"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="taqa.srv.TaqaDbService.TimeSheetDetails/ID" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Core.ComputedDefaultValue" Bool="true"/>
+            </Annotations>
+            <Annotations Target="taqa.srv.TaqaDbService.Allowance/createdAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Created On"/>
+            </Annotations>
+            <Annotations Target="taqa.srv.TaqaDbService.Allowance/createdBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Created By"/>
+            </Annotations>
+            <Annotations Target="taqa.srv.TaqaDbService.Allowance/modifiedAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Changed On"/>
+            </Annotations>
+            <Annotations Target="taqa.srv.TaqaDbService.Allowance/modifiedBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Changed By"/>
+            </Annotations>
+            <Annotations Target="taqa.srv.TaqaDbService.Allowance/DELETED" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Validation.AllowedValues">
+                    <Collection>
+                        <Record Type="Validation.AllowedValue">
+                            <Annotation Term="Core.SymbolicName" String="Yes"/>
+                            <PropertyValue Property="Value" Bool="true"/>
+                        </Record>
+                        <Record Type="Validation.AllowedValue">
+                            <Annotation Term="Core.SymbolicName" String="No"/>
+                            <PropertyValue Property="Value" Bool="false"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="taqa.srv.TaqaDbService.ColumnInfo/createdAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Created On"/>
+            </Annotations>
+            <Annotations Target="taqa.srv.TaqaDbService.ColumnInfo/createdBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Created By"/>
+            </Annotations>
+            <Annotations Target="taqa.srv.TaqaDbService.ColumnInfo/modifiedAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Changed On"/>
+            </Annotations>
+            <Annotations Target="taqa.srv.TaqaDbService.ColumnInfo/modifiedBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Changed By"/>
+            </Annotations>
+            <Annotations Target="taqa.srv.TaqaDbService.ColumnInfo/DELETED" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Validation.AllowedValues">
+                    <Collection>
+                        <Record Type="Validation.AllowedValue">
+                            <Annotation Term="Core.SymbolicName" String="Yes"/>
+                            <PropertyValue Property="Value" Bool="true"/>
+                        </Record>
+                        <Record Type="Validation.AllowedValue">
+                            <Annotation Term="Core.SymbolicName" String="No"/>
+                            <PropertyValue Property="Value" Bool="false"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="taqa.srv.TaqaDbService.ColumnInfo/ID" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Core.ComputedDefaultValue" Bool="true"/>
+            </Annotations>
+            <Annotations Target="taqa.srv.TaqaDbService.RowInfo/createdAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Created On"/>
+            </Annotations>
+            <Annotations Target="taqa.srv.TaqaDbService.RowInfo/createdBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Created By"/>
+            </Annotations>
+            <Annotations Target="taqa.srv.TaqaDbService.RowInfo/modifiedAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Changed On"/>
+            </Annotations>
+            <Annotations Target="taqa.srv.TaqaDbService.RowInfo/modifiedBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Changed By"/>
+            </Annotations>
+            <Annotations Target="taqa.srv.TaqaDbService.RowInfo/DELETED" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Validation.AllowedValues">
+                    <Collection>
+                        <Record Type="Validation.AllowedValue">
+                            <Annotation Term="Core.SymbolicName" String="Yes"/>
+                            <PropertyValue Property="Value" Bool="true"/>
+                        </Record>
+                        <Record Type="Validation.AllowedValue">
+                            <Annotation Term="Core.SymbolicName" String="No"/>
+                            <PropertyValue Property="Value" Bool="false"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="taqa.srv.TaqaDbService.RowInfo/ID" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Core.ComputedDefaultValue" Bool="true"/>
+            </Annotations>
+            <Annotations Target="taqa.srv.TaqaDbService.TravelDetails/createdAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Created On"/>
+            </Annotations>
+            <Annotations Target="taqa.srv.TaqaDbService.TravelDetails/createdBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Created By"/>
+            </Annotations>
+            <Annotations Target="taqa.srv.TaqaDbService.TravelDetails/modifiedAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Changed On"/>
+            </Annotations>
+            <Annotations Target="taqa.srv.TaqaDbService.TravelDetails/modifiedBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Changed By"/>
+            </Annotations>
+            <Annotations Target="taqa.srv.TaqaDbService.TravelDetails/DELETED" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Validation.AllowedValues">
+                    <Collection>
+                        <Record Type="Validation.AllowedValue">
+                            <Annotation Term="Core.SymbolicName" String="Yes"/>
+                            <PropertyValue Property="Value" Bool="true"/>
+                        </Record>
+                        <Record Type="Validation.AllowedValue">
+                            <Annotation Term="Core.SymbolicName" String="No"/>
+                            <PropertyValue Property="Value" Bool="false"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="taqa.srv.TaqaDbService.TravelDetails/ID" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Core.ComputedDefaultValue" Bool="true"/>
+            </Annotations>
+            <Annotations Target="taqa.srv.TaqaDbService.ClaimDetails/createdAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Created On"/>
+            </Annotations>
+            <Annotations Target="taqa.srv.TaqaDbService.ClaimDetails/createdBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Created By"/>
+            </Annotations>
+            <Annotations Target="taqa.srv.TaqaDbService.ClaimDetails/modifiedAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Changed On"/>
+            </Annotations>
+            <Annotations Target="taqa.srv.TaqaDbService.ClaimDetails/modifiedBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Changed By"/>
+            </Annotations>
+            <Annotations Target="taqa.srv.TaqaDbService.ClaimDetails/DELETED" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Validation.AllowedValues">
+                    <Collection>
+                        <Record Type="Validation.AllowedValue">
+                            <Annotation Term="Core.SymbolicName" String="Yes"/>
+                            <PropertyValue Property="Value" Bool="true"/>
+                        </Record>
+                        <Record Type="Validation.AllowedValue">
+                            <Annotation Term="Core.SymbolicName" String="No"/>
+                            <PropertyValue Property="Value" Bool="false"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="taqa.srv.TaqaDbService.ClaimDetails/ID" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Core.ComputedDefaultValue" Bool="true"/>
+            </Annotations>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

@@ -1,0 +1,50 @@
+[
+    {
+        "key": "Business Travel",
+        "text": "Business Travel"
+    },
+    {
+        "key": "Training",
+        "text": "Training"
+    },
+    {
+        "key": "Job travel",
+        "text": "Job travel"
+    },
+    {
+        "key": "Joining Travel",
+        "text": "Joining Travel"
+    },
+    {
+        "key": "Miscellaneous",
+        "text": "Miscellaneous"
+    },
+    {
+        "key": "Recharge Travel",
+        "text": "Recharge Travel"
+    },
+    {
+        "key": "Separation Travel",
+        "text": "Separation Travel"
+    },
+    {
+        "key": "Annual Leave",
+        "text": "Annual Leave"
+    },
+    {
+        "key": "Rotational Leave",
+        "text": "Rotational Leave"
+    },
+    {
+        "key": "Reissuance",
+        "text": "Reissuance"
+    },
+    {
+        "key": "Family Travel",
+        "text": "Family Travel"
+    },
+    {
+        "key": "Emergency Leave",
+        "text": "Emergency Leave"
+    }
+]

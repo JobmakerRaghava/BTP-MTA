@@ -1,0 +1,15 @@
+<mvc:View controllerName="taqa.test.test2dms.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:u="sap.ui.unified">
+    <Page id="page" title="{i18n>title}">
+        <Button text="Get Call" press="onGetCallButtonPress" class="sapUiSmallMargin"></Button>
+        <!-- <Button text="GET-browser call" press="onGETbrowserCallButtonPress" class="sapUiSmallMargin"></Button> -->
+        <Button text="Post call" press="onPostCallButtonPress" class="sapUiSmallMargin"></Button>
+        <l:VerticalLayout>
+            <u:FileUploader id="fileUploader" 	 name="myFileUpload"  change="onFileUploaderChange"/>
+            <Button text="Upload File" press="handleUploadPress"/>
+        </l:VerticalLayout>
+    </Page>
+</mvc:View>

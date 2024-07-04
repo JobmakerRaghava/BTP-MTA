@@ -1,0 +1,7 @@
+<mvc:View controllerName="spreadsheet.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+         <Button text="{i18n>spreadsheetupload}" press="testupload" type="Emphasized"></Button>
+    </Page>
+</mvc:View>

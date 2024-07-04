@@ -1,0 +1,896 @@
+{
+  "d": {
+    "results": [
+      {
+        "createdAt": "/Date(1716455091358+0000)/",
+        "createdBy": "kraghavendra@kaartech.com",
+        "modifiedAt": "/Date(1716455181401+0000)/",
+        "modifiedBy": "kraghavendra@kaartech.com",
+        "DELETED": false,
+        "ID": "0359ed64-5ef6-422a-8832-57adcef8a04d",
+        "EmployeeID": "31288",
+        "EmployeeFirstName": "Claudio",
+        "EmployeeMiddleName": "Wilson",
+        "EmployeeLastName": "Albuquerque",
+        "Gender": "M",
+        "Position": "",
+        "LeaveSchedule": "6x3WK",
+        "CompanyCode": "2000",
+        "HomeCountry": "IND",
+        "Deparment": "80000034",
+        "Division": "90000111",
+        "Function": "70000002",
+        "DateOfBirth": "20-12-1976",
+        "ContactNo": "",
+        "ReportingManager": "30764",
+        "FocalPerson": "raghava",
+        "Class": "a",
+        "CodeDiv": "grt",
+        "ExpenseCode": "7895",
+        "ProjectCode": "5364",
+        "Designation": "JOB",
+        "Age": null,
+        "Region": "",
+        "BusStartDate": "",
+        "BusEndDate": "",
+        "Hotel": "",
+        "ExitReEntry": "",
+        "TrainingStartDate": "",
+        "TrainingEndDate": "",
+        "Email": "",
+        "ReferenceNo": "56786",
+        "TicketCount": "",
+        "PrevFareAmt": "",
+        "JobDetails": "",
+        "Location": "2005",
+        "Grade": "",
+        "TravelId": "2024-05-23T09:04:51.420Z",
+        "TravelType": "Family Travel",
+        "Status": "Initiated Request",
+        "ReissuranceRefNo": "",
+        "OverseasMobileNumber": "",
+        "ItsTraveller": {
+          "results": [
+            {
+              "createdAt": "/Date(1716455092035+0000)/",
+              "createdBy": "kraghavendra@kaartech.com",
+              "modifiedAt": "/Date(1716455092035+0000)/",
+              "modifiedBy": "kraghavendra@kaartech.com",
+              "DELETED": false,
+              "parent_ID": "0359ed64-5ef6-422a-8832-57adcef8a04d",
+              "ID": "ac2b83b7-4949-4069-bcfd-fb7b1f4dc93e",
+              "EmployeeID": "",
+              "RelationName": "Kid1",
+              "Relationship": "29960",
+              "Phone": "3243",
+              "DateOfBirth": "2024-05-23",
+              "TravelDetails": "dfs",
+              "DepartureDate": "2024-05-23",
+              "DepartureSector": "b",
+              "DepartureTime": "2:34:20 PM",
+              "ReturnDate": "2024-05-30",
+              "TravelCountry": "a",
+              "AirportCity": "a",
+              "ReasonForTravel": "",
+              "LocalModbileNumber": "",
+              "SeatPreference": "",
+              "MealPreference": "",
+              "VisaRequirement": "",
+              "FrequentFlyerNumber": "",
+              "Transportation": "",
+              "ReturnSector": "5",
+              "ReturnTime": "2:34:30 PM",
+              "parent": {
+                "__deferred": {
+                  "uri": "https://port8080-workspaces-ws-w4frz.eu10.applicationstudio.cloud.sap,taqa_btp.dest:443/destinations/TAQA_BTP/v2/taqa-srv/TravellerDetails(guid'ac2b83b7-4949-4069-bcfd-fb7b1f4dc93e')/parent"
+                }
+              },
+              "__metadata": {
+                "type": "taqa.srv.TaqaDbService.TravellerDetails",
+                "uri": "https://port8080-workspaces-ws-w4frz.eu10.applicationstudio.cloud.sap,taqa_btp.dest:443/destinations/TAQA_BTP/v2/taqa-srv/TravellerDetails(guid'ac2b83b7-4949-4069-bcfd-fb7b1f4dc93e')"
+              }
+            },
+            {
+              "createdAt": "/Date(1716455092035+0000)/",
+              "createdBy": "kraghavendra@kaartech.com",
+              "modifiedAt": "/Date(1716455092035+0000)/",
+              "modifiedBy": "kraghavendra@kaartech.com",
+              "DELETED": false,
+              "parent_ID": "0359ed64-5ef6-422a-8832-57adcef8a04d",
+              "ID": "ac2b83b7-4949-4069-bcfd-fb7b1f4dc93e",
+              "EmployeeID": "",
+              "RelationName": "Kid2",
+              "Relationship": "29960",
+              "Phone": "3243",
+              "DateOfBirth": "2024-05-23",
+              "TravelDetails": "dfs",
+              "DepartureDate": "2024-05-23",
+              "DepartureSector": "b",
+              "DepartureTime": "2:34:20 PM",
+              "ReturnDate": "2024-05-30",
+              "TravelCountry": "a",
+              "AirportCity": "a",
+              "ReasonForTravel": "",
+              "LocalModbileNumber": "",
+              "SeatPreference": "",
+              "MealPreference": "",
+              "VisaRequirement": "",
+              "FrequentFlyerNumber": "",
+              "Transportation": "",
+              "ReturnSector": "5",
+              "ReturnTime": "2:34:30 PM",
+              "parent": {
+                "__deferred": {
+                  "uri": "https://port8080-workspaces-ws-w4frz.eu10.applicationstudio.cloud.sap,taqa_btp.dest:443/destinations/TAQA_BTP/v2/taqa-srv/TravellerDetails(guid'ac2b83b7-4949-4069-bcfd-fb7b1f4dc93e')/parent"
+                }
+              },
+              "__metadata": {
+                "type": "taqa.srv.TaqaDbService.TravellerDetails",
+                "uri": "https://port8080-workspaces-ws-w4frz.eu10.applicationstudio.cloud.sap,taqa_btp.dest:443/destinations/TAQA_BTP/v2/taqa-srv/TravellerDetails(guid'ac2b83b7-4949-4069-bcfd-fb7b1f4dc93e')"
+              }
+            }
+          ]
+        },
+        "ItsTicketDetails": {
+          "results": [
+            {
+              "createdAt": "/Date(1716724602644+0000)/",
+              "createdBy": "gkanthavelu@kaartech.com",
+              "modifiedAt": "/Date(1716724602644+0000)/",
+              "modifiedBy": "gkanthavelu@kaartech.com",
+              "DELETED": false,
+              "parent_ID": "8adcf21b-12e9-4988-a8da-b5f2a6aa1c00",
+              "ID": "f83c487d-ce48-4bca-9cd5-8498ed4b522e",
+              "Airline": "kingfisher",
+              "TravelDate": "6/1/24",
+              "TicketNo": "1244",
+              "Sector": "airport",
+              "BaseFare": "565",
+              "Taxes": "",
+              "Currency": "SAR",
+              "Comments": "",
+              "parent": {
+                "__deferred": {
+                  "uri": "https://port8080-workspaces-ws-w4frz.eu10.applicationstudio.cloud.sap,taqa_btp.dest:443/destinations/TAQA_BTP/v2/taqa-srv/TravelTicketDetails(guid'f83c487d-ce48-4bca-9cd5-8498ed4b522e')/parent"
+                }
+              },
+              "__metadata": {
+                "type": "taqa.srv.TaqaDbService.TravelTicketDetails",
+                "uri": "https://port8080-workspaces-ws-w4frz.eu10.applicationstudio.cloud.sap,taqa_btp.dest:443/destinations/TAQA_BTP/v2/taqa-srv/TravelTicketDetails(guid'f83c487d-ce48-4bca-9cd5-8498ed4b522e')"
+              }
+            },
+            {
+              "createdAt": "/Date(1716724602644+0000)/",
+              "createdBy": "gkanthavelu@kaartech.com",
+              "modifiedAt": "/Date(1716724602644+0000)/",
+              "modifiedBy": "gkanthavelu@kaartech.com",
+              "DELETED": false,
+              "parent_ID": "8adcf21b-12e9-4988-a8da-b5f2a6aa1c00",
+              "ID": "f83c487d-ce48-4bca-9cd5-8498ed4b522e",
+              "Airline": "kingfisher",
+              "TravelDate": "6/1/24",
+              "TicketNo": "1244",
+              "Sector": "airport1",
+              "BaseFare": "565",
+              "Taxes": "",
+              "Currency": "SAR",
+              "Comments": "",
+              "parent": {
+                "__deferred": {
+                  "uri": "https://port8080-workspaces-ws-w4frz.eu10.applicationstudio.cloud.sap,taqa_btp.dest:443/destinations/TAQA_BTP/v2/taqa-srv/TravelTicketDetails(guid'f83c487d-ce48-4bca-9cd5-8498ed4b522e')/parent"
+                }
+              },
+              "__metadata": {
+                "type": "taqa.srv.TaqaDbService.TravelTicketDetails",
+                "uri": "https://port8080-workspaces-ws-w4frz.eu10.applicationstudio.cloud.sap,taqa_btp.dest:443/destinations/TAQA_BTP/v2/taqa-srv/TravelTicketDetails(guid'f83c487d-ce48-4bca-9cd5-8498ed4b522e')"
+              }
+            }
+          ]
+        },
+        "__metadata": {
+          "type": "taqa.srv.TaqaDbService.TravelDetails",
+          "uri": "https://port8080-workspaces-ws-w4frz.eu10.applicationstudio.cloud.sap,taqa_btp.dest:443/destinations/TAQA_BTP/v2/taqa-srv/TravelDetails(guid'0359ed64-5ef6-422a-8832-57adcef8a04d')"
+        }
+      },
+      {
+        "createdAt": "/Date(1716455091358+0000)/",
+        "createdBy": "kraghavendra@kaartech.com",
+        "modifiedAt": "/Date(1716455181401+0000)/",
+        "modifiedBy": "kraghavendra@kaartech.com",
+        "DELETED": false,
+        "ID": "0359ed64-5ef6-422a-8832-57adcef8a04d",
+        "EmployeeID": "31289",
+        "EmployeeFirstName": "Claudio",
+        "EmployeeMiddleName": "Wilson",
+        "EmployeeLastName": "Albuquerque",
+        "Gender": "M",
+        "Position": "",
+        "LeaveSchedule": "6x3WK",
+        "CompanyCode": "2000",
+        "HomeCountry": "IND",
+        "Deparment": "80000034",
+        "Division": "90000111",
+        "Function": "70000002",
+        "DateOfBirth": "20-12-1976",
+        "ContactNo": "",
+        "ReportingManager": "30764",
+        "FocalPerson": "raghava",
+        "Class": "a",
+        "CodeDiv": "grt",
+        "ExpenseCode": "7895",
+        "ProjectCode": "5364",
+        "Designation": "JOB",
+        "Age": null,
+        "Region": "",
+        "BusStartDate": "",
+        "BusEndDate": "",
+        "Hotel": "",
+        "ExitReEntry": "",
+        "TrainingStartDate": "",
+        "TrainingEndDate": "",
+        "Email": "",
+        "ReferenceNo": "56786",
+        "TicketCount": "",
+        "PrevFareAmt": "",
+        "JobDetails": "",
+        "Location": "2005",
+        "Grade": "",
+        "TravelId": "2024-05-23T09:04:51.420Z",
+        "TravelType": "Family Travel",
+        "Status": "Initiated Request",
+        "ReissuranceRefNo": "",
+        "OverseasMobileNumber": "",
+        "ItsTraveller": {
+          "results": [
+            {
+              "createdAt": "/Date(1716455092035+0000)/",
+              "createdBy": "kraghavendra@kaartech.com",
+              "modifiedAt": "/Date(1716455092035+0000)/",
+              "modifiedBy": "kraghavendra@kaartech.com",
+              "DELETED": false,
+              "parent_ID": "0359ed64-5ef6-422a-8832-57adcef8a04d",
+              "ID": "ac2b83b7-4949-4069-bcfd-fb7b1f4dc93e",
+              "EmployeeID": "",
+              "RelationName": "Kid1",
+              "Relationship": "29960",
+              "Phone": "3243",
+              "DateOfBirth": "2024-05-23",
+              "TravelDetails": "dfs",
+              "DepartureDate": "2024-05-23",
+              "DepartureSector": "b",
+              "DepartureTime": "2:34:20 PM",
+              "ReturnDate": "2024-05-30",
+              "TravelCountry": "a",
+              "AirportCity": "a",
+              "ReasonForTravel": "",
+              "LocalModbileNumber": "",
+              "SeatPreference": "",
+              "MealPreference": "",
+              "VisaRequirement": "",
+              "FrequentFlyerNumber": "",
+              "Transportation": "",
+              "ReturnSector": "5",
+              "ReturnTime": "2:34:30 PM",
+              "parent": {
+                "__deferred": {
+                  "uri": "https://port8080-workspaces-ws-w4frz.eu10.applicationstudio.cloud.sap,taqa_btp.dest:443/destinations/TAQA_BTP/v2/taqa-srv/TravellerDetails(guid'ac2b83b7-4949-4069-bcfd-fb7b1f4dc93e')/parent"
+                }
+              },
+              "__metadata": {
+                "type": "taqa.srv.TaqaDbService.TravellerDetails",
+                "uri": "https://port8080-workspaces-ws-w4frz.eu10.applicationstudio.cloud.sap,taqa_btp.dest:443/destinations/TAQA_BTP/v2/taqa-srv/TravellerDetails(guid'ac2b83b7-4949-4069-bcfd-fb7b1f4dc93e')"
+              }
+            },
+            {
+              "createdAt": "/Date(1716455092035+0000)/",
+              "createdBy": "kraghavendra@kaartech.com",
+              "modifiedAt": "/Date(1716455092035+0000)/",
+              "modifiedBy": "kraghavendra@kaartech.com",
+              "DELETED": false,
+              "parent_ID": "0359ed64-5ef6-422a-8832-57adcef8a04d",
+              "ID": "ac2b83b7-4949-4069-bcfd-fb7b1f4dc93e",
+              "EmployeeID": "",
+              "RelationName": "Kid2",
+              "Relationship": "29960",
+              "Phone": "3243",
+              "DateOfBirth": "2024-05-23",
+              "TravelDetails": "dfs",
+              "DepartureDate": "2024-05-23",
+              "DepartureSector": "b",
+              "DepartureTime": "2:34:20 PM",
+              "ReturnDate": "2024-05-30",
+              "TravelCountry": "a",
+              "AirportCity": "a",
+              "ReasonForTravel": "",
+              "LocalModbileNumber": "",
+              "SeatPreference": "",
+              "MealPreference": "",
+              "VisaRequirement": "",
+              "FrequentFlyerNumber": "",
+              "Transportation": "",
+              "ReturnSector": "5",
+              "ReturnTime": "2:34:30 PM",
+              "parent": {
+                "__deferred": {
+                  "uri": "https://port8080-workspaces-ws-w4frz.eu10.applicationstudio.cloud.sap,taqa_btp.dest:443/destinations/TAQA_BTP/v2/taqa-srv/TravellerDetails(guid'ac2b83b7-4949-4069-bcfd-fb7b1f4dc93e')/parent"
+                }
+              },
+              "__metadata": {
+                "type": "taqa.srv.TaqaDbService.TravellerDetails",
+                "uri": "https://port8080-workspaces-ws-w4frz.eu10.applicationstudio.cloud.sap,taqa_btp.dest:443/destinations/TAQA_BTP/v2/taqa-srv/TravellerDetails(guid'ac2b83b7-4949-4069-bcfd-fb7b1f4dc93e')"
+              }
+            }
+          ]
+        },
+        "ItsTicketDetails": {
+          "results": [
+            {
+              "createdAt": "/Date(1716724602644+0000)/",
+              "createdBy": "gkanthavelu@kaartech.com",
+              "modifiedAt": "/Date(1716724602644+0000)/",
+              "modifiedBy": "gkanthavelu@kaartech.com",
+              "DELETED": false,
+              "parent_ID": "8adcf21b-12e9-4988-a8da-b5f2a6aa1c00",
+              "ID": "f83c487d-ce48-4bca-9cd5-8498ed4b522e",
+              "Airline": "kingfisher",
+              "TravelDate": "6/1/24",
+              "TicketNo": "1244",
+              "Sector": "airport",
+              "BaseFare": "565",
+              "Taxes": "",
+              "Currency": "SAR",
+              "Comments": "",
+              "parent": {
+                "__deferred": {
+                  "uri": "https://port8080-workspaces-ws-w4frz.eu10.applicationstudio.cloud.sap,taqa_btp.dest:443/destinations/TAQA_BTP/v2/taqa-srv/TravelTicketDetails(guid'f83c487d-ce48-4bca-9cd5-8498ed4b522e')/parent"
+                }
+              },
+              "__metadata": {
+                "type": "taqa.srv.TaqaDbService.TravelTicketDetails",
+                "uri": "https://port8080-workspaces-ws-w4frz.eu10.applicationstudio.cloud.sap,taqa_btp.dest:443/destinations/TAQA_BTP/v2/taqa-srv/TravelTicketDetails(guid'f83c487d-ce48-4bca-9cd5-8498ed4b522e')"
+              }
+            },
+            {
+              "createdAt": "/Date(1716724602644+0000)/",
+              "createdBy": "gkanthavelu@kaartech.com",
+              "modifiedAt": "/Date(1716724602644+0000)/",
+              "modifiedBy": "gkanthavelu@kaartech.com",
+              "DELETED": false,
+              "parent_ID": "8adcf21b-12e9-4988-a8da-b5f2a6aa1c00",
+              "ID": "f83c487d-ce48-4bca-9cd5-8498ed4b522e",
+              "Airline": "kingfisher",
+              "TravelDate": "6/1/24",
+              "TicketNo": "1244",
+              "Sector": "airport1",
+              "BaseFare": "565",
+              "Taxes": "",
+              "Currency": "SAR",
+              "Comments": "",
+              "parent": {
+                "__deferred": {
+                  "uri": "https://port8080-workspaces-ws-w4frz.eu10.applicationstudio.cloud.sap,taqa_btp.dest:443/destinations/TAQA_BTP/v2/taqa-srv/TravelTicketDetails(guid'f83c487d-ce48-4bca-9cd5-8498ed4b522e')/parent"
+                }
+              },
+              "__metadata": {
+                "type": "taqa.srv.TaqaDbService.TravelTicketDetails",
+                "uri": "https://port8080-workspaces-ws-w4frz.eu10.applicationstudio.cloud.sap,taqa_btp.dest:443/destinations/TAQA_BTP/v2/taqa-srv/TravelTicketDetails(guid'f83c487d-ce48-4bca-9cd5-8498ed4b522e')"
+              }
+            }
+          ]
+        },
+        "__metadata": {
+          "type": "taqa.srv.TaqaDbService.TravelDetails",
+          "uri": "https://port8080-workspaces-ws-w4frz.eu10.applicationstudio.cloud.sap,taqa_btp.dest:443/destinations/TAQA_BTP/v2/taqa-srv/TravelDetails(guid'0359ed64-5ef6-422a-8832-57adcef8a04d')"
+        }
+      },
+      {
+        "createdAt": "/Date(1716455091358+0000)/",
+        "createdBy": "kraghavendra@kaartech.com",
+        "modifiedAt": "/Date(1716455181401+0000)/",
+        "modifiedBy": "kraghavendra@kaartech.com",
+        "DELETED": false,
+        "ID": "0359ed64-5ef6-422a-8832-57adcef8a04d",
+        "EmployeeID": "31289",
+        "EmployeeFirstName": "Claudio",
+        "EmployeeMiddleName": "Wilson",
+        "EmployeeLastName": "Albuquerque",
+        "Gender": "M",
+        "Position": "",
+        "LeaveSchedule": "6x3WK",
+        "CompanyCode": "2000",
+        "HomeCountry": "IND",
+        "Deparment": "80000034",
+        "Division": "90000111",
+        "Function": "70000002",
+        "DateOfBirth": "20-12-1976",
+        "ContactNo": "",
+        "ReportingManager": "30764",
+        "FocalPerson": "raghava",
+        "Class": "a",
+        "CodeDiv": "grt",
+        "ExpenseCode": "7895",
+        "ProjectCode": "5364",
+        "Designation": "JOB",
+        "Age": null,
+        "Region": "",
+        "BusStartDate": "",
+        "BusEndDate": "",
+        "Hotel": "",
+        "ExitReEntry": "",
+        "TrainingStartDate": "",
+        "TrainingEndDate": "",
+        "Email": "",
+        "ReferenceNo": "56786",
+        "TicketCount": "",
+        "PrevFareAmt": "",
+        "JobDetails": "",
+        "Location": "2005",
+        "Grade": "",
+        "TravelId": "2024-05-23T09:04:51.420Z",
+        "TravelType": "business",
+        "Status": "Initiated Request",
+        "ReissuranceRefNo": "",
+        "OverseasMobileNumber": "",
+        "ItsTraveller": {
+          "results": [
+            {
+              "createdAt": "/Date(1716455092035+0000)/",
+              "createdBy": "kraghavendra@kaartech.com",
+              "modifiedAt": "/Date(1716455092035+0000)/",
+              "modifiedBy": "kraghavendra@kaartech.com",
+              "DELETED": false,
+              "parent_ID": "0359ed64-5ef6-422a-8832-57adcef8a04d",
+              "ID": "ac2b83b7-4949-4069-bcfd-fb7b1f4dc93e",
+              "EmployeeID": "",
+              "RelationName": "Kid1",
+              "Relationship": "29960",
+              "Phone": "3243",
+              "DateOfBirth": "2024-05-23",
+              "TravelDetails": "dfs",
+              "DepartureDate": "2024-05-23",
+              "DepartureSector": "b",
+              "DepartureTime": "2:34:20 PM",
+              "ReturnDate": "2024-05-30",
+              "TravelCountry": "a",
+              "AirportCity": "a",
+              "ReasonForTravel": "",
+              "LocalModbileNumber": "",
+              "SeatPreference": "",
+              "MealPreference": "",
+              "VisaRequirement": "",
+              "FrequentFlyerNumber": "",
+              "Transportation": "",
+              "ReturnSector": "5",
+              "ReturnTime": "2:34:30 PM",
+              "parent": {
+                "__deferred": {
+                  "uri": "https://port8080-workspaces-ws-w4frz.eu10.applicationstudio.cloud.sap,taqa_btp.dest:443/destinations/TAQA_BTP/v2/taqa-srv/TravellerDetails(guid'ac2b83b7-4949-4069-bcfd-fb7b1f4dc93e')/parent"
+                }
+              },
+              "__metadata": {
+                "type": "taqa.srv.TaqaDbService.TravellerDetails",
+                "uri": "https://port8080-workspaces-ws-w4frz.eu10.applicationstudio.cloud.sap,taqa_btp.dest:443/destinations/TAQA_BTP/v2/taqa-srv/TravellerDetails(guid'ac2b83b7-4949-4069-bcfd-fb7b1f4dc93e')"
+              }
+            }
+          ]
+        },
+        "ItsTicketDetails": {
+          "results": [
+            {
+              "createdAt": "/Date(1716724602644+0000)/",
+              "createdBy": "gkanthavelu@kaartech.com",
+              "modifiedAt": "/Date(1716724602644+0000)/",
+              "modifiedBy": "gkanthavelu@kaartech.com",
+              "DELETED": false,
+              "parent_ID": "8adcf21b-12e9-4988-a8da-b5f2a6aa1c00",
+              "ID": "f83c487d-ce48-4bca-9cd5-8498ed4b522e",
+              "Airline": "kingfisher",
+              "TravelDate": "6/1/24",
+              "TicketNo": "1244",
+              "Sector": "airport",
+              "BaseFare": "565",
+              "Taxes": "",
+              "Currency": "SAR",
+              "Comments": "",
+              "parent": {
+                "__deferred": {
+                  "uri": "https://port8080-workspaces-ws-w4frz.eu10.applicationstudio.cloud.sap,taqa_btp.dest:443/destinations/TAQA_BTP/v2/taqa-srv/TravelTicketDetails(guid'f83c487d-ce48-4bca-9cd5-8498ed4b522e')/parent"
+                }
+              },
+              "__metadata": {
+                "type": "taqa.srv.TaqaDbService.TravelTicketDetails",
+                "uri": "https://port8080-workspaces-ws-w4frz.eu10.applicationstudio.cloud.sap,taqa_btp.dest:443/destinations/TAQA_BTP/v2/taqa-srv/TravelTicketDetails(guid'f83c487d-ce48-4bca-9cd5-8498ed4b522e')"
+              }
+            }
+          ]
+        },
+        "__metadata": {
+          "type": "taqa.srv.TaqaDbService.TravelDetails",
+          "uri": "https://port8080-workspaces-ws-w4frz.eu10.applicationstudio.cloud.sap,taqa_btp.dest:443/destinations/TAQA_BTP/v2/taqa-srv/TravelDetails(guid'0359ed64-5ef6-422a-8832-57adcef8a04d')"
+        }
+      },
+      {
+        "createdAt": "/Date(1716455091358+0000)/",
+        "createdBy": "kraghavendra@kaartech.com",
+        "modifiedAt": "/Date(1716455181401+0000)/",
+        "modifiedBy": "kraghavendra@kaartech.com",
+        "DELETED": false,
+        "ID": "0359ed64-5ef6-422a-8832-57adcef8a04d",
+        "EmployeeID": "31288",
+        "EmployeeFirstName": "Claudio",
+        "EmployeeMiddleName": "Wilson",
+        "EmployeeLastName": "Albuquerque",
+        "Gender": "M",
+        "Position": "",
+        "LeaveSchedule": "6x3WK",
+        "CompanyCode": "2000",
+        "HomeCountry": "IND",
+        "Deparment": "80000034",
+        "Division": "90000111",
+        "Function": "70000002",
+        "DateOfBirth": "20-12-1976",
+        "ContactNo": "",
+        "ReportingManager": "30764",
+        "FocalPerson": "raghava",
+        "Class": "a",
+        "CodeDiv": "grt",
+        "ExpenseCode": "7895",
+        "ProjectCode": "5364",
+        "Designation": "JOB",
+        "Age": null,
+        "Region": "",
+        "BusStartDate": "",
+        "BusEndDate": "",
+        "Hotel": "",
+        "ExitReEntry": "",
+        "TrainingStartDate": "",
+        "TrainingEndDate": "",
+        "Email": "",
+        "ReferenceNo": "56786",
+        "TicketCount": "",
+        "PrevFareAmt": "",
+        "JobDetails": "",
+        "Location": "2005",
+        "Grade": "",
+        "TravelId": "2024-05-23T09:04:51.420Z",
+        "TravelType": "Family Travel",
+        "Status": "Initiated Request",
+        "ReissuranceRefNo": "",
+        "OverseasMobileNumber": "",
+        "ItsTraveller": {
+          "results": [
+            {
+              "createdAt": "/Date(1716455092035+0000)/",
+              "createdBy": "kraghavendra@kaartech.com",
+              "modifiedAt": "/Date(1716455092035+0000)/",
+              "modifiedBy": "kraghavendra@kaartech.com",
+              "DELETED": false,
+              "parent_ID": "0359ed64-5ef6-422a-8832-57adcef8a04d",
+              "ID": "ac2b83b7-4949-4069-bcfd-fb7b1f4dc93e",
+              "EmployeeID": "",
+              "RelationName": "Kid1",
+              "Relationship": "29960",
+              "Phone": "3243",
+              "DateOfBirth": "2024-05-23",
+              "TravelDetails": "dfs",
+              "DepartureDate": "2024-05-23",
+              "DepartureSector": "b",
+              "DepartureTime": "2:34:20 PM",
+              "ReturnDate": "2024-05-30",
+              "TravelCountry": "a",
+              "AirportCity": "a",
+              "ReasonForTravel": "",
+              "LocalModbileNumber": "",
+              "SeatPreference": "",
+              "MealPreference": "",
+              "VisaRequirement": "",
+              "FrequentFlyerNumber": "",
+              "Transportation": "",
+              "ReturnSector": "5",
+              "ReturnTime": "2:34:30 PM",
+              "parent": {
+                "__deferred": {
+                  "uri": "https://port8080-workspaces-ws-w4frz.eu10.applicationstudio.cloud.sap,taqa_btp.dest:443/destinations/TAQA_BTP/v2/taqa-srv/TravellerDetails(guid'ac2b83b7-4949-4069-bcfd-fb7b1f4dc93e')/parent"
+                }
+              },
+              "__metadata": {
+                "type": "taqa.srv.TaqaDbService.TravellerDetails",
+                "uri": "https://port8080-workspaces-ws-w4frz.eu10.applicationstudio.cloud.sap,taqa_btp.dest:443/destinations/TAQA_BTP/v2/taqa-srv/TravellerDetails(guid'ac2b83b7-4949-4069-bcfd-fb7b1f4dc93e')"
+              }
+            },
+            {
+              "createdAt": "/Date(1716455092035+0000)/",
+              "createdBy": "kraghavendra@kaartech.com",
+              "modifiedAt": "/Date(1716455092035+0000)/",
+              "modifiedBy": "kraghavendra@kaartech.com",
+              "DELETED": false,
+              "parent_ID": "0359ed64-5ef6-422a-8832-57adcef8a04d",
+              "ID": "ac2b83b7-4949-4069-bcfd-fb7b1f4dc93e",
+              "EmployeeID": "",
+              "RelationName": "Kid2",
+              "Relationship": "29960",
+              "Phone": "3243",
+              "DateOfBirth": "2024-05-23",
+              "TravelDetails": "dfs",
+              "DepartureDate": "2024-05-23",
+              "DepartureSector": "b",
+              "DepartureTime": "2:34:20 PM",
+              "ReturnDate": "2024-05-30",
+              "TravelCountry": "a",
+              "AirportCity": "a",
+              "ReasonForTravel": "",
+              "LocalModbileNumber": "",
+              "SeatPreference": "",
+              "MealPreference": "",
+              "VisaRequirement": "",
+              "FrequentFlyerNumber": "",
+              "Transportation": "",
+              "ReturnSector": "5",
+              "ReturnTime": "2:34:30 PM",
+              "parent": {
+                "__deferred": {
+                  "uri": "https://port8080-workspaces-ws-w4frz.eu10.applicationstudio.cloud.sap,taqa_btp.dest:443/destinations/TAQA_BTP/v2/taqa-srv/TravellerDetails(guid'ac2b83b7-4949-4069-bcfd-fb7b1f4dc93e')/parent"
+                }
+              },
+              "__metadata": {
+                "type": "taqa.srv.TaqaDbService.TravellerDetails",
+                "uri": "https://port8080-workspaces-ws-w4frz.eu10.applicationstudio.cloud.sap,taqa_btp.dest:443/destinations/TAQA_BTP/v2/taqa-srv/TravellerDetails(guid'ac2b83b7-4949-4069-bcfd-fb7b1f4dc93e')"
+              }
+            }
+          ]
+        },
+        "ItsTicketDetails": {
+          "results": [
+            {
+              "createdAt": "/Date(1716724602644+0000)/",
+              "createdBy": "gkanthavelu@kaartech.com",
+              "modifiedAt": "/Date(1716724602644+0000)/",
+              "modifiedBy": "gkanthavelu@kaartech.com",
+              "DELETED": false,
+              "parent_ID": "8adcf21b-12e9-4988-a8da-b5f2a6aa1c00",
+              "ID": "f83c487d-ce48-4bca-9cd5-8498ed4b522e",
+              "Airline": "kingfisher",
+              "TravelDate": "6/1/24",
+              "TicketNo": "1244",
+              "Sector": "airport",
+              "BaseFare": "565",
+              "Taxes": "",
+              "Currency": "SAR",
+              "Comments": "",
+              "parent": {
+                "__deferred": {
+                  "uri": "https://port8080-workspaces-ws-w4frz.eu10.applicationstudio.cloud.sap,taqa_btp.dest:443/destinations/TAQA_BTP/v2/taqa-srv/TravelTicketDetails(guid'f83c487d-ce48-4bca-9cd5-8498ed4b522e')/parent"
+                }
+              },
+              "__metadata": {
+                "type": "taqa.srv.TaqaDbService.TravelTicketDetails",
+                "uri": "https://port8080-workspaces-ws-w4frz.eu10.applicationstudio.cloud.sap,taqa_btp.dest:443/destinations/TAQA_BTP/v2/taqa-srv/TravelTicketDetails(guid'f83c487d-ce48-4bca-9cd5-8498ed4b522e')"
+              }
+            },
+            {
+              "createdAt": "/Date(1716724602644+0000)/",
+              "createdBy": "gkanthavelu@kaartech.com",
+              "modifiedAt": "/Date(1716724602644+0000)/",
+              "modifiedBy": "gkanthavelu@kaartech.com",
+              "DELETED": false,
+              "parent_ID": "8adcf21b-12e9-4988-a8da-b5f2a6aa1c00",
+              "ID": "f83c487d-ce48-4bca-9cd5-8498ed4b522e",
+              "Airline": "kingfisher",
+              "TravelDate": "6/1/24",
+              "TicketNo": "1244",
+              "Sector": "airport1",
+              "BaseFare": "565",
+              "Taxes": "",
+              "Currency": "SAR",
+              "Comments": "",
+              "parent": {
+                "__deferred": {
+                  "uri": "https://port8080-workspaces-ws-w4frz.eu10.applicationstudio.cloud.sap,taqa_btp.dest:443/destinations/TAQA_BTP/v2/taqa-srv/TravelTicketDetails(guid'f83c487d-ce48-4bca-9cd5-8498ed4b522e')/parent"
+                }
+              },
+              "__metadata": {
+                "type": "taqa.srv.TaqaDbService.TravelTicketDetails",
+                "uri": "https://port8080-workspaces-ws-w4frz.eu10.applicationstudio.cloud.sap,taqa_btp.dest:443/destinations/TAQA_BTP/v2/taqa-srv/TravelTicketDetails(guid'f83c487d-ce48-4bca-9cd5-8498ed4b522e')"
+              }
+            }
+          ]
+        },
+        "__metadata": {
+          "type": "taqa.srv.TaqaDbService.TravelDetails",
+          "uri": "https://port8080-workspaces-ws-w4frz.eu10.applicationstudio.cloud.sap,taqa_btp.dest:443/destinations/TAQA_BTP/v2/taqa-srv/TravelDetails(guid'0359ed64-5ef6-422a-8832-57adcef8a04d')"
+        }
+      },
+      {
+        "createdAt": "/Date(1716455091358+0000)/",
+        "createdBy": "kraghavendra@kaartech.com",
+        "modifiedAt": "/Date(1716455181401+0000)/",
+        "modifiedBy": "kraghavendra@kaartech.com",
+        "DELETED": false,
+        "ID": "0359ed64-5ef6-422a-8832-57adcef8a04d",
+        "EmployeeID": "31289",
+        "EmployeeFirstName": "Claudio",
+        "EmployeeMiddleName": "Wilson",
+        "EmployeeLastName": "Albuquerque",
+        "Gender": "M",
+        "Position": "",
+        "LeaveSchedule": "6x3WK",
+        "CompanyCode": "2000",
+        "HomeCountry": "IND",
+        "Deparment": "80000034",
+        "Division": "90000111",
+        "Function": "70000002",
+        "DateOfBirth": "20-12-1976",
+        "ContactNo": "",
+        "ReportingManager": "30764",
+        "FocalPerson": "raghava",
+        "Class": "a",
+        "CodeDiv": "grt",
+        "ExpenseCode": "7895",
+        "ProjectCode": "5364",
+        "Designation": "JOB",
+        "Age": null,
+        "Region": "",
+        "BusStartDate": "",
+        "BusEndDate": "",
+        "Hotel": "",
+        "ExitReEntry": "",
+        "TrainingStartDate": "",
+        "TrainingEndDate": "",
+        "Email": "",
+        "ReferenceNo": "56786",
+        "TicketCount": "",
+        "PrevFareAmt": "",
+        "JobDetails": "",
+        "Location": "2005",
+        "Grade": "",
+        "TravelId": "2024-05-23T09:04:51.420Z",
+        "TravelType": "Family Travel",
+        "Status": "Initiated Request",
+        "ReissuranceRefNo": "",
+        "OverseasMobileNumber": "",
+        "ItsTraveller": {
+          "results": [
+            {
+              "createdAt": "/Date(1716455092035+0000)/",
+              "createdBy": "kraghavendra@kaartech.com",
+              "modifiedAt": "/Date(1716455092035+0000)/",
+              "modifiedBy": "kraghavendra@kaartech.com",
+              "DELETED": false,
+              "parent_ID": "0359ed64-5ef6-422a-8832-57adcef8a04d",
+              "ID": "ac2b83b7-4949-4069-bcfd-fb7b1f4dc93e",
+              "EmployeeID": "",
+              "RelationName": "Kid1",
+              "Relationship": "29960",
+              "Phone": "3243",
+              "DateOfBirth": "2024-05-23",
+              "TravelDetails": "dfs",
+              "DepartureDate": "2024-05-23",
+              "DepartureSector": "b",
+              "DepartureTime": "2:34:20 PM",
+              "ReturnDate": "2024-05-30",
+              "TravelCountry": "a",
+              "AirportCity": "a",
+              "ReasonForTravel": "",
+              "LocalModbileNumber": "",
+              "SeatPreference": "",
+              "MealPreference": "",
+              "VisaRequirement": "",
+              "FrequentFlyerNumber": "",
+              "Transportation": "",
+              "ReturnSector": "5",
+              "ReturnTime": "2:34:30 PM",
+              "parent": {
+                "__deferred": {
+                  "uri": "https://port8080-workspaces-ws-w4frz.eu10.applicationstudio.cloud.sap,taqa_btp.dest:443/destinations/TAQA_BTP/v2/taqa-srv/TravellerDetails(guid'ac2b83b7-4949-4069-bcfd-fb7b1f4dc93e')/parent"
+                }
+              },
+              "__metadata": {
+                "type": "taqa.srv.TaqaDbService.TravellerDetails",
+                "uri": "https://port8080-workspaces-ws-w4frz.eu10.applicationstudio.cloud.sap,taqa_btp.dest:443/destinations/TAQA_BTP/v2/taqa-srv/TravellerDetails(guid'ac2b83b7-4949-4069-bcfd-fb7b1f4dc93e')"
+              }
+            },
+            {
+              "createdAt": "/Date(1716455092035+0000)/",
+              "createdBy": "kraghavendra@kaartech.com",
+              "modifiedAt": "/Date(1716455092035+0000)/",
+              "modifiedBy": "kraghavendra@kaartech.com",
+              "DELETED": false,
+              "parent_ID": "0359ed64-5ef6-422a-8832-57adcef8a04d",
+              "ID": "ac2b83b7-4949-4069-bcfd-fb7b1f4dc93e",
+              "EmployeeID": "",
+              "RelationName": "Kid2",
+              "Relationship": "29960",
+              "Phone": "3243",
+              "DateOfBirth": "2024-05-23",
+              "TravelDetails": "dfs",
+              "DepartureDate": "2024-05-23",
+              "DepartureSector": "b",
+              "DepartureTime": "2:34:20 PM",
+              "ReturnDate": "2024-05-30",
+              "TravelCountry": "a",
+              "AirportCity": "a",
+              "ReasonForTravel": "",
+              "LocalModbileNumber": "",
+              "SeatPreference": "",
+              "MealPreference": "",
+              "VisaRequirement": "",
+              "FrequentFlyerNumber": "",
+              "Transportation": "",
+              "ReturnSector": "5",
+              "ReturnTime": "2:34:30 PM",
+              "parent": {
+                "__deferred": {
+                  "uri": "https://port8080-workspaces-ws-w4frz.eu10.applicationstudio.cloud.sap,taqa_btp.dest:443/destinations/TAQA_BTP/v2/taqa-srv/TravellerDetails(guid'ac2b83b7-4949-4069-bcfd-fb7b1f4dc93e')/parent"
+                }
+              },
+              "__metadata": {
+                "type": "taqa.srv.TaqaDbService.TravellerDetails",
+                "uri": "https://port8080-workspaces-ws-w4frz.eu10.applicationstudio.cloud.sap,taqa_btp.dest:443/destinations/TAQA_BTP/v2/taqa-srv/TravellerDetails(guid'ac2b83b7-4949-4069-bcfd-fb7b1f4dc93e')"
+              }
+            }
+          ]
+        },
+        "ItsTicketDetails": {
+          "results": [
+            {
+              "createdAt": "/Date(1716724602644+0000)/",
+              "createdBy": "gkanthavelu@kaartech.com",
+              "modifiedAt": "/Date(1716724602644+0000)/",
+              "modifiedBy": "gkanthavelu@kaartech.com",
+              "DELETED": false,
+              "parent_ID": "8adcf21b-12e9-4988-a8da-b5f2a6aa1c00",
+              "ID": "f83c487d-ce48-4bca-9cd5-8498ed4b522e",
+              "Airline": "kingfisher",
+              "TravelDate": "6/1/24",
+              "TicketNo": "1244",
+              "Sector": "airport",
+              "BaseFare": "565",
+              "Taxes": "",
+              "Currency": "SAR",
+              "Comments": "",
+              "parent": {
+                "__deferred": {
+                  "uri": "https://port8080-workspaces-ws-w4frz.eu10.applicationstudio.cloud.sap,taqa_btp.dest:443/destinations/TAQA_BTP/v2/taqa-srv/TravelTicketDetails(guid'f83c487d-ce48-4bca-9cd5-8498ed4b522e')/parent"
+                }
+              },
+              "__metadata": {
+                "type": "taqa.srv.TaqaDbService.TravelTicketDetails",
+                "uri": "https://port8080-workspaces-ws-w4frz.eu10.applicationstudio.cloud.sap,taqa_btp.dest:443/destinations/TAQA_BTP/v2/taqa-srv/TravelTicketDetails(guid'f83c487d-ce48-4bca-9cd5-8498ed4b522e')"
+              }
+            },
+            {
+              "createdAt": "/Date(1716724602644+0000)/",
+              "createdBy": "gkanthavelu@kaartech.com",
+              "modifiedAt": "/Date(1716724602644+0000)/",
+              "modifiedBy": "gkanthavelu@kaartech.com",
+              "DELETED": false,
+              "parent_ID": "8adcf21b-12e9-4988-a8da-b5f2a6aa1c00",
+              "ID": "f83c487d-ce48-4bca-9cd5-8498ed4b522e",
+              "Airline": "kingfisher",
+              "TravelDate": "6/1/24",
+              "TicketNo": "1244",
+              "Sector": "airport1",
+              "BaseFare": "565",
+              "Taxes": "",
+              "Currency": "SAR",
+              "Comments": "",
+              "parent": {
+                "__deferred": {
+                  "uri": "https://port8080-workspaces-ws-w4frz.eu10.applicationstudio.cloud.sap,taqa_btp.dest:443/destinations/TAQA_BTP/v2/taqa-srv/TravelTicketDetails(guid'f83c487d-ce48-4bca-9cd5-8498ed4b522e')/parent"
+                }
+              },
+              "__metadata": {
+                "type": "taqa.srv.TaqaDbService.TravelTicketDetails",
+                "uri": "https://port8080-workspaces-ws-w4frz.eu10.applicationstudio.cloud.sap,taqa_btp.dest:443/destinations/TAQA_BTP/v2/taqa-srv/TravelTicketDetails(guid'f83c487d-ce48-4bca-9cd5-8498ed4b522e')"
+              }
+            }
+          ]
+        },
+        "__metadata": {
+          "type": "taqa.srv.TaqaDbService.TravelDetails",
+          "uri": "https://port8080-workspaces-ws-w4frz.eu10.applicationstudio.cloud.sap,taqa_btp.dest:443/destinations/TAQA_BTP/v2/taqa-srv/TravelDetails(guid'0359ed64-5ef6-422a-8832-57adcef8a04d')"
+        }
+      }
+    ]
+  }
+}

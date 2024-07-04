@@ -1,0 +1,12 @@
+<mvc:View controllerName="com.taqa.travelreports.ztravelreports.controller.ReportsView"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns:m="sap.m"
+    xmlns="sap.ui.table">
+    <m:Page id="page" title="{i18n>title}">
+        <m:content>
+            <Table id="TravelReport" fixedColumnCount="6" rowMode="Auto">
+
+            </Table>
+        </m:content>
+    </m:Page>
+</mvc:View>

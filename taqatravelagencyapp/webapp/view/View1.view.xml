@@ -1,0 +1,116 @@
+<mvc:View xmlns:plugins="sap.m.plugins" controllerName="taqatravelagencyapp.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:filterbar="sap.ui.comp.filterbar">
+    <!-- <f:DynamicPage >
+        <f:header>
+            <f:DynamicPageHeader  > -->
+    <Page>
+        <filterbar:FilterBar id="filterbar" persistencyKey="myPersKey" useToolbar="false" search=".onSearch" showClearOnFB="true" clear="onFilterBarClear">
+            <filterbar:filterGroupItems>
+                <!-- <filterbar:FilterGroupItem name="DepartureDate" label="{i18n>DepartureDate}" groupName="Group5" visibleInFilterBar="true">
+                    <filterbar:control>
+                        <DatePicker name="DepartureDate" id="idDatePicker" valueFormat="yyyy-MM-dd"></DatePicker>
+                    </filterbar:control>
+                </filterbar:FilterGroupItem> -->
+                <!-- <filterbar:FilterGroupItem name="Deparment" label="{i18n>Department}" groupName="Group1" visibleInFilterBar="true">
+                            <filterbar:control>
+                                <MultiInput name="Department" id="idMultiInputDepartment" valueHelpRequest="onMultiInputValueHelpRequest">
+
+                                </MultiInput>
+                            </filterbar:control>
+                        </filterbar:FilterGroupItem>
+                        <filterbar:FilterGroupItem name="Division" label="{i18n>Division}" groupName="Group2" visibleInFilterBar="true">
+                            <filterbar:control>
+                                <MultiInput name="Division" id="idMultiInputDivision" valueHelpRequest="onMultiInputValueHelpRequestDivision"></MultiInput>
+                            </filterbar:control>
+                        </filterbar:FilterGroupItem>
+                        <filterbar:FilterGroupItem name="Location" label="{i18n>Location}" groupName="Group3" visibleInFilterBar="true">
+                            <filterbar:control>
+                                <MultiInput name="Location" id="idMultiInputLocation" valueHelpRequest="onMultiInputValueHelpRequestLocation"></MultiInput>
+                            </filterbar:control>
+                        </filterbar:FilterGroupItem> -->
+                <filterbar:FilterGroupItem name="EmployeeID" label="{i18n>EmployeeNo}" groupName="Group4" visibleInFilterBar="true">
+                    <filterbar:control>
+                        <Input name="EmployeeID" id="idInputEmpID" showValueHelp="true" valueHelpRequest="onEmpNoValuehelpOpen"></Input>
+                    </filterbar:control>
+                </filterbar:FilterGroupItem>
+            </filterbar:filterGroupItems>
+        </filterbar:FilterBar>
+        <!-- </f:DynamicPageHeader>
+        </f:header>
+        <f:content> -->
+        <Table growing="true" id="idTravelDetailsTable" alternateRowColors="true" inset="false" sticky="HeaderToolbar,ColumnHeaders" items="{path:'taqa-srv>/TravelDetails',sorter:{path:'TravelId',descending:true},filters:{path: 'Status', operator: 'EQ', value1: 'Initiated Request'}}">
+            <headerToolbar>
+                <Toolbar >
+                    <!-- <Title text="{i18n>TravelRequests}"></Title> -->
+                </Toolbar>
+            </headerToolbar>
+            <dependents>
+            <plugins:ColumnResizer ></plugins:ColumnResizer>
+            </dependents>
+            <columns>
+                <Column visible="false" styleClass="border">
+                    <Label text="{i18n>ID}"></Label>
+                </Column>
+                <Column styleClass="border">
+                    <Label text="{i18n>TripNumber}"></Label>
+                </Column>
+                <Column styleClass="border">
+                    <Label text="{i18n>TravelType}"></Label>
+                </Column>
+                <Column styleClass="border">
+                    <Label text="{i18n>EmployeeNo}"></Label>
+                </Column>
+                <Column styleClass="border">
+                    <Label text="{i18n>EmployeeFullName}"></Label>
+                </Column>
+                <Column styleClass="border">
+                        <Label text="{i18n>Department}"></Label>
+                    </Column>
+                    <Column styleClass="border">
+                        <Label text="{i18n>Division}"></Label>
+                    </Column>
+                <!-- <Column styleClass="border">
+                    <Label text="{i18n>DepartureDate}"></Label>
+                </Column>
+                <Column styleClass="border">
+                    <Label text="{i18n>ReturnDate}"></Label>
+                </Column> -->
+                <Column styleClass="border">
+                    <Label text="{i18n>Location}"></Label>
+                </Column>
+                <!-- <Column styleClass="border">
+                    <Label text="{i18n>TravelCountry}"></Label>
+                </Column> -->
+                <Column styleClass="border">
+                    <Label text="{i18n>Status}"></Label>
+                </Column>
+                <Column styleClass="border" hAlign="Center"></Column>
+            </columns>
+            <items>
+                <ColumnListItem>
+                    <Text text="{taqa-srv>ID}"></Text>
+                    <Text text="{taqa-srv>TravelId}"></Text>
+                    <Text text="{taqa-srv>TravelType}"></Text>
+                    <Text text="{taqa-srv>EmployeeID}"></Text>
+                    <Text text="{taqa-srv>EmployeeFirstName} {taqa-srv>EmployeeLastName}"></Text>
+                    <Text text="{taqa-srv>Deparment}"></Text>
+                        <Text text="{taqa-srv>Division}"></Text>
+                    <!-- <Text text="{taqa-srv>DepartureDate}"></Text> -->
+                    <!-- <Text text="{taqa-srv>ReturnDate}"></Text> -->
+                    <Text text="{taqa-srv>Location}"></Text>
+                    <!-- <Text text="{taqa-srv>TravelCountry}"></Text> -->
+                    <!-- <ObjectStatus text="{taqa-srv>Status}" state="{=${taqa-srv>Status}==='Submitted'? 'Success':'Warning'}"></ObjectStatus> -->
+                    <Text text="{taqa-srv>Status}"></Text>
+                    <Button icon="sap-icon://detail-view" press="onColumnListItemPress"></Button>
+                </ColumnListItem>
+            </items>
+
+        </Table>
+        <!-- </f:content>
+    </f:DynamicPage> -->
+    </Page>
+</mvc:View>
+

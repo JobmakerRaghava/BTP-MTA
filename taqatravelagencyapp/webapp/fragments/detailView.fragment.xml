@@ -1,0 +1,427 @@
+<c:FragmentDefinition xmlns:plugins="sap.m.plugins"
+    xmlns:f="sap.f"
+    xmlns="sap.m"
+    xmlns:c="sap.ui.core"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout">
+    <Dialog contentHeight="70%" contentWidth="80%">
+        <Panel headerText="{i18n>EMP}">
+            <form:SimpleForm columnsL="4" columnsM="3" editable="true" layout="ColumnLayout">
+                <Label design="Bold" showColon="true" text="{i18n>FirstName}"></Label>
+                <Text text="{form>/EmployeeFirstName}"></Text>
+                <Label design="Bold" showColon="true" text="{i18n>MiddleName}"></Label>
+                <Text text="{form>/EmployeeMiddleName}"></Text>
+                <Label design="Bold" showColon="true" text="{i18n>LastName}"></Label>
+                <Text text="{form>/EmployeeLastName}"></Text>
+                <Label design="Bold" showColon="true" text="{i18n>EmployeeFullName}"></Label>
+                <Text text="{form>/EmployeeFirstName} {form>/EmployeeMiddleName} {form>/EmployeeLastName} "></Text>
+            </form:SimpleForm>
+        </Panel>
+        <Panel visible="{visible>/type}" headerText="{i18n>Travelinfo}">
+            <!-- <form:SimpleForm columnsL="4" columnsM="3" editable="true" layout="ColumnLayout"> -->
+            <!-- <Label design="Bold" showColon="true" text="{i18n>ID}" visible="false"></Label>
+                    <Text text="{form>/ID}" required="true" visible="false"></Text>
+                    <Label design="Bold" showColon="true" text="{i18n>reissurance}" visible="{visible>/reissurance}"></Label>
+                    <ComboBox items="{Reissuance>/}" required="true" selectedKey="{form>/ReissuranceRefNo}" visible="{visible>/reissurance}" editable="{visible>/editable}">
+                        <c:Item key="{Reissuance>TravelId}" text="{Reissuance>TravelId}"></c:Item>
+                    </ComboBox> -->
+            <!-- <Text text="MDDD/UAE/04/2024_01" required="true" visible="{visible>/reissurance}"></Text> -->
+            <!-- <Label design="Bold" showColon="true" text="{i18n>FocalPerson}" visible="{visible>/focalperson}"></Label>
+                <Text text="{form>/FocalPerson}" visible="{visible>/focalperson}"></Text> -->
+            <!-- <Label design="Bold" showColon="true" text="{i18n>TravelType}"></Label>
+                <Text text="{form>/TravelType}"></Text>
+                <Label design="Bold" showColon="true" text="{i18n>Time1}"></Label>
+               
+                <Text text="{form>/Time}"></Text>
+                <Label design="Bold" showColon="true" text="{i18n>TravelCountry}"></Label>
+                <Text text="{form>/TravelCountry}"></Text>
+                <Label design="Bold" showColon="true" text="{i18n>OverseasMobNo}"></Label>
+                <Text text="{form>/OverseasMobileNumber}"></Text>
+                <Label design="Bold" showColon="true" text="{i18n>Visarequirement}"></Label>
+                <Text text="{form>/VisaRequirement}"></Text>
+                <Label design="Bold" showColon="true" text="{i18n>TravelDetails}"></Label>
+                <Text text="{form>/TravelDetails}"></Text>
+                <Label design="Bold" showColon="true" text="{i18n>ReturnDate}"></Label>
+                <Text text="{form>/ReturnDate}" id="idReturnDateText"></Text>
+                <Label design="Bold" showColon="true" text="{i18n>AirportCity}"></Label>
+                <Text text="{form>/AirportCity}"></Text>
+                <Label design="Bold" showColon="true" text="{i18n>SeatPreference}"></Label>
+                <Text text="{form>/SeatPreference}"></Text>
+                <Label design="Bold" showColon="true" text="{i18n>FrequentflyerNo}"></Label>
+                <Text text="{form>/FrequentFlyerNumber}"></Text>
+                <Label design="Bold" showColon="true" text="{i18n>DepartureDate}"></Label>
+                <Text text="{form>/DepartureDate}"></Text>
+                <Label design="Bold" showColon="true" text="{i18n>Sector}"></Label>
+                <Text text="{form>/Sector2}"></Text>
+                <Label design="Bold" showColon="true" text="{i18n>ReasonforTravel}"></Label>
+                <Text text="{form>/ReasonForTravel}"></Text>
+                <Label design="Bold" showColon="true" text="{i18n>Mealpreference}"></Label>
+                <Text text="{form>/MealPreference}"></Text>
+                <Label design="Bold" showColon="true" text="{i18n>Transportation}"></Label>
+                <Text text="{form>/Transportation}"></Text>
+                <Label design="Bold" showColon="true" text="{i18n>Sector1}"></Label>
+                <Text text="{form>/Sector}"></Text>
+                <Label design="Bold" showColon="true" text="{i18n>Time}"></Label>
+                <Text text="{form>/Time2}"></Text>
+                <Label design="Bold" showColon="true" text="{i18n>LocalMobileNumber}"></Label>
+                <Text text="{form>/LocalModbileNumber}"></Text>
+            </form:SimpleForm> -->
+            <form:SimpleForm layout="ResponsiveGridLayout" editable="true" columnsL="4" columnsM="3" columnsXL="5" labelSpanL="12">
+                <!-- <Label text="{i18n>ID}" visible="false"></Label>
+                            <Input value="{form>/ID}" editable="false" visible="false"></Input> -->
+                <Label text="{i18n>TripNumber}"></Label>
+                <Input value="{form>/TravelId}" editable="false">
+                    <layoutData>
+                        <l:GridData span="XL2 L2 M3 S4" />
+                    </layoutData>
+                </Input>
+                <Label text="{i18n>TravelType}">
+                    <layoutData>
+                        <l:GridData span="XL2 L2 M3 S4" />
+                    </layoutData>
+                </Label>
+                <Input value="{form>/TravelType}" editable="false">
+                    <layoutData>
+                        <l:GridData span="XL2 L2 M3 S4" />
+                    </layoutData>
+                </Input>
+                <Label text="{i18n>FocalPerson}" visible="{visible>/focalperson}"></Label>
+                <Input value="{form>/FocalPerson}" editable="false" visible="{visible>/focalperson}">
+                    <layoutData>
+                        <l:GridData span="XL2 L2 M3 S4" />
+                    </layoutData>
+                </Input>
+                <Label text="{i18n>reissurance}" visible="{visible>/reissurance}">
+                    <layoutData>
+                        <l:GridData span="XL2 L2 M3 S4" />
+                    </layoutData>
+                </Label>
+                <Input value="{form>/ReissuranceRefNo}" editable="false" visible="{visible>/reissurance}">
+                    <layoutData>
+                        <l:GridData span="XL2 L2 M3 S4" />
+                    </layoutData>
+                </Input>
+                <Label text="{i18n>TravelDetails}" visible="{visible>/ftype}">
+                    <layoutData>
+                        <l:GridData span="XL2 L2 M3 S4" />
+                    </layoutData>
+                </Label>
+                <Input value="{item>/TravelDetails}" editable="false" visible="{visible>/ftype}">
+                    <layoutData>
+                        <l:GridData span="XL2 L2 M3 S4" />
+                    </layoutData>
+                </Input>
+                <Label text="{i18n>ReasonforTravel}" visible="{visible>/ftype}">
+                    <layoutData>
+                        <l:GridData span="XL2 L2 M3 S4" />
+                    </layoutData>
+                </Label>
+                <Input value="{item>/ReasonForTravel}" editable="false" visible="{visible>/ftype}">
+                    <layoutData>
+                        <l:GridData span="XL2 L2 M3 S4" />
+                    </layoutData>
+                </Input>
+                <Label text="{i18n>DepartureDate}" visible="{visible>/ftype}"></Label>
+                <DatePicker editable="false" value="{item>/DepartureDate}" visible="{visible>/ftype}" valueFormat="yyyy-MM-dd">
+                    <layoutData>
+                        <l:GridData span="XL2 L2 M3 S4" />
+                    </layoutData>
+                </DatePicker>
+                <Label text="{i18n>Time1}" visible="{visible>/ftype}">
+                    <layoutData>
+                        <l:GridData span="XL2 L2 M3 S4" />
+                    </layoutData>
+                </Label>
+                <!-- <Input value="{}"></Input> -->
+                <TimePicker editable="false" visible="{visible>/ftype}" value="{item>/DepartureTime}">
+                    <layoutData>
+                        <l:GridData span="XL2 L2 M3 S4" />
+                    </layoutData>
+                </TimePicker>
+                <Label text="{i18n>Sector1}" visible="{visible>/ftype}">
+                    <layoutData>
+                        <l:GridData span="XL2 L2 M3 S4" />
+                    </layoutData>
+                </Label>
+                <Input value="{item>/DepartureSector}" visible="{visible>/ftype}" editable="false">
+                    <layoutData>
+                        <l:GridData span="XL2 L2 M3 S4" />
+                    </layoutData>
+                </Input>
+                <Label text="{i18n>ReturnDate}" visible="{visible>/ftype}"></Label>
+                <DatePicker editable="false" value="{item>/ReturnDate}" visible="{visible>/ftype}" valueFormat="yyyy-MM-dd">
+                    <layoutData>
+                        <l:GridData span="XL2 L2 M3 S4" />
+                    </layoutData>
+                </DatePicker>
+                <Label text="{i18n>Time}" visible="{visible>/ftype}">
+                    <layoutData>
+                        <l:GridData span="XL2 L2 M3 S4" />
+                    </layoutData>
+                </Label>
+                <TimePicker editable="false" visible="{visible>/ftype}" value="{item>/ReturnTime}">
+                    <layoutData>
+                        <l:GridData span="XL2 L2 M3 S4" />
+                    </layoutData>
+                </TimePicker>
+                <Label text="{i18n>Sector}" visible="{visible>/ftype}">
+                    <layoutData>
+                        <l:GridData span="XL2 L2 M3 S4" />
+                    </layoutData>
+                </Label>
+                <Input value="{item>/ReturnSector}" visible="{visible>/ftype}" editable="false">
+                    <layoutData>
+                        <l:GridData span="XL2 L2 M3 S4" />
+                    </layoutData>
+                </Input>
+                <Label text="{i18n>TravelCountry}" visible="{visible>/ftype}"></Label>
+                <Input value="{item>/TravelCountry}" visible="{visible>/ftype}" editable="false">
+                    <layoutData>
+                        <l:GridData span="XL2 L2 M3 S4" />
+                    </layoutData>
+                </Input>
+                <Label text="{i18n>AirportCity}" visible="{visible>/ftype}">
+                    <layoutData>
+                        <l:GridData span="XL2 L2 M3 S4" />
+                    </layoutData>
+                </Label>
+                <Input value="{item>/AirportCity}" visible="{visible>/ftype}" editable="false">
+                    <layoutData>
+                        <l:GridData span="XL2 L2 M3 S4" />
+                    </layoutData>
+                </Input>
+                <Label text="{i18n>LocalMobileNumber}" visible="{visible>/ftype}">
+                    <layoutData>
+                        <l:GridData span="XL2 L2 M3 S4" />
+                    </layoutData>
+                </Label>
+                <Input value="{item>/LocalModbileNumber}" type="Number" editable="false" visible="{visible>/ftype}">
+                    <layoutData>
+                        <l:GridData span="XL2 L2 M3 S4" />
+                    </layoutData>
+                </Input>
+                <Label text="{i18n>Visarequirement}" visible="{visible>/ftype}"></Label>
+                <Input value="{item>/VisaRequirement}" editable="false" visible="{visible>/ftype}">
+                    <layoutData>
+                        <l:GridData span="XL2 L2 M3 S4" />
+                    </layoutData>
+                </Input>
+                <Label text="{i18n>SeatPreference}" visible="{visible>/ftype}">
+                    <layoutData>
+                        <l:GridData span="XL2 L2 M3 S4" />
+                    </layoutData>
+                </Label>
+                <Input value="{item>/SeatPreference}" visible="{visible>/ftype}" editable="false">
+                    <layoutData>
+                        <l:GridData span="XL2 L2 M3 S4" />
+                    </layoutData>
+                </Input>
+                <Label text="{i18n>Mealpreference}" visible="{visible>/ftype}">
+                    <layoutData>
+                        <l:GridData span="XL2 L2 M3 S4" />
+                    </layoutData>
+                </Label>
+                <Input value="{item>/MealPreference}" editable="false" visible="{visible>/ftype}">
+                    <layoutData>
+                        <l:GridData span="XL2 L2 M3 S4" />
+                    </layoutData>
+                </Input>
+                <Label text="{i18n>Transportation}" visible="{visible>/ftype}"></Label>
+                <Input value="{item>/Transportation}" editable="false" visible="{visible>/ftype}">
+                    <layoutData>
+                        <l:GridData span="XL2 L2 M3 S4" />
+                    </layoutData>
+                </Input>
+                <Label text="{i18n>OverseasMobNo}" visible="{visible>/ftype}">
+                    <layoutData>
+                        <l:GridData span="XL2 L2 M3 S4" />
+                    </layoutData>
+                </Label>
+                <Input value="{form>/OverseasMobileNumber}" visible="{visible>/ftype}" editable="false" type="Number">
+                    <layoutData>
+                        <l:GridData span="XL2 L2 M3 S4" />
+                    </layoutData>
+                </Input>
+                <Label text="{i18n>FrequentflyerNo}" visible="{visible>/ftype}">
+                    <layoutData>
+                        <l:GridData span="XL2 L2 M3 S4" />
+                    </layoutData>
+                </Label>
+                <Input value="{item>/FrequentFlyerNumber}" visible="{visible>/ftype}" editable="false">
+                    <layoutData>
+                        <l:GridData span="XL2 L2 M3 S4" />
+                    </layoutData>
+                </Input>
+            </form:SimpleForm>
+        </Panel>
+        <Panel visible="{visible>/familytable}">
+            <ScrollContainer width="100%" vertical="true" focusable="true">
+                <Table width="110rem" fixedLayout="true" id="idTable1" mode="MultiSelect" delete="onTableDelete" items="{Family>/}">
+                    <headerToolbar>
+                        <Toolbar>
+                            <!-- <ToolbarSpacer ></ToolbarSpacer> -->
+                            <!-- <Button text="{i18n>add}" type="Emphasized" visible="{visible>/submit}" press="onAddFamilyButtonPress" /> -->
+                            <!-- <Button text="{i18n>Save}" type="Emphasized" visible="{visible>/submit}" press="onButtonPress" /> -->
+                        </Toolbar>
+                    </headerToolbar>
+                    <!-- <dependents>
+                    <plugins:ColumnResizer ></plugins:ColumnResizer>
+                </dependents> -->
+                    <columns>
+                        <!-- <Column styleClass="border">
+                                    <Label text="{i18n>FocalPerson}"></Label>
+                                </Column> -->
+                        <Column styleClass="border" width="8rem">
+                            <Label text="{i18n>Name}" />
+                        </Column>
+                        <Column styleClass="border" width="8rem">
+                            <Label text="{i18n>Relationship}" />
+                        </Column>
+                        <Column styleClass="border" width="8rem">
+                            <Label text="{i18n>Phone}" />
+                        </Column>
+                        <Column styleClass="border" width="8rem">
+                            <Label text="{i18n>DateofBirth}" />
+                        </Column>
+                        <Column styleClass="border" width="8rem">
+                            <Label text="{i18n>TravelDetails}" />
+                        </Column>
+                        <Column styleClass="border" width="8rem">
+                            <Label text="{i18n>DepartureDate}" />
+                        </Column>
+                        <Column styleClass="border" width="8rem">
+                            <Label text="{i18n>Sector1}" />
+                        </Column>
+                        <Column styleClass="border" width="8rem">
+                            <Label text="{i18n>Time1}" />
+                        </Column>
+                        <Column styleClass="border" width="8rem">
+                            <Label text="{i18n>ReturnDate}" />
+                        </Column>
+                        <Column styleClass="border" width="8rem">
+                            <Label text="{i18n>Sector}" />
+                        </Column>
+                        <Column styleClass="border" width="8rem">
+                            <Label text="{i18n>Time}" />
+                        </Column>
+                        <Column styleClass="border" width="8rem">
+                            <Label text="{i18n>TravelCountry}" />
+                        </Column>
+                        <Column styleClass="border" width="8rem">
+                            <Label text="{i18n>AirportCity}" />
+                        </Column>
+                        <Column styleClass="border" width="8rem">
+                            <Label text="{i18n>ReasonforTravel}" />
+                        </Column>
+                        <Column styleClass="border" width="8rem">
+                            <Label text="{i18n>LocalMobileNumber}" />
+                        </Column>
+                        <!-- <Column styleClass="border">
+                                    <Label text="{i18n>OverseasMobNo}"/>
+                                </Column> -->
+                        <Column styleClass="border" width="8rem">
+                            <Label text="{i18n>SeatPreference}" />
+                        </Column>
+                        <Column styleClass="border" width="8rem">
+                            <Label text="{i18n>Mealpreference}" />
+                        </Column>
+                        <Column styleClass="border" width="8rem">
+                            <Label text="{i18n>Visarequirement}" />
+                        </Column>
+                        <Column styleClass="border" width="8rem">
+                            <Label text="{i18n>FrequentflyerNo}" />
+                        </Column>
+                        <Column styleClass="border" width="8rem">
+                            <Label text="{i18n>Transportation}" />
+                        </Column>
+                    </columns>
+                    <items>
+                        <ColumnListItem>
+                            <Text text="{Family>RelationName}"/>
+                            <Text text="{Family>Relationship}"/>
+                            <Text text="{Family>Phone}"/>
+                            <Text text="{Family>DateOfBirth}"/>
+                            <Text text="{Family>TravelDetails}"/>
+                            <Text text="{Family>DepartureDate}"/>
+                            <Text text="{Family>DepartureSector}"/>
+                            <Text text="{Family>DepartureTime}"/>
+                            <Text text="{Family>ReturnDate}"/>
+                            <Text text="{Family>ReturnSector}"/>
+                            <Text text="{Family>ReturnTime}"/>
+                            <Text text="{Family>TravelCountry}"/>
+                            <Text text="{Family>AirportCity}"/>
+                            <Text text="{Family>ReasonForTravel}"/>
+                            <Text text="{Family>LocalModbileNumber}"/>
+                            <Text text="{Family>SeatPreference}"/>
+                            <Text text="{Family>MealPreference}"/>
+                            <Text text="{Family>VisaRequirement}"/>
+                            <Text text="{Family>FrequentFlyerNumber}"/>
+                            <Text text="{Family>Transportation}"/>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+            </ScrollContainer>
+
+        </Panel>
+        <Panel >
+
+            <Table growing="true" sticky="ColumnHeaders" mode="MultiSelect" items="{Ticket>/}" delete="onTravelDetailsTableDelete" id="idTable">
+                <headerToolbar>
+                    <Toolbar >
+                        <ToolbarSpacer ></ToolbarSpacer>
+                        <Button text="{i18n>add}" icon="sap-icon://add" press="onAddButtonPress"></Button>
+                    </Toolbar>
+                </headerToolbar>
+                <dependents>
+                    <plugins:ColumnResizer>
+
+                    </plugins:ColumnResizer>
+                </dependents>
+                <columns>
+                    <Column styleClass="border">
+                        <Label text="{i18n>Airline}"></Label>
+                    </Column>
+                    <Column styleClass="border">
+                        <Label text="{i18n>Sector}"></Label>
+                    </Column>
+                    <Column styleClass="border">
+                        <Label text="{i18n>TravelDate}"></Label>
+                    </Column>
+                    <Column styleClass="border">
+                        <Label text="{i18n>TicketNo}"></Label>
+                    </Column>
+                    <Column styleClass="border">
+                        <Label text="{i18n>BaseFare}"></Label>
+                    </Column>
+                    <Column styleClass="border">
+                        <Label text="{i18n>Taxes}"></Label>
+                    </Column>
+                    <Column styleClass="border">
+                        <Label text="{i18n>Currency}"></Label>
+                    </Column>
+                    <Column styleClass="border">
+                        <Label text="{i18n>Comments}"></Label>
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem >
+                        <Text text="{Ticket>Airline}"></Text>
+                        <Text text="{Ticket>Sector}"></Text>
+                        <Text text="{Ticket>TravelDate}"></Text>
+                        <Text text="{Ticket>TicketNo}"></Text>
+                        <Text text="{Ticket>BaseFare}"></Text>
+                        <Text text="{Ticket>Taxes}"></Text>
+                        <Text text="{Ticket>Currency}"></Text>
+                        <Text text="{Ticket>Comments}"></Text>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </Panel>
+
+        <buttons>
+            <Button text="{i18n>submit}" press="onSubmitButtonPress"></Button>
+            <Button text="{i18n>close}" press="onCloseButtonPress"></Button>
+        </buttons>
+    </Dialog>
+</c:FragmentDefinition>

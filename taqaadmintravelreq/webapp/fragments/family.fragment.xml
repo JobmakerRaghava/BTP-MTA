@@ -1,0 +1,33 @@
+<c:FragmentDefinition xmlns="sap.m"
+    xmlns:c="sap.ui.core">
+    <TableSelectDialog title="{i18n>FamilyDetails}" items="{FLD>/}" contentWidth="50%" contentHeight="50%">
+        <columns>
+            <Column styleClass="border">
+                <Label text="{i18n>Name}"></Label>
+            </Column>
+            <Column styleClass="border">
+                <Label text="{i18n>Relationship}"></Label>
+            </Column>
+            <Column styleClass="border">
+                <Label text="{i18n>Phone}"></Label>
+            </Column>
+            <Column styleClass="border">
+                <Label text="{i18n>Gender}"></Label>
+            </Column>
+            <Column styleClass="border">
+                <Label text="{i18n>DateofBirth}"></Label>
+            </Column>
+
+        </columns>
+        <items>
+            <ColumnListItem >
+                <Text text="{FLD>name}"></Text>
+                <Text text="{FLD>relationship}"></Text>
+                <Text text="{FLD>phone}"></Text>
+                <Text text="{FLD>gender}"></Text>
+                <Text text="{FLD>dateOfBirth}"></Text>
+            </ColumnListItem>
+        </items>
+
+    </TableSelectDialog>
+</c:FragmentDefinition>

@@ -1,0 +1,430 @@
+<c:FragmentDefinition xmlns:plugins="sap.m.plugins"
+    xmlns:form="sap.ui.layout.form"
+    xmlns="sap.m"
+    xmlns:c="sap.ui.core"
+    xmlns:l="sap.ui.layout">
+    <Dialog title="{i18n>TravelReqForm}" resizable="true" id="idDialogReq">
+        <content>
+            <Panel>
+                <FlexBox alignItems="Center">
+                    <Label text="{i18n>TravelType}" showColon="true" />
+                    <!-- <Input ></Input> -->
+                    <ComboBox selectionChange="onComboBoxSelectionChange" items="{travelType>/}" selectedKey="{visible>/trvtype}" editable="{visible>/editable}">
+                        <c:Item key="{travelType>key}" text="{travelType>text}" />
+                    </ComboBox>
+                </FlexBox>
+            </Panel>
+            <Panel visible="{visible>/type}" headerText="{i18n>Travelinfo}">
+
+                <form:SimpleForm layout="ResponsiveGridLayout" editable="true" columnsL="4" columnsM="3" columnsXL="5" labelSpanL="12">
+                    <Label text="{i18n>ID}" visible="false">
+                        <layoutData>
+                            <l:GridData span="XL2 L2 M3 S4" />
+                        </layoutData>
+                    </Label>
+                    <Input value="{form>/ID}" visible="false">
+                        <layoutData>
+                            <l:GridData span="XL2 L2 M3 S4" />
+                        </layoutData>
+                    </Input>
+                    <!-- <Input value="{item>/ID}" visible="false"> </Input> -->
+                    <Label text="{i18n>reissurance}" visible="{visible>/reissurance}">
+                        <layoutData>
+                            <l:GridData span="XL2 L2 M3 S4" />
+                        </layoutData>
+                    </Label>
+                    <ComboBox items="{Reissuance>/}" required="true" selectedKey="{form>/ReissuranceRefNo}" visible="{visible>/reissurance}" editable="{visible>/editable}">
+                        <c:Item key="{Reissuance>TravelId}" text="{Reissuance>TravelId}" />
+                        <layoutData>
+                            <l:GridData span="XL2 L2 M3 S4" />
+                        </layoutData>
+                    </ComboBox>
+                    <!-- <Input value="MDDD/UAE/04/2024_01" required="true" visible="{visible>/reissurance}"></Input> -->
+                    <Label text="{i18n>FocalPerson}" visible="{visible>/focalperson}">
+                        <layoutData>
+                            <l:GridData span="XL2 L2 M3 S4" />
+                        </layoutData>
+                    </Label>
+                    <Input value="{form>/FocalPerson}" required="true" visible="{visible>/focalperson}" editable="{visible>/editable}">
+                        <layoutData>
+                            <l:GridData span="XL2 L2 M3 S4" />
+                        </layoutData>
+                    </Input>
+                    <Label text="{i18n>TravelDetails}" visible="{visible>/ftype}">
+                        <layoutData>
+                            <l:GridData span="XL2 L2 M3 S4" />
+                        </layoutData>
+                    </Label>
+                    <Input value="{item>/TravelDetails}" visible="{visible>/ftype}" required="true" editable="{visible>/editable}">
+                        <layoutData>
+                            <l:GridData span="XL2 L2 M3 S4" />
+                        </layoutData>
+                    </Input>
+                    <Label text="{i18n>ReasonforTravel}" visible="{visible>/ftype}">
+                        <layoutData>
+                            <l:GridData span="XL2 L2 M3 S4" />
+                        </layoutData>
+                    </Label>
+                    <Input value="{item>/ReasonForTravel}" visible="{visible>/ftype}" required="true" editable="{visible>/editable}">
+                        <layoutData>
+                            <l:GridData span="XL2 L2 M3 S4" />
+                        </layoutData>
+                    </Input>
+                    <Label text="{i18n>DepartureDate}" visible="{visible>/ftype}" />
+                    <DatePicker required="true" visible="{visible>/ftype}" value="{item>/DepartureDate}" valueFormat="yyyy-MM-dd" editable="{visible>/editable}">
+                        <layoutData>
+                            <l:GridData span="XL2 L2 M3 S4" />
+                        </layoutData>
+                    </DatePicker>
+                    <Label text="{i18n>Time1}" visible="{visible>/ftype}">
+                        <layoutData>
+                            <l:GridData span="XL2 L2 M3 S4" />
+                        </layoutData>
+                    </Label>
+                    <!-- <Input value="{}"></Input> -->
+                    <TimePicker required="true" value="{item>/DepartureTime}" editable="{visible>/editable}" visible="{visible>/ftype}">
+                        <layoutData>
+                            <l:GridData span="XL2 L2 M3 S4" />
+                        </layoutData>
+                    </TimePicker>
+                    <Label text="{i18n>Sector1}" visible="{visible>/ftype}">
+                        <layoutData>
+                            <l:GridData span="XL2 L2 M3 S4" />
+                        </layoutData>
+                    </Label>
+                    <Input value="{item>/DepartureSector}" visible="{visible>/ftype}" required="true" editable="{visible>/editable}">
+                        <layoutData>
+                            <l:GridData span="XL2 L2 M3 S4" />
+                        </layoutData>
+                    </Input>
+                    <Label text="{i18n>ReturnDate}" visible="{visible>/ftype}"/>
+                    <DatePicker required="true" visible="{visible>/ftype}" value="{item>/ReturnDate}" id="idReturnDateDatePicker" valueFormat="yyyy-MM-dd" editable="{visible>/editable}">
+                        <layoutData>
+                            <l:GridData span="XL2 L2 M3 S4" />
+                        </layoutData>
+                    </DatePicker>
+                    <Label text="{i18n>Time}" visible="{visible>/ftype}">
+                        <layoutData>
+                            <l:GridData span="XL2 L2 M3 S4" />
+                        </layoutData>
+                    </Label>
+                    <TimePicker required="true" visible="{visible>/ftype}" value="{item>/ReturnTime}" editable="{visible>/editable}">
+                        <layoutData>
+                            <l:GridData span="XL2 L2 M3 S4" />
+                        </layoutData>
+                    </TimePicker>
+                    <Label text="{i18n>Sector}" visible="{visible>/ftype}">
+                        <layoutData>
+                            <l:GridData span="XL2 L2 M3 S4" />
+                        </layoutData>
+                    </Label>
+                    <Input value="{item>/ReturnSector}" visible="{visible>/ftype}" required="true" editable="{visible>/editable}">
+                        <layoutData>
+                            <l:GridData span="XL2 L2 M3 S4" />
+                        </layoutData>
+                    </Input>
+                    <Label text="{i18n>TravelCountry}" visible="{visible>/ftype}">
+                    </Label>
+                    <ComboBox visible="{visible>/ftype}" items="{
+                            path: '/Country',
+                            length: 300
+                        }" selectedKey="{item>/TravelCountry}" showSecondaryValues="true" editable="{visible>/editable}">
+                        <c:ListItem additionalText="{code}" key="{code}" text="{externalName_en_US}" />
+                        <layoutData>
+                            <l:GridData span="XL2 L2 M3 S4" />
+                        </layoutData>
+                    </ComboBox>
+                    <!-- <Input value="{form>/TravelCountry}" required="true" editable="{visible>/editable}"></Input> -->
+                    <Label text="{i18n>AirportCity}" visible="{visible>/ftype}">
+                        <layoutData>
+                            <l:GridData span="XL2 L2 M3 S4" />
+                        </layoutData>
+                    </Label>
+                    <Input value="{item>/AirportCity}" visible="{visible>/ftype}" required="true" editable="{visible>/editable}">
+                        <layoutData>
+                            <l:GridData span="XL2 L2 M3 S4" />
+                        </layoutData>
+                    </Input>
+                    <Label text="{i18n>LocalMobileNumber}" visible="{visible>/ftype}">
+                        <layoutData>
+                            <l:GridData span="XL2 L2 M3 S4" />
+                        </layoutData>
+                    </Label>
+                    <Input value="{item>/LocalModbileNumber}" visible="{visible>/ftype}" type="Number" editable="{visible>/editable}">
+                        <layoutData>
+                            <l:GridData span="XL2 L2 M3 S4" />
+                        </layoutData>
+                    </Input>
+                    <Label text="{i18n>Visarequirement}" visible="{visible>/ftype}" />
+                    <!-- <Input value="{form>/VisaRequirement}" editable="{visible>/editable}"></Input> -->
+                    <ComboBox visible="{visible>/ftype}" items="{
+                            path: '/PickListValueV2',
+                            filters: {
+                                path: 'PickListV2_id',
+                                operator: 'EQ',
+                                value1: 'YesNo'
+                            }
+                        }" selectedKey="{item>/VisaRequirement}" editable="{visible>/editable}" showSecondaryValues="true">
+                        <c:ListItem additionalText="{externalCode}" key="{externalCode}" text="{label_en_US}" />
+                        <layoutData>
+                            <l:GridData span="XL2 L2 M3 S4" />
+                        </layoutData>
+                    </ComboBox>
+                    <Label text="{i18n>SeatPreference}" visible="{visible>/ftype}">
+                        <layoutData>
+                            <l:GridData span="XL2 L2 M3 S4" />
+                        </layoutData>
+                    </Label>
+                    <Input value="{item>/SeatPreference}" visible="{visible>/ftype}" editable="{visible>/editable}">
+                        <layoutData>
+                            <l:GridData span="XL2 L2 M3 S4" />
+                        </layoutData>
+                    </Input>
+                    <Label text="{i18n>Mealpreference}" visible="{visible>/ftype}">
+                        <layoutData>
+                            <l:GridData span="XL2 L2 M3 S4" />
+                        </layoutData>
+                    </Label>
+                    <Input value="{item>/MealPreference}" visible="{visible>/ftype}" editable="{visible>/editable}">
+                        <layoutData>
+                            <l:GridData span="XL2 L2 M3 S4" />
+                        </layoutData>
+                    </Input>
+                    <Label text="{i18n>Transportation}" visible="{visible>/ftype}">
+                    </Label>
+                    <ComboBox showSecondaryValues="true" visible="{visible>/ftype}" items="{
+                            path: '/PickListValueV2',
+                            filters: {
+                                path: 'PickListV2_id',
+                                operator: 'EQ',
+                                value1: 'TRANSPORTATIONFORM'
+                            }
+                        }" selectedKey="{item>/Transportation}" editable="{visible>/editable}">
+                        <c:ListItem additionalText="{externalCode}" key="{externalCode}" text="{label_en_US}" />
+                        <layoutData>
+                            <l:GridData span="XL2 L2 M3 S4" />
+                        </layoutData>
+                    </ComboBox>
+                    <Label text="{i18n>OverseasMobNo}" visible="{visible>/ftype}">
+                        <layoutData>
+                            <l:GridData span="XL2 L2 M3 S4" />
+                        </layoutData>
+                    </Label>
+                    <Input value="{form>/OverseasMobileNumber}" visible="{visible>/ftype}" type="Number" editable="{visible>/editable}">
+                        <layoutData>
+                            <l:GridData span="XL2 L2 M3 S4" />
+                        </layoutData>
+                    </Input>
+                    <Label text="{i18n>FrequentflyerNo}" visible="{visible>/ftype}">
+                        <layoutData>
+                            <l:GridData span="XL2 L2 M3 S4" />
+                        </layoutData>
+                    </Label>
+                    <Input value="{item>/FrequentFlyerNumber}" visible="{visible>/ftype}" editable="{visible>/editable}">
+                        <layoutData>
+                            <l:GridData span="XL2 L2 M3 S4" />
+                        </layoutData>
+                    </Input>
+                    <!-- <Input value="{form>/Transportation}" editable="{visible>/editable}"></Input> -->
+                </form:SimpleForm>
+            </Panel>
+            <Panel visible="{visible>/TrainingDate}">
+                <form:SimpleForm columnsL="4" columnsM="3" editable="true" layout="ColumnLayout">
+                    <Label text="{i18n>TrainingStartDate}" visible="{visible>/TrainingDate}"></Label>
+                    <DatePicker value="{form>/TrainingStartDate}" required="true" valueFormat="yyyy-MM-dd" visible="{visible>/TrainingDate}" editable="{visible>/editable}"></DatePicker>
+                    <Label text="{i18n>TrainingEndDate}" visible="{visible>/TrainingDate}"></Label>
+                    <DatePicker value="{form>/TrainingEndDate}" id="idTrainingEndDateDatePicker" required="true" valueFormat="yyyy-MM-dd" visible="{visible>/TrainingDate}" editable="{visible>/editable}"></DatePicker>
+                </form:SimpleForm>
+            </Panel>
+            <Panel visible="{visible>/BusinessStartDate}">
+                <form:SimpleForm columnsL="4" columnsM="3" editable="true" layout="ColumnLayout">
+                    <Label text="{i18n>BusinessStartDate}" visible="{visible>/BusinessStartDate}"></Label>
+                    <DatePicker value="{form>/BusStartDate}" required="true" valueFormat="yyyy-MM-dd" visible="{visible>/BusinessStartDate}" editable="{visible>/editable}"></DatePicker>
+                    <Label text="{i18n>BusinessEndDate}" visible="{visible>/BusinessEndDate}"></Label>
+                    <DatePicker value="{form>/BusEndDate}" required="true" id="idBusEndDateDatePicker" valueFormat="yyyy-MM-dd" visible="{visible>/BusinessEndDate}" editable="{visible>/editable}"></DatePicker>
+                </form:SimpleForm>
+            </Panel>
+            <Panel headerText="{i18n>travellerinfo}" visible="{visible>/type}">
+                <form:SimpleForm columnsL="4" columnsM="3" editable="true" layout="ColumnLayout">
+                    <Label text="{i18n>ClassEconomybusiness}"></Label>
+                    <!-- <Input value="{form>/Class}" editable="{visible>/editable}"></Input> -->
+                    <Select selectedKey="{form>/Class}" editable="{visible>/editable}" forceSelection="false">
+                        <c:ListItem key="Economy" text="Economy">
+
+                        </c:ListItem>
+                        <c:ListItem key="Business" text="Business">
+
+                        </c:ListItem>
+                    </Select>
+                    <Label text="{i18n>ReferenceNo}" visible="{visible>/ReferenceNo}"></Label>
+                    <Input value="{form>/ReferenceNo}" type="Number" required="true" visible="{visible>/ReferenceNo}" editable="{visible>/editable}"></Input>
+                    <Label text="{i18n>CodeDivTerritory}"></Label>
+                    <Input value="{form>/CodeDiv}" editable="{visible>/editable}"></Input>
+                    <Label text="{i18n>ExpenseCode}"></Label>
+                    <Input value="{form>/ExpenseCode}" required="true" editable="{visible>/editable}"></Input>
+                    <Label text="{i18n>ProjectCode}"></Label>
+                    <Input value="{form>/ProjectCode}" required="true" editable="{visible>/editable}"></Input>
+                    <Label text="{i18n>Designation}"></Label>
+                    <Input value="{form>/Designation}" editable="false"></Input>
+                    <Label text="{i18n>Age}"></Label>
+                    <Input value="{form>/Age}" type="Number" editable="false"></Input>
+                    <Label text="{i18n>Region}" visible="{visible>/Region}"></Label>
+                    <Input value="{form>/Region}" visible="{visible>/Region}" editable="{visible>/editable}"></Input>
+                    <!-- <Label text="{i18n>BusinessStartDate}" visible="{visible>/BusinessStartDate}"></Label>
+                    <DatePicker value="{form>/BusStartDate}" required="true" valueFormat="yyyy-MM-dd" visible="{visible>/BusinessStartDate}" editable="{visible>/editable}"></DatePicker>
+                    <Label text="{i18n>BusinessEndDate}" visible="{visible>/BusinessEndDate}"></Label>
+                    <DatePicker value="{form>/BusEndDate}" required="true" id="idBusEndDateDatePicker" valueFormat="yyyy-MM-dd" visible="{visible>/BusinessEndDate}" editable="{visible>/editable}"></DatePicker> -->
+                    <Label text="{i18n>Hotel}" visible="{visible>/Hotel}"></Label>
+                    <Input value="{form>/Hotel}" visible="{visible>/Hotel}" editable="{visible>/editable}"></Input>
+                    <Label text="{i18n>ExitReEntry}" visible="{visible>/ExitReEntry}"></Label>
+                    <DatePicker value="{form>/ExitReEntry}" visible="{visible>/ExitReEntry}" valueFormat="yyyy-MM-dd" editable="{visible>/editable}"></DatePicker>
+                    <Label text="{i18n>TicketCount}" visible="{visible>/ticketcount}"></Label>
+                    <Input value="{form>/TicketCount}" visible="{visible>/ticketcount}" editable="false"></Input>
+                    <Label text="{i18n>PreviousfareAmount}" visible="{visible>/Preamount}"></Label>
+                    <Input value="{form>/PrevFareAmt}" type="Number" required="true" visible="{visible>/Preamount}" editable="{visible>/editable}"></Input>
+                </form:SimpleForm>
+            </Panel>
+            <Panel visible="{visible>/familytable}">
+                <ScrollContainer width="100%" vertical="true" focusable="true">
+                    <content>
+                        <!-- <Table growing="true" sticky="ColumnHeaders" headerText="{i18n>FamilyDetails}">
+                        <headerToolbar>
+                            <Toolbar >
+                                <ToolbarSpacer ></ToolbarSpacer>
+                                <Button text="{i18n>add}" type="Emphasized" visible="{visible>/submit}" press="onAddFamilyButtonPress"></Button>
+                            </Toolbar>
+                        </headerToolbar>
+                        <columns>
+                            <Column styleClass="border">
+                                <Label text="{i18n>Name}"></Label>
+                            </Column>
+                            <Column styleClass="border">
+                                <Label text="{i18n>Relationship}"></Label>
+                            </Column>
+                            <Column styleClass="border">
+                                <Label text="{i18n>Phone}"></Label>
+                            </Column>
+                            <Column styleClass="border">
+                                <Label text="{i18n>Gender}"></Label>
+                            </Column>
+                            <Column styleClass="border">
+                                <Label text="{i18n>DateofBirth}"></Label>
+                            </Column>
+                        </columns>
+                    </Table> -->
+                        <Table width="110rem" fixedLayout="true" id="idTable" mode="MultiSelect" delete="onTableDelete" items="{Family>/}">
+                            <headerToolbar>
+                                <Toolbar>
+                                    <!-- <ToolbarSpacer ></ToolbarSpacer> -->
+                                    <Button text="{i18n>add}" type="Emphasized" visible="{visible>/submit}" press="onAddFamilyButtonPress" />
+                                    <!-- <Button text="{i18n>Save}" type="Emphasized" visible="{visible>/submit}" press="onButtonPress" /> -->
+                                </Toolbar>
+                            </headerToolbar>
+                            <!-- <dependents>
+                                <plugins:ColumnResizer />
+                            </dependents> -->
+                            <columns>
+                                <!-- <Column styleClass="border">
+                                    <Label text="{i18n>FocalPerson}"></Label>
+                                </Column> -->
+                                <Column styleClass="border" width="8rem">
+                                    <Label text="{i18n>Name}" />
+                                </Column>
+                                <Column styleClass="border" width="8rem">
+                                    <Label text="{i18n>Relationship}" />
+                                </Column>
+                                <Column styleClass="border" width="8rem">
+                                    <Label text="{i18n>Phone}" />
+                                </Column>
+                                <Column styleClass="border" width="8rem">
+                                    <Label text="{i18n>DateofBirth}" />
+                                </Column>
+                                <Column styleClass="border" width="8rem">
+                                    <Label text="{i18n>TravelDetails}" />
+                                </Column>
+                                <Column styleClass="border" width="8rem">
+                                    <Label text="{i18n>DepartureDate}" />
+                                </Column>
+                                <Column styleClass="border" width="8rem">
+                                    <Label text="{i18n>Sector1}" />
+                                </Column>
+                                <Column styleClass="border" width="8rem">
+                                    <Label text="{i18n>Time1}" />
+                                </Column>
+                                <Column styleClass="border" width="8rem">
+                                    <Label text="{i18n>ReturnDate}" />
+                                </Column>
+                                <Column styleClass="border" width="8rem">
+                                    <Label text="{i18n>Sector}" />
+                                </Column>
+                                <Column styleClass="border" width="8rem">
+                                    <Label text="{i18n>Time}" />
+                                </Column>
+                                <Column styleClass="border" width="8rem">
+                                    <Label text="{i18n>TravelCountry}" />
+                                </Column>
+                                <Column styleClass="border" width="8rem">
+                                    <Label text="{i18n>AirportCity}" />
+                                </Column>
+                                <Column styleClass="border" width="8rem">
+                                    <Label text="{i18n>ReasonforTravel}" />
+                                </Column>
+                                <Column styleClass="border" width="8rem">
+                                    <Label text="{i18n>LocalMobileNumber}" />
+                                </Column>
+                                <!-- <Column styleClass="border">
+                                    <Label text="{i18n>OverseasMobNo}"/>
+                                </Column> -->
+                                <Column styleClass="border" width="8rem">
+                                    <Label text="{i18n>SeatPreference}" />
+                                </Column>
+                                <Column styleClass="border" width="8rem">
+                                    <Label text="{i18n>Mealpreference}" />
+                                </Column>
+                                <Column styleClass="border" width="8rem">
+                                    <Label text="{i18n>Visarequirement}" />
+                                </Column>
+                                <Column styleClass="border" width="8rem">
+                                    <Label text="{i18n>FrequentflyerNo}" />
+                                </Column>
+                                <Column styleClass="border" width="8rem">
+                                    <Label text="{i18n>Transportation}" />
+                                </Column>
+                            </columns>
+                            <items>
+                                <ColumnListItem>
+                                    <Text text="{Family>RelationName}"/>
+                                    <Text text="{Family>Relationship}"/>
+                                    <Text text="{Family>Phone}"/>
+                                    <Text text="{Family>DateOfBirth}"/>
+                                    <Text text="{Family>TravelDetails}"/>
+                                    <Text text="{Family>DepartureDate}"/>
+                                    <Text text="{Family>DepartureSector}"/>
+                                    <Text text="{Family>DepartureTime}"/>
+                                    <Text text="{Family>ReturnDate}"/>
+                                    <Text text="{Family>ReturnSector}"/>
+                                    <Text text="{Family>ReturnTime}"/>
+                                    <Text text="{Family>TravelCountry}"/>
+                                    <Text text="{Family>AirportCity}"/>
+                                    <Text text="{Family>ReasonForTravel}"/>
+                                    <Text text="{Family>LocalModbileNumber}"/>
+                                    <Text text="{Family>SeatPreference}"/>
+                                    <Text text="{Family>MealPreference}"/>
+                                    <Text text="{Family>VisaRequirement}"/>
+                                    <Text text="{Family>FrequentFlyerNumber}"/>
+                                    <Text text="{Family>Transportation}"/>
+                                </ColumnListItem>
+                            </items>
+                        </Table>
+                    </content>
+                </ScrollContainer>
+            </Panel>
+        </content>
+        <buttons>
+            <Button text="{i18n>save}" press="onSaveAsDraftButtonPress" type="Emphasized" visible="{visible>/draft}" />
+            <Button text="{i18n>submit}" press="onSaveAsDraftButtonPress" type="Emphasized" visible="{visible>/submit}" />
+            <!-- <Button text="{i18n>delete}" press="onDeleteButtonPress" type="Emphasized" visible="{visible>/delete}" /> -->
+            <Button text="{i18n>close}" type="Emphasized" press="onCloseButtonPress" />
+        </buttons>
+    </Dialog>
+</c:FragmentDefinition>

@@ -1,0 +1,9 @@
+<c:FragmentDefinition xmlns="sap.m"
+    xmlns:c="sap.ui.core">
+	    <SelectDialog id="idSelectDialog"  title="Select Type" titleAlignment="Center"  confirm=".filterTypeSelected" cancel=".filterTypeSelected" 
+        items="{
+            path: 'travelType>/'
+        }" multiSelect="true">
+        <StandardListItem title="{travelType>key}"  type="Active" />
+    </SelectDialog>
+</c:FragmentDefinition>

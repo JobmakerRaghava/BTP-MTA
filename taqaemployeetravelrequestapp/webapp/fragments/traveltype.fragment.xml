@@ -1,0 +1,8 @@
+<c:FragmentDefinition xmlns="sap.m"
+    xmlns:c="sap.ui.core">
+    <SelectDialog  confirm="onTraveltypeSelectDialogConfirm" cancel="onTraveltypeSelectDialogConfirm" selectionChange="onSelectDialogSelectionChange"  items="{ path : 'travelType>/'
+        }">
+        <StandardListItem title="{travelType>text}" type="Active"></StandardListItem>
+    </SelectDialog>
+
+</c:FragmentDefinition>

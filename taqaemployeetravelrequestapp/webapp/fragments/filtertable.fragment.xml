@@ -1,0 +1,21 @@
+<!-- <core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form">
+<SelectDialog
+		id="selectDialog"
+		title="Select Filter"
+		items="{modelFilterhelp>/rows}"
+		confirm=".onClosetablefilter"
+		cancel=".onClosetablefilter">
+		<StandardListItem 
+		    id="listview"
+			iconDensityAware="false"
+			iconInset="false"
+			title="{modelFilterhelp>val}" />
+	</SelectDialog>
+</core:FragmentDefinition> -->
+<c:FragmentDefinition xmlns="sap.m"
+    xmlns:c="sap.ui.core">
+	    <SelectDialog  title="Travel ID Select"  id="idSelectDialogById" titleAlignment="Center" search="onIdSearchInFragment" confirm=".filterIdSelected" cancel=".filterIdSelected" 
+		 multiSelect="true" items="{/results}">
+        <StandardListItem id="idStandardListItem" title="{TravelId}"  type="Active" />
+    </SelectDialog>
+</c:FragmentDefinition>

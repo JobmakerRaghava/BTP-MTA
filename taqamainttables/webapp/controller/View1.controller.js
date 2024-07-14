@@ -31,7 +31,7 @@ sap.ui.define([
                 this.declareModel("newTable");
                 this.declareModel("excelData");
             },
-            testupload: async function () {
+            massupload: async function () {
                 this.openDialog("upload", "taqamainttables.fragments.upload");
                 // var oColumns = this.getView().byId("dynamicTable").getColumns(),
                 //     ColumnsLabels = [];
@@ -93,7 +93,7 @@ sap.ui.define([
                         res.splice(1, 1);
                         res.splice(17, 1)
                         that.removeEmptyProperties(res);
-                        that.applyFilters(odata.results[0]);
+                        that.applyFilters(odata.results[0], sSelectedTableKey);
                         res.forEach(function (sColumn) {
                             // if (sColumn.length == 36) {
                             //     oDynamicTable.addColumn(new sap.m.Column({
@@ -116,6 +116,10 @@ sap.ui.define([
                             // }
                         });
                         oDynamicTable.getColumns()[0].setVisible(false);
+                        // hide sr.No column for Approver Table
+                        if (sSelectedTableKey === 'Approver Table') {
+                            oDynamicTable.getColumns()[1].setVisible(false);
+                        };
 
                         oColumnModel.setData(res);
                         aColumns = res;
@@ -192,7 +196,7 @@ sap.ui.define([
                 this.byId("_IDGenButton6").setVisible(false);
                 this.byId("_IDGenButton2").setVisible(true);
             },
-            onSaveReocrd: function name(oAction) {
+            onSaveReocrd: function name(oEvent) {
                 var oDynamicTable = this.getView().byId("dynamicTable"),
                     // oSelectedItem = oDynamicTable.getSelectedItem(),
                     oSelectedItems = oDynamicTable.getSelectedItems(),
@@ -200,7 +204,7 @@ sap.ui.define([
                     sPath = "/RowInfo",
                     that = this,
                     aBatchOperations = [];
-                if (oSelectedItems) {
+                if (oSelectedItems.length != 0) {
                     oSelectedItems.forEach(function (oSelectedItem) {
                         var aCells = oSelectedItem.getCells(),
                             oPayload = {},
@@ -214,7 +218,7 @@ sap.ui.define([
                             } else {
                                 var sColumn = "Column" + i;
                                 var sValue = oCell.getValue();
-                                oPayload[sColumn] = sValue;
+                                oPayload[sColumn] = sValue.trim();
                                 i += 1;
                             }
                         });
@@ -287,7 +291,7 @@ sap.ui.define([
                 var oBusyDialog = new sap.m.BusyDialog({
                     size: "3rem"
                 });
-                if (oSelectedItems) {
+                if (oSelectedItems.length != 0) {
                     oSelectedItems.forEach(function (oSelectedItem) {
                         try {
                             if (oSelectedItem.getCells()[0].getValue() === '') {
@@ -364,7 +368,7 @@ sap.ui.define([
                 this.byId("_IDGenButton6").setVisible(true);
                 this.byId("_IDGenButton7").setVisible(true);
             },
-            onEditCancel: function (oAction) {
+            onEditCancel: function (oEvent) {
                 this.onTableSelectChange();
                 // var oDynamicTable = this.getView().byId("dynamicTable");
                 // var oSelectedItem = oDynamicTable.getSelectedItem();
@@ -388,14 +392,14 @@ sap.ui.define([
                 this.byId("_IDGenButton7").setVisible(false);
                 this.byId("_IDGenButton4").setVisible(true);
             },
-            onAddTable: function (oAction) {
+            onAddTable: function (oEvent) {
                 this.openDialog("addTable", "taqamainttables.fragments.addTable")
             },
-            onClose: function (oAction) {
-                oAction.getSource().getParent().close();
+            onClose: function (oEvent) {
+                oEvent.getSource().getParent().close();
                 this.getView().getModel("newTable").setData({});
             },
-            onCreate: function (oAction) {
+            onCreate: function (oEvent) {
                 var oPayload = this.getView().getModel("newTable").getData(),
                     vTablename = this.byId("idTablenameInput").getValue().trim(),
                     vColumn1 = this.byId("idColumnInput").getValue().trim(),
@@ -419,24 +423,34 @@ sap.ui.define([
                     });
                 };
             },
-            onAlerts: function (oAction) {
+            onAlerts: function (oEvent) {
                 MessageToast.show("ValueHelp Pressed...");
-                // var id =oAction.getSource().getParent().getContent()[1].getValue();
+                // var id =oEvent.getSource().getParent().getContent()[1].getValue();
             },
-            onTableSelectionChange: function (oAction) {
-                this.byId("_IDGenButton3").setVisible(true);
-                this.byId("_IDGenButton4").setVisible(true);
-                this.byId("_IDGenButton2").setVisible(true);
-                this.byId("_IDGenButton6").setVisible(false);
-                this.byId("_IDGenButton7").setVisible(false);
+            onTableSelectionChange: function (oEvent) {
+                var oSelectedItems = oEvent.getSource().getSelectedItems();
+                if (oSelectedItems.length != 0) {
+                    this.byId("_IDGenButton3").setVisible(true);
+                    this.byId("_IDGenButton4").setVisible(true);
+                    this.byId("_IDGenButton2").setVisible(true);
+                    this.byId("_IDGenButton6").setVisible(false);
+                    this.byId("_IDGenButton7").setVisible(false);
+                } else {
+                    this.byId("_IDGenButton3").setVisible(false);
+                    this.byId("_IDGenButton4").setVisible(false);
+                    this.byId("_IDGenButton2").setVisible(false);
+                    this.byId("_IDGenButton6").setVisible(false);
+                    this.byId("_IDGenButton7").setVisible(false);
+                }
+
             },
-            onUpdate: function (oAction) {
+            onUpdate: function (oEvent) {
                 var oDynamicTable = this.getView().byId("dynamicTable");
                 var oSelectedItems = oDynamicTable.getSelectedItems();
                 var oModel = this.getOwnerComponent().getModel(),
                     that = this;
                 var oBusyDialog = new sap.m.BusyDialog();
-                if (oSelectedItems) {
+                if (oSelectedItems.length != 0) {
                     oSelectedItems.forEach(function (oSelectedItem) {
                         var aCells = oSelectedItem.getCells(),
                             oPayload = {},
@@ -451,7 +465,7 @@ sap.ui.define([
                             } else {
                                 var sColumn = "Column" + i;
                                 var sValue = oCell.getValue();
-                                oPayload[sColumn] = sValue;
+                                oPayload[sColumn] = sValue.trim();
                                 i += 1;
                             }
                             // }
@@ -554,6 +568,7 @@ sap.ui.define([
                 var file = oEvent.getParameter("files") && oEvent.getParameter("files")[0];
                 var that = this;
                 var excelData = {},
+                    excelDataTemp = {},
                     vSheetName = this.getView().byId("idInput").getValue();
                 if (file && window.FileReader) {
                     var reader = new FileReader();
@@ -564,7 +579,25 @@ sap.ui.define([
                             type: 'binary'
                         });
 
-                        excelData = XLSX.utils.sheet_to_row_object_array(workbook.Sheets[vSheetName]);
+                        excelDataTemp = XLSX.utils.sheet_to_row_object_array(workbook.Sheets[vSheetName]);
+                        function processData(data) {
+                            return data.map(record => {
+                                let processedRecord = {};
+                                for (let key in record) {
+                                    record[key].trim();//remove spaces from column
+                                    if (typeof record[key] === 'number') {
+                                        processedRecord[key] = String(record[key]);
+                                    } else if (record[key] === undefined || record[key] === null) {
+                                        processedRecord[key] = "";
+                                    } else {
+                                        processedRecord[key] = record[key];
+                                    }
+                                }
+                                return processedRecord;
+                            });
+                        };
+                        excelData = processData(excelDataTemp);
+                        debugger;
                         if (excelData.length === 0) {
                             MessageBox.error("SheetName must be same as Table Name");
                             that.getView().getDependents()[1].close();
@@ -683,8 +716,9 @@ sap.ui.define([
                     oSheet.destroy();
                 });
             },
-            applyFilters: function (oEvent) {
-                var oEvents = oEvent;
+            applyFilters: function (oEvent, tablename) {
+                var oEvents = oEvent,
+                    vTable = tablename;
                 var oFilterBar = this.getView().byId("idFilterBar");
                 oFilterBar.destroyFilterGroupItems();
 
@@ -698,16 +732,31 @@ sap.ui.define([
                     }
                 });
                 var oColumnFilters = Object.entries(oEvents);
+                if (vTable === "Approver Table") {
+                    oColumnFilters.forEach(function (oColumn, index) {
+                        oFilterBar.addFilterGroupItem(new FilterGroupItem({
+                            groupName: 'Group' + index,
+                            name: oColumn[0],
+                            label: oColumn[1],
+                            control: new sap.m.Input({ name: oColumn[0] }),
+                            //Showing default filters
+                            visibleInFilterBar: index == 2 || index == 5 ? true : false
+                        }));
+                    });
+                } else {
+                    oColumnFilters.forEach(function (oColumn, index) {
+                        oFilterBar.addFilterGroupItem(new FilterGroupItem({
+                            groupName: 'Group' + index,
+                            name: oColumn[0],
+                            label: oColumn[1],
+                            control: new sap.m.Input({ name: oColumn[0] }),
+                            //Showing default filters
+                            // visibleInFilterBar: index <= 2 ? true : false
+                        }));
+                    });
+                }
 
-                oColumnFilters.forEach(function (oColumn, index) {
-                    oFilterBar.addFilterGroupItem(new FilterGroupItem({
-                        groupName: 'Group' + index,
-                        name: oColumn[0],
-                        label: oColumn[1],
-                        control: new sap.m.Input({ name: oColumn[0] }),
-                        visibleInFilterBar: index <= 2 ? true : false
-                    }));
-                });
+
 
             },
             onFilterBarSearch: function (oEvent) {

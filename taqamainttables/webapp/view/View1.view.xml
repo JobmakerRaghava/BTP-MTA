@@ -34,7 +34,7 @@
                             <Button id="_IDGenButton4" type="Emphasized" text="{i18n>edit}" press="onEditRowPress" visible="false" />
                             <Button id="_IDGenButton7" type="Emphasized" text="{i18n>cancel}" press="onEditCancel" visible="false" />
                             <Button id="_IDGenButton1" type="Emphasized" text="{i18n>addrecord}" press="onAddRowPress" visible="false"></Button>
-                            <Button id="idSpreadSheetUploadButton" text="{i18n>spreadsheetupload}" press="testupload" type="Emphasized" visible="false"></Button>
+                            <Button id="idSpreadSheetUploadButton" text="{i18n>spreadsheetupload}" press="massupload" type="Emphasized" visible="false"></Button>
                             <Button id="idButtonExcel" icon="sap-icon://excel-attachment" press="onExcelButtonPress" visible="false"></Button>
                         </Toolbar>
                     </headerToolbar>

@@ -1,0 +1,158 @@
+<mvc:View xmlns:dnd="sap.ui.core.dnd"
+    xmlns:filterbar="sap.ui.comp.filterbar"
+    xmlns:plugins="sap.m.plugins" controllerName="taqamainttables.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}" titleAlignment="Center">
+        <content>
+            <VBox id="_IDGenVBox1" backgroundDesign="Solid" fitContainer="true" height="100%">
+                <FlexBox alignItems="Center" justifyContent="Center" class="sapUiSmallMarginTop">
+                    <Label text="{i18n>tablename}" design="Bold" showColon="true" class="sapUiSmallMarginEnd"></Label>
+
+                    <Input id="idInput" showValueHelp="true" valueHelpRequest="onInputValueHelpRequest" class="sapUiSmallMarginEnd"></Input>
+                    <Button id="_IDGenButton5" type="Emphasized" text="{i18n>addtable}" press="onAddTable" class="sapUiSmallMarginBegin" />
+
+                </FlexBox>
+                <filterbar:FilterBar id="idFilterBar" useToolbar="false" search="onFilterBarSearch"></filterbar:FilterBar>
+                <ScrollContainer vertical="true" focusable="true" horizontal="true" height="100%" width="100%">
+                    <Table id="dynamicTable" headerText="table" fixedLayout="false" sticky="ColumnHeaders,HeaderToolbar" mode="MultiSelect" selectionChange="onTableSelectionChange" alternateRowColors="true">
+                        <!-- <dragDropConfig>
+                        <dnd:DragDropInfo sourceAggregation="columns" targetAggregation="columns" dropPosition="Between" drop="onColumnMove"></dnd:DragDropInfo>
+                    </dragDropConfig> -->
+
+                        <headerToolbar>
+                            <Toolbar id="_IDGenToolbar1">
+                                <Title id="title"></Title>
+                                <ToolbarSpacer id="_IDGenToolbarSpacer1"></ToolbarSpacer>
+                                <!-- <Button id="_IDGenButton10" type="Emphasized" text="{i18n>paste}" press="onPasteRecord" enabled="false" visible="false"></Button> -->
+                                <Button id="_IDGenButton0" type="Emphasized" text="{i18n>copy}" press="onCopyRecord" visible="false"></Button>
+                                <Button id="_IDGenButton2" type="Emphasized" text="{i18n>save}" press="onSaveReocrd" visible="false"></Button>
+                                <Button id="_IDGenButton6" type="Emphasized" text="{i18n>update}" press="onUpdate" visible="false"></Button>
+                                <Button id="_IDGenButton3" type="Emphasized" text="{i18n>delete}" press="onDeleteRowPress" visible="false" />
+                                <Button id="_IDGenButton4" type="Emphasized" text="{i18n>edit}" press="onEditRowPress" visible="false" />
+                                <Button id="_IDGenButton7" type="Emphasized" text="{i18n>cancel}" press="onEditCancel" visible="false" />
+                                <Button id="_IDGenButton1" type="Emphasized" text="{i18n>addrecord}" press="onAddRowPress" visible="false"></Button>
+                                <Button id="idSpreadSheetUploadButton" text="{i18n>spreadsheetupload}" press="massupload" type="Emphasized" visible="false"></Button>
+                                <Button id="idButtonExcel" icon="sap-icon://excel-attachment" press="onExcelButtonPress" visible="false"></Button>
+                            </Toolbar>
+                        </headerToolbar>
+                        <dependents>
+                            <!-- <plugins:ColumnResizer ></plugins:ColumnResizer> -->
+                            <!-- <plugins:CopyProvider extractData=".extractData" id="copyProvider"></plugins:CopyProvider> -->
+                        </dependents>
+                    </Table>
+                </ScrollContainer>
+                <filterbar:FilterBar id="idFilterBar2" visible="false" useToolbar="false" search="onFilterBarSearch2">
+                    <filterbar:filterGroupItems>
+                        <filterbar:FilterGroupItem name="EmployeeID" label="Employee ID" groupName="Group1" visibleInFilterBar="false">
+                            <filterbar:control>
+                                <Input name="EmployeeID" id="EmployeeID" showValueHelp="false"/>
+                            </filterbar:control>
+                        </filterbar:FilterGroupItem>
+                        <filterbar:FilterGroupItem name="EmployeeName" label="Employee Name" groupName="Group1" visibleInFilterBar="false">
+                            <filterbar:control>
+                                <Input name="EmployeeName" id="EmployeeName" showValueHelp="false"/>
+                            </filterbar:control>
+                        </filterbar:FilterGroupItem>
+                        <filterbar:FilterGroupItem name="EmployeeEmailID" label="Employee EmailID" groupName="Group1" visibleInFilterBar="false">
+                            <filterbar:control>
+                                <Input name="EmployeeEmailID" id="EmployeeEmailID" showValueHelp="false"/>
+                            </filterbar:control>
+                        </filterbar:FilterGroupItem>
+                        <filterbar:FilterGroupItem name="Levels" label="Levels" groupName="Group1" visibleInFilterBar="false">
+                            <filterbar:control>
+                                <Input name="Levels" id="Levels" showValueHelp="false"/>
+                            </filterbar:control>
+                        </filterbar:FilterGroupItem>
+                        <filterbar:FilterGroupItem name="CompanyCode" label="Company Code" groupName="Group1" visibleInFilterBar="false">
+                            <filterbar:control>
+                                <Input name="CompanyCode" id="CompanyCode" showValueHelp="false"/>
+                            </filterbar:control>
+                        </filterbar:FilterGroupItem>
+                        <filterbar:FilterGroupItem name="ApproverEmailID" label="Approver EmailID" groupName="Group1" visibleInFilterBar="false">
+                            <filterbar:control>
+                                <Input name="ApproverEmailID" id="ApproverEmailID" showValueHelp="false"/>
+                            </filterbar:control>
+                        </filterbar:FilterGroupItem>
+                        <filterbar:FilterGroupItem name="ApproverEmpID" label="Approver EmpID" groupName="Group1" visibleInFilterBar="false">
+                            <filterbar:control>
+                                <Input name="ApproverEmpID" id="ApproverEmpID" showValueHelp="false"/>
+                            </filterbar:control>
+                        </filterbar:FilterGroupItem>
+                        <filterbar:FilterGroupItem name="ApproverName" label="Approver Name" groupName="Group1" visibleInFilterBar="false">
+                            <filterbar:control>
+                                <Input name="ApproverName" id="ApproverName" showValueHelp="false"/>
+                            </filterbar:control>
+                        </filterbar:FilterGroupItem>
+                    </filterbar:filterGroupItems>
+                </filterbar:FilterBar>
+                <Table id="dynamicTable2" visible="false" sticky="ColumnHeaders,HeaderToolbar" mode="MultiSelect" selectionChange="LineMSelectionChange" alternateRowColors="true">
+                    <headerToolbar>
+                        <Toolbar id="_IDGenToolbar12">
+                            <Title id="title2"></Title>
+                            <ToolbarSpacer id="_IDGenToolbarSpacer12"></ToolbarSpacer>
+                            <Button id="_IDGenButton22" type="Emphasized" text="{i18n>save}" press="LineMSaveReocrd" visible="false"></Button>
+                            <Button id="_IDGenButton62" type="Emphasized" text="{i18n>update}" press="LineMUpdate" visible="false"></Button>
+                            <Button id="_IDGenButton32" type="Emphasized" text="{i18n>delete}" press="LineMDeleteRowPress" visible="false" />
+                            <Button id="_IDGenButton42" type="Emphasized" text="{i18n>edit}" press="LineMEditRowPress" visible="false" />
+                            <Button id="_IDGenButton72" type="Emphasized" text="{i18n>cancel}" press="LineMEditCancel" visible="false" />
+                            <Button id="_IDGenButton12" type="Emphasized" text="{i18n>addrecord}" press="LineMAddRowPress" visible="true"></Button>
+                            <Button id="idSpreadSheetUploadButton2" text="{i18n>spreadsheetupload}" press="massupload" type="Emphasized" visible="false"></Button>
+                            <Button id="idButtonExcel2" icon="sap-icon://excel-attachment" press="onExcelButtonPress" visible="false"></Button>
+                        </Toolbar>
+                    </headerToolbar>
+                    <!-- <dependents>
+                        <plugins:ColumnResizer ></plugins:ColumnResizer>
+                    </dependents> -->
+                    <columns>
+                        <Column visible="false" styleClass="border">
+                            <Text text="ID"></Text>
+                        </Column>
+                        <Column styleClass="border">
+                            <Text text="Employee ID"></Text>
+                        </Column>
+                        <Column styleClass="border">
+                            <Text text="Employee Name"></Text>
+                        </Column>
+                        <Column styleClass="border">
+                            <Text text="Employee Email ID"></Text>
+                        </Column>
+                        <Column styleClass="border">
+                            <Text text="Approver Name"></Text>
+                        </Column>
+                        <Column styleClass="border">
+                            <Text text="Approver EmpID"></Text>
+                        </Column>
+                        <Column styleClass="border">
+                            <Text text="Approver EmailID"></Text>
+                        </Column>
+                        <Column styleClass="border">
+                            <Text text="Company Code"></Text>
+                        </Column>
+                        <Column styleClass="border">
+                            <Text text="Levels"></Text>
+                        </Column>
+
+                    </columns>
+                    <!-- <items> -->
+                    <!-- <ColumnListItem >
+                            <cells>
+                                <Text text="{linemanagerRows>ID}" />
+                                <Text text="{linemanagerRows>EmployeeID}" />
+                                <Text text="{linemanagerRows>EmployeeName}" />
+                                <Text text="{linemanagerRows>EmployeeEmailID}" />
+                                <Text text="{linemanagerRows>ApproverName}" />
+                                <Text text="{linemanagerRows>ApproverEmpID}" />
+                                <Text text="{linemanagerRows>ApproverEmailID}" />
+                                <Text text="{linemanagerRows>CompanyCode}" />
+                                <Text text="{linemanagerRows>Levels}" />
+
+                            </cells>
+                        </ColumnListItem> -->
+
+                    <!-- </items> -->
+                </Table>
+            </VBox>
+        </content>
+    </Page>
+</mvc:View>

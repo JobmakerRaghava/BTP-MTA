@@ -1,0 +1,439 @@
+<core:FragmentDefinition xmlns:form="sap.ui.layout.form"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+    xmlns:u="sap.ui.unified"
+    xmlns:f="sap.ui.layout.form">
+    <Dialog contentWidth="100%" contentHeight="80%">
+        <content>
+            <Panel visible="{visible>/createcat}">
+                <FlexBox alignItems="Center">
+                    <Label text="{i18n>TravelType}" showColon="true" class="sapUiTinyMargin" />
+                    <ComboBox selectionChange="onComboBoxSelectionChange" items="{travelType>/}" selectedKey="{form>/TravelCategory}">
+                        <core:Item key="{travelType>key}" text="{travelType>text}" />
+                    </ComboBox>
+                </FlexBox>
+            </Panel>
+            <form:SimpleForm visible="{visible>/emp}" editable="true" layout="ResponsiveGridLayout" singleContainerFullSize="false" columnsM="2">
+                <core:Title text="Employee Details" />
+                <Label text="{i18n>EmployeeNo}" showColon="true" visible="{visible>/ext}" />
+                <Input value="{form>/EmployeeID}" showValueHelp="true" required="true" valueHelpRequest="onEmpIDValuehelpOpen" visible="{visible>/ext}" editable="{visible>/empedit}" />
+                <Label text="{i18n>Title}" showColon="true" visible="{visible>/NationalID}" />
+                <Input visible="{visible>/NationalID}" value="{form>/EmpTitle}" required="true" editable="{visible>/empedit}">
+
+                </Input>
+
+                <Label text="{i18n>Email}" />
+                <Input value="{form>/EmailId}" id="idEmailIdInput" type="Email" required="true" editable="{visible>/empedit}" />
+                <Label text="{i18n>EmployeeNo}" showColon="true" visible="{visible>/NationalID}" />
+                <Input value="{form>/EmployeeID}" visible="{visible>/NationalID}" editable="{visible>/empedit}" />
+
+                <Label text="{i18n>ExternalCode}" showColon="true" visible="{visible>/NationalID}" />
+                <Input visible="{visible>/NationalID}" value="{form>/EXTCode}" showValueHelp="false" editable="false" />
+                <Label text="{i18n>Designation}" showColon="true" />
+                <Input value="{form>/Designation}" editable="{visible>/empedit}" required="true" />
+                <Label text="{i18n>CostCenter}" visible="{visible>/ext}" />
+                <Input value="{form>/CostCentre}" visible="{visible>/ext}" required="true" editable="{visible>/empedit}" />
+                <Label text="{i18n>HomeCountry}" visible="{visible>/ext}" />
+                <ComboBox items="{
+                        path: '/Country',
+                        length: 300
+                    }" selectedKey="{form>/HomeCountry}" visible="{visible>/ext}" showSecondaryValues="true" required="true" editable="{visible>/empedit}">
+                    <core:ListItem additionalText="{code}" key="{code}" text="{externalName_en_US}" />
+                </ComboBox>
+                <Label text="{i18n>HomeAirportCity}" visible="{visible>/ext}" />
+                <ComboBox items="{
+                        path: '/',
+                        model: 'homeairport',
+                        length: 2000
+                    }" selectedKey="{form>/HomeAirportCity}" showSecondaryValues="true" visible="{visible>/ext}" editable="{visible>/empedit}">
+                    <core:ListItem additionalText="{homeairport>code}" key="{homeairport>code}" text="{homeairport>location}" />
+                </ComboBox>
+                <Label text="{i18n>Location}" visible="{visible>/ext}" />
+                <Input value="{form>/Location}" visible="{visible>/ext}" required="true" editable="{visible>/empedit}" />
+                <Label text="{i18n>National}" visible="{visible>/ext}" />
+                <ComboBox items="{
+                        path: '/Country',
+                        length: 300
+                    }" selectedKey="{form>/Nationality}" visible="{visible>/ext}" showSecondaryValues="true" editable="{visible>/empedit}">
+                    <core:ListItem additionalText="{code}" key="{code}" text="{externalName_en_US}" />
+                </ComboBox>
+                <Label text="{i18n>PassportNo}" />
+                <Input value="{form>/PassportNumber}" editable="{visible>/review}" />
+                <Label text="{i18n>NationalID}" />
+                <Input value="{form>/NationalID}" editable="{visible>/review}" />
+                <core:Title />
+                <Label text="{i18n>FirstName}" showColon="true" visible="{visible>/NationalID}" />
+                <Input visible="{visible>/NationalID}" value="{form>/EmpFirstName}" required="true" editable="{visible>/empedit}" />
+                <Label text="{i18n>MiddleName}" showColon="true" visible="{visible>/NationalID}" />
+                <Input visible="{visible>/NationalID}" value="{form>/EmpMiddleName}" editable="{visible>/empedit}">
+
+                </Input>
+                <Label text="{i18n>LastName}" showColon="true" visible="{visible>/NationalID}" />
+                <Input visible="{visible>/NationalID}" required="true" value="{form>/EmpLastName}" editable="{visible>/empedit}" />
+                <Label text="{i18n>EmployeeFullName}" visible="{visible>/ext}" showColon="true" />
+                <Input value="{path:'form>/EmployeeName'}" visible="{visible>/ext}" editable="{visible>/empedit}" />
+                <Label text="{i18n>CompanyCode}"/>
+                <Input value="{form>/CompanyCode}" required="true" editable="{visible>/empedit}" valueHelpRequest="onCompanyF4" showValueHelp="true" />
+                <Label text="{i18n>Function}" visible="{visible>/ext}" />
+                <Input value="{form>/Function}" visible="{visible>/ext}" required="true" editable="{visible>/empedit}" />
+                <Label text="{i18n>Department}" />
+                <Input value="{form>/Department}" required="{visible>/NationalID}" editable="{visible>/empedit}" showValueHelp="true" valueHelpRequest="onDepartmentF4" />
+                <Label text="{i18n>Division}" visible="{visible>/ext}" />
+                <Input value="{form>/Division}" visible="{visible>/ext}" required="true" editable="{visible>/empedit}" />
+                <Label text="{i18n>LeaveSchedule}" visible="{visible>/ext}" />
+                <Input value="{
+                        path: 'form>/LeaveSchedule',
+                        formatter: '.formatter.getLeaveSchedule'
+                    }" visible="{visible>/ext}" required="true" editable="{visible>/empedit}" />
+                <Label text="{i18n>DateofBirth}" showColon="true" visible="{visible>/NationalID}" />
+                <DatePicker visible="{visible>/NationalID}" value="{form>/DateOfBirth}" required="true" valueFormat="yyyy-MM-dd" editable="{visible>/empedit}" change="onDateOfBirthDatePickerChange">
+                </DatePicker>
+                <Label text="{i18n>Age}" />
+                <Input value="{form>/Age}" type="Number" id="idAgeInput" editable="{visible>/empedit}" />
+                 <Label text="{i18n>TravelwithFamily}" visible="{visible>/travelwithfamily}">
+                </Label>
+                <Select selectedKey="{form>/TravelwithFamily}" forceSelection="false" visible="{visible>/travelwithfamily}" editable="{visible>/review}">
+                    <core:ListItem key="Y" text="Yes" />
+                    <core:ListItem key="N" text="No" />
+                     <core:ListItem key="3" text="Family Alone" />
+                </Select>
+            </form:SimpleForm>
+            <form:SimpleForm editable="true" visible="{visible>/type}" layout="ResponsiveGridLayout" singleContainerFullSize="false" columnsM="2">
+                <core:Title text="{i18n>Travelinfo}" />
+                <Label text="{i18n>TRFNo}">
+                </Label>
+                <Input value="{form>/TrfNumber}" editable="false">
+                </Input>
+                <Label text="{i18n>FocalPerson}">
+                </Label>
+                <Input value="{form>/FocalPersonName}" editable="false"></Input>
+                <Label text="{i18n>ExpenseCode}"></Label>
+                <Select selectedKey="{form>/ExpenseCode}" editable="{visible>/review}" required="true" forceSelection="false" change="onSelectChange">
+                    <core:ListItem key="Alternative CostCentre" text="Alternative CostCentre">
+                    </core:ListItem>
+                    <core:ListItem key="Internal Order" text="Internal Order">
+                    </core:ListItem>
+                    <core:ListItem key="WBS Code" text="WBS Code">
+                    </core:ListItem>
+                </Select>
+                <Label text="{i18n>ReasonforTravel}">
+                </Label>
+                <Input value="{form>/PurposeofTravel}" editable="{visible>/review}" required="true">
+                </Input>
+                <Label text="{i18n>TypeofTravel}">
+                </Label>
+                <Select selectedKey="{form>/TypeofTravel}" forceSelection="false" showSecondaryValues="true" editable="{visible>/typeoftravel}">
+                    <core:ListItem key="1" text="One Way Trip" additionalText="1" />
+                    <core:ListItem key="2" text="Round Trip" additionalText="2" />
+                </Select>
+                <Label text="{i18n>Sector1}" />
+                <ComboBox items="{
+                        path: '/',
+                        model: 'country',
+                        length: 1000
+                    }" selectedKey="{form>/DepartureSector}" required="true" showSecondaryValues="true" editable="{visible>/review}" change="onDepartureSectorComboBoxChange">
+                    <core:ListItem additionalText="{country>code}" key="{country>code}" text="{country>country}" />
+                </ComboBox>
+                <Label text="{i18n>DepartureDate}">
+                </Label>
+                <DatePicker id="idDepartureDateDatePicker" required="true" value="{form>/DepartureDate}" valueFormat="yyyy-MM-dd" editable="{visible>/review}">
+                </DatePicker>
+                <Label text="{i18n>DesCountry}">
+                </Label>
+                <ComboBox items="{
+                        path: '/',
+                        model: 'country',
+                        length: 1000
+                    }" selectedKey="{form>/DestinationCountry}" required="true" showSecondaryValues="true" editable="{visible>/review}" change="onDestinationSectorComboBoxChange">
+                    <core:ListItem additionalText="{country>code}" key="{country>code}" text="{country>country}" />
+                </ComboBox>
+                <Label text="{i18n>ReturnDate}" visible="{= ${form>/TypeofTravel} === '2' ? true : false }" />
+                <DatePicker id="idReturnDateDatePicker" required="{= ${form>/TypeofTravel} === '2' ? true : false }" value="{form>/ReturnDate}" visible="{=${form>/TypeofTravel} === '2'? true:false}" valueFormat="yyyy-MM-dd" editable="{visible>/review}">
+                </DatePicker>
+                <Label text="{i18n>OverseasMobNo}">
+                </Label>
+                <Input value="{form>/OverseasMobNo}" type="Number" editable="{visible>/review}">
+                </Input>
+                <Label text="{i18n>SeatPreference}">
+                </Label>
+                <Select selectedKey="{form>/SeatPreference}" forceSelection="false" editable="{visible>/review}">
+                    <core:ListItem key="Aisle Seat" text="Aisle Seat" />
+                    <core:ListItem key="Window Seat" text="Window Seat" />
+                </Select>
+                <Label text="{i18n>Hotel}" visible="{
+                        path: 'form>/TravelCategory',
+                        formatter: '.formatter.HotelVisible'
+                    }">
+                </Label>
+                <Input value="{= ${form>/Hotel} === '1' ? 'Yes' : 'No' }" required="{
+                        path: 'form>/TravelCategory',
+                        formatter: '.formatter.HotelVisible'
+                    }" visible="{
+                        path: 'form>/TravelCategory',
+                        formatter: '.formatter.HotelVisible'
+                    }" editable="{visible>/review}">
+                </Input>
+                <Label text="{i18n>TrainingStartDate}" visible="{visible>/TrainingDate}">
+                </Label>
+                <DatePicker value="{form>/TrainingStartDate}" id="idTrainingStartDateDatePicker" required="true" valueFormat="yyyy-MM-dd" visible="{visible>/TrainingDate}" editable="{visible>/review}">
+                </DatePicker>
+                <Label text="{i18n>BusinessStartDate}" visible="{visible>/BusinessDates}">
+                </Label>
+                <DatePicker value="{form>/BusinessStartDate}" id="idBusinessStartDateDatePicker" required="true" valueFormat="yyyy-MM-dd" visible="{visible>/BusinessDates}" editable="{visible>/review}">
+                </DatePicker>
+                <Label text="{i18n>JobStartDate}" visible="{visible>/JobDates}">
+                </Label>
+                <DatePicker value="{form>/JobStartDate}" id="idJobStartDateDatePicker" required="true" valueFormat="yyyy-MM-dd" visible="{visible>/JobDates}" editable="{visible>/review}">
+                </DatePicker>
+                <Label text="{i18n>ClassEconomybusiness}" />
+                <Select selectedKey="{form>/Class}" editable="{visible>/review}" forceSelection="false">
+                    <core:ListItem key="EC" text="Economy Class" additionalText="EC" />
+                    <core:ListItem key="BC" text="Business Class" additionalText="BC" />
+                    <core:ListItem key="FC" text="First Class" additionalText="FC" />
+                </Select>
+                <core:Title  />
+                <Label text="{i18n>ReferenceNo}">
+                </Label>
+                <Input value="{form>/ReferenceNumber}" editable="false">
+                </Input>
+                <Label text="{i18n>Travelcat}">
+                </Label>
+                <Input value="{
+                        path: 'form>/TravelCategory',
+                        formatter: '.formatter.getTCLabel'
+                    }" editable="false">
+                </Input>
+                <Label text="{i18n>ProjectCode}"></Label>
+                <Input value="{form>/ProjectCode}" showValueHelp="true" required="true" valueHelpRequest="onProjectCodeInputValueHelpRequest" editable="{visible>/review}"></Input>
+                <Label text="{i18n>Transportation}">
+                </Label>
+                <ComboBox showSecondaryValues="true" items="{
+                        path: '/PickListValueV2',
+                        filters: {
+                            path: 'PickListV2_id',
+                            operator: 'EQ',
+                            value1: 'TRANSPORTATIONFORMV1'
+                        }
+                    }" selectedKey="{form>/Transportation}" editable="{visible>/greyoutfield}" required="{visible>/review}">
+                    <core:ListItem additionalText="{externalCode}" key="{externalCode}" text="{label_en_US}" />
+                </ComboBox>
+                <Label text="{i18n>Visarequirement}" />
+                <ComboBox items="{
+                        path: '/PickListValueV2',
+                        filters: {
+                            path: 'PickListV2_id',
+                            operator: 'EQ',
+                            value1: 'YesNo'
+                        }
+                    }" selectedKey="{form>/VisaRequirement}" editable="{visible>/VisaRequirement}" required="{visible>/review}" showSecondaryValues="true">
+                    <core:ListItem additionalText="{label_en_US}" key="{externalCode}" text="{label_en_US}" />
+                </ComboBox>
+                <Label text="{i18n>DepAirportCity}">
+                </Label>
+                <ComboBox items="{
+                        path: '/results',
+                        model: 'DepAirportCity',
+                        length: 2000
+                    }" selectedKey="{form>/DepartureAirportCity}" required="true" showSecondaryValues="true" editable="{visible>/review}">
+                    <core:ListItem additionalText="{DepAirportCity>externalCode}" key="{DepAirportCity>externalCode}" text="{DepAirportCity>label_localized}" />
+                </ComboBox>
+                <Label text="{i18n>Time1}">
+                </Label>
+                <Select selectedKey="{form>/DepartureTime}" required="true" forceSelection="false" editable="{visible>/review}">
+                    <core:ListItem key="1" text="Morning" />
+                    <core:ListItem key="2" text="AfterNoon" />
+                    <core:ListItem key="3" text="Evening" />
+                    <core:ListItem key="4" text="Night" />
+                </Select>
+                <Label text="{i18n>AirportCity}">
+                </Label>
+                <ComboBox items="{
+                        path: '/results',
+                        model: 'AirportCity',
+                        length: 2000
+                    }" selectedKey="{form>/AirportCity}" required="true" showSecondaryValues="true" editable="{visible>/review}">
+                    <core:ListItem additionalText="{AirportCity>externalCode}" key="{AirportCity>externalCode}" text="{AirportCity>label_localized}" />
+                </ComboBox>
+                <Label text="{i18n>Time}" visible="{=${form>/TypeofTravel} === '2'? true:false}">
+                </Label>
+                <Select selectedKey="{form>/ReturnTime}" required="{= ${form>/TypeofTravel} === '2' ? true : false }" forceSelection="false" editable="{visible>/review}" visible="{=${form>/TypeofTravel} === '2'? true:false}">
+                    <core:ListItem key="1" text="Morning" />
+                    <core:ListItem key="2" text="AfterNoon" />
+                    <core:ListItem key="3" text="Evening" />
+                    <core:ListItem key="4" text="Night" />
+                </Select>
+                <Label text="{i18n>LocalMobileNumber}">
+                </Label>
+                <Input value="{form>/MobileNo}" type="Number" editable="{visible>/LocalMobileNumber}" required="{visible>/review}">
+                </Input>
+                <Label text="{i18n>Mealpreference}">
+                </Label>
+                <Select selectedKey="{form>/MealPreference}" forceSelection="false" editable="{visible>/review}">
+                    <core:ListItem key="Veg" text="Veg" />
+                    <core:ListItem key="Non Veg" text="Non Veg" />
+                </Select>
+                <Label text="{i18n>FrequentflyerNo}">
+                </Label>
+                <Input value="{form>/FrequentFlyerNo}" editable="{visible>/review}">
+                </Input>
+                <Label text="{i18n>TrainingEndDate}" visible="{visible>/TrainingDate}">
+                </Label>
+                <DatePicker value="{form>/TrainingEndDate}" id="idTrainingEndDateDatePicker" required="true" valueFormat="yyyy-MM-dd" visible="{visible>/TrainingDate}" editable="{visible>/review}">
+                </DatePicker>
+                <Label text="{i18n>BusinessEndDate}" visible="{visible>/BusinessDates}">
+                </Label>
+                <DatePicker value="{form>/BusinessEndDate}" required="true" id="idBusinessEndDateDatePicker" valueFormat="yyyy-MM-dd" visible="{visible>/BusinessDates}" editable="{visible>/review}">
+                </DatePicker>
+                <Label text="{i18n>JobEndDate}" visible="{visible>/JobDates}">
+                </Label>
+                <DatePicker value="{form>/JobEndDate}" required="true" id="idJobEndDateDatePicker" valueFormat="yyyy-MM-dd" visible="{visible>/JobDates}" editable="{visible>/review}">
+                </DatePicker>
+                <Label text="{i18n>Attachment}" visible="{visible>/attachment}">
+                </Label>
+                <Button icon="sap-icon://download" text="{form>/DocName}" press="onDownloadButtonPress" visible="{visible>/attachment}"></Button>
+            </form:SimpleForm>
+            <Table growing="true" sticky="ColumnHeaders" id="idFamilyTable" items="{Family>/}" mode="SingleSelectLeft" visible="{
+                    path: 'form>/TravelwithFamily',
+                    formatter: '.formatter.getFamiltyTable'
+                }">
+                <headerToolbar>
+                    <Toolbar>
+                        <Title text="{i18n>FamilyDetails}"></Title>
+                        <ToolbarSpacer />
+                        <Button text="{i18n>delete}" type="Emphasized" visible="{visible>/delete}" press="onDeleteFamilyButtonPress" />
+                        <Button text="{i18n>add}" type="Emphasized" visible="{visible>/add}" press="onAddFamilyButtonPress" />
+                    </Toolbar>
+                </headerToolbar>
+                <columns>
+                    <Column styleClass="border">
+                        <Label text="{i18n>Title}" />
+                    </Column>
+                    <Column styleClass="border">
+                        <Label text="{i18n>FirstName}" />
+                    </Column>
+                    <Column styleClass="border">
+                        <Label text="{i18n>MiddleName}" />
+                    </Column>
+                    <Column styleClass="border">
+                        <Label text="{i18n>LastName}" />
+                    </Column>
+                    <Column styleClass="border">
+                        <Label text="{i18n>DateofBirth}" />
+                    </Column>
+                    <Column styleClass="border border2">
+                        <Label text="{i18n>Relationship}" />
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem>
+                        <Text text="{Family>Title}" />
+                        <Text text="{Family>FirstName}" />
+                        <Text text="{Family>MiddleName}" />
+                        <Text text="{Family>LastName}" />
+                        <Text text="{
+                                path: 'Family>DateOfBirth',
+                                formatter: '.formatter.convert_Dateformat'
+                            }" />
+                        <Text text="{Family>Relationship}" />
+                    </ColumnListItem>
+                </items>
+            </Table>
+            <!-- </Panel> -->
+            <Panel visible="{visible>/agent}" headerText="{i18n>Agentdetails}" class="sapUiSmallMarginTop">
+                <HBox justifyContent="Start" alignItems="Center">
+                    <Label text="Travel Team" labelFor="travelagency" class="sapUiTinyMargin" />
+                    <Input showValueHelp="true" required="true" class="sapUiTinyMargin" visible="{visible>/agent}" valueHelpRequest="onAgentValueHelpRequest" editable="{visible>/initiate}" value="{form>/AgentDescription}" />
+                    <Button text="Intiate Request" press="onPdfButtonPress" type="Emphasized" class="sapUiSmallMargin" visible="{visible>/initiate}" />
+                </HBox>
+            </Panel>
+            <Table growing="true" sticky="ColumnHeaders" mode="MultiSelect" items="{Ticket>/}" visible="{visible>/agentresponse}">
+                <headerToolbar>
+                    <Toolbar>
+                        <Title text="{i18n>TravelAgencyResponse}">
+                        </Title>
+                         <ToolbarSpacer />
+                        <Label text="{i18n>TravelAgencyName}">
+                        </Label>
+                        <ComboBox items="{
+                        path: '/PickListValueV2',
+                        filters: {
+                            path: 'PickListV2_id',
+                            operator: 'EQ',
+                            value1: 'AMPS_TravelAgency'
+                        }
+                    }" selectedKey="{form>/TravelAgentCode}" editable="{visible>/table}" required="true" showSecondaryValues="true" change="onPickListValueComboBoxChange" visible="{visible>/agentresponse}">
+                            <core:ListItem additionalText="{externalCode}" key="{externalCode}" text="{label_en_US}" />
+                        </ComboBox>
+                       
+                        <Button text="{i18n>add}" icon="sap-icon://add" press="onAddButtonPress" visible="{visible>/complete}" />
+                    </Toolbar>
+                </headerToolbar>
+                <columns>
+                    <Column styleClass="border" visible="false">
+                        <Label text="{i18n>ID}" />
+                    </Column>
+                    <Column styleClass="border">
+                        <Label text="{i18n>TravelDate}" />
+                    </Column>
+                    <Column styleClass="border">
+                        <Label text="{i18n>TicketNo}" />
+                    </Column>
+                    <Column styleClass="border">
+                        <Label text="{i18n>Sector2}" />
+                    </Column>
+                    <Column styleClass="border">
+                        <Label text="{i18n>Airline}" />
+                    </Column>
+                    <Column styleClass="border">
+                        <Label text="{i18n>BaseFare}" />
+                    </Column>
+                    <Column styleClass="border">
+                        <Label text="{i18n>Taxes}" />
+                    </Column>
+                    <Column styleClass="border">
+                        <Label text="{i18n>GST}" />
+                    </Column>
+                    <Column styleClass="border">
+                        <Label text="{i18n>Currency}" />
+                    </Column>
+                    <Column styleClass="border">
+                        <Label text="{i18n>Total}" />
+                    </Column>
+                    <Column styleClass="border border2">
+                        <Label text="{i18n>Comments}" />
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem>
+                        <Text text="{Ticket>ID}" />
+                        <DatePicker value="{Ticket>TravelDate}" valueFormat="yyyy-MM-dd" editable="{visible>/table}" required="true" />
+                        <Input value="{Ticket>TicketNumber}" editable="{visible>/table}" required="true" />
+                        <Input value="{Ticket>SectorTicket}" editable="{visible>/table}" required="true" />
+                        <Input value="{Ticket>Airline}" editable="{visible>/table}" required="true" />
+                        <Input value="{Ticket>BaseAmount}" type="Number" editable="{visible>/table}" liveChange='onlivechangeAmount' required="true" />
+                        <Input value="{Ticket>TaxAmount}" type="Number" editable="{visible>/table}" liveChange='onlivechangeAmount' required="true" />
+                        <Input value="{Ticket>Gst}" type="Number" editable="{visible>/table}" liveChange='onlivechangeAmount' />
+                        <ComboBox selectedKey="{Ticket>Currency}" items="{
+                                    path: '/Currency',
+                                    length: 500
+                                }" editable="{visible>/table}" required="true">
+                            <core:ListItem additionalText="{externalName_en_US}" key="{code}" text="{code}" />
+                        </ComboBox>
+                        <Input value="{Ticket>Amount}" type="Number" editable="false" />
+                        <Input value="{Ticket>Sector}" editable="{visible>/table}" />
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </content>
+        <buttons>
+            <Button text="{i18n>edit}" press="onEditTravellerinfo" type="Emphasized" visible="{visible>/edittraveller}" />
+            <Button text="{i18n>edit}" press="onEditButtonPress" type="Emphasized" visible="{visible>/edit}" />
+            <Button text="{i18n>update}" press="onUpdateButtonPress" type="Emphasized" visible="{visible>/update}" />
+            <Button text="{i18n>create}" press="onCreatePress" type="Emphasized" visible="{visible>/create}" />
+            <Button text="{i18n>Review}" press="onRivewButtonPress" type="Emphasized" visible="{visible>/reviewbutton}" />
+            <Button text="{i18n>Complete}" press="onCompleteButtonPress" type="Emphasized" visible="{visible>/complete}" />
+            <Button text="{i18n>close}" type="Emphasized" press="onCloseButtonPress" />
+        </buttons>
+    </Dialog>
+</core:FragmentDefinition>

@@ -1,0 +1,7 @@
+<c:FragmentDefinition xmlns="sap.m"
+    xmlns:c="sap.ui.core">
+
+    <SelectDialog search="onDepSearch" confirm=".onDepConfirm" items="{tableModel>/emp}" multiSelect="false">
+        <StandardListItem title="{tableModel>departmentNav/results/0/name}" description="{tableModel>department}" type="Active" />
+    </SelectDialog>
+</c:FragmentDefinition>

@@ -1,0 +1,6 @@
+<c:FragmentDefinition xmlns="sap.m"
+  xmlns:c="sap.ui.core">
+  <SelectDialog confirm="SelectDialogConfirm" cancel="SelectDialogConfirm" search="onIoSelectDialogSearch" items="{ model: 'IO',path : '/results',filters:{path: 'InternalOrder', operator: 'NE', value1: ''}}">
+    <StandardListItem title="{IO>InternalOrder}" description="{IO>InternalOrderDescription}" type="Active"></StandardListItem>
+  </SelectDialog>
+</c:FragmentDefinition>

@@ -1,0 +1,162 @@
+<mvc:View xmlns:plugins="sap.m.plugins" controllerName="taqaadmintravelreq.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:f="sap.f"
+    xmlns:filterbar="sap.ui.comp.filterbar" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+    <Page id="page">
+
+        <filterbar:FilterBar id="filterbar" persistencyKey="myPersKey" useToolbar="false" search=".onSearch" showClearOnFB="true" clear="onFilterBarClear">
+
+
+            <filterbar:filterGroupItems>
+                <filterbar:FilterGroupItem name="TravelCategory" label="Travel Category" groupName="Group10" visibleInFilterBar="true">
+                    <filterbar:control>
+                       
+                        <MultiInput name="TravelCategory" id="travelcatSelect" showValueHelp="true" valueHelpRequest="onInputCatValueHelpRequest"></MultiInput>
+                       
+                    </filterbar:control>
+                </filterbar:FilterGroupItem>
+                <filterbar:FilterGroupItem name="EmployeeID" label="{i18n>EmployeeNo}" groupName="Group4" visibleInFilterBar="true">
+                    <filterbar:control>
+                       
+                        <MultiInput name="EmployeeID" id="idInputEmpID" showValueHelp="false">
+
+                        </MultiInput>
+                    </filterbar:control>
+                </filterbar:FilterGroupItem>
+                <filterbar:FilterGroupItem name="Status" label="{i18n>Status}" groupName="Group3" visibleInFilterBar="true">
+                    <filterbar:control>
+
+                        <MultiInput name="Status" id="idInputStatus" valueHelpRequest="onMultiInputValueHelpRequestStatus">
+
+                        </MultiInput>
+                    </filterbar:control>
+                </filterbar:FilterGroupItem>
+
+                <filterbar:FilterGroupItem name="CreationDate" label="{i18n>CreationDate}" groupName="Group6" visibleInFilterBar="true">
+                    <filterbar:control>
+
+
+                        <DatePicker name="CreationDate" id="idDatePicker" valueFormat="yyyy-MM-dd">
+
+                        </DatePicker>
+                    </filterbar:control>
+                </filterbar:FilterGroupItem>
+                <!-- <filterbar:FilterGroupItem name="EXTCode" label="{i18n>ExternalCode}" groupName="Group5" visibleInFilterBar="false">
+                    <filterbar:control>
+                       
+                        <MultiInput name="EXTCode" id="idExtcode" showValueHelp="false">
+
+                        </MultiInput>
+                    </filterbar:control>
+                </filterbar:FilterGroupItem> -->
+
+                <filterbar:FilterGroupItem name="Department" label="{i18n>Department}" groupName="Group1" visibleInFilterBar="false">
+                    <filterbar:control>
+                        <MultiInput name="Department" id="idMultiInputDepartment" valueHelpRequest="onMultiInputValueHelpRequest">
+
+                        </MultiInput>
+
+                    </filterbar:control>
+                </filterbar:FilterGroupItem>
+              
+                <filterbar:FilterGroupItem name="CompanyCode" label="{i18n>CompanyCode}" groupName="Group31" visibleInFilterBar="false">
+                    <filterbar:control>
+                        <MultiInput name="CompanyCode" id="idMultiInputCompanyCode" valueHelpRequest="onMultiInputValueHelpRequestCompanyCode"></MultiInput>
+                    </filterbar:control>
+                </filterbar:FilterGroupItem>
+                <filterbar:FilterGroupItem name="Location" label="{i18n>Location}" groupName="Group3" visibleInFilterBar="false">
+                    <filterbar:control>
+                        <MultiInput name="Location" id="idMultiInputLocation" valueHelpRequest="onMultiInputValueHelpRequestLocation"></MultiInput>
+                    </filterbar:control>
+                </filterbar:FilterGroupItem>
+
+            </filterbar:filterGroupItems>
+        </filterbar:FilterBar>
+      
+        <Table growing="true" mode="SingleSelectLeft" growingThreshold="10" growingScrollToLoad="true" alternateRowColors="true" id="idTravelDetailsTable" sticky="HeaderToolbar,ColumnHeaders" items="{path:'OJSON>/results',sorter:{path:'CreationDate',descending:true}}">
+            <headerToolbar>
+                <Toolbar >
+                    <Title text="Travel Requests"></Title>
+                    <ToolbarSpacer ></ToolbarSpacer>
+
+                    <Button text="{i18n>create}" type="Emphasized" icon="sap-icon://add" press="onCreateRequestButtonPress"></Button>
+                    <Button text="{i18n>reissurance}" type="Emphasized" press="onReissurance"></Button>
+
+                    <Button text="Cancel Request" type="Emphasized" press="onCancel"></Button>
+                </Toolbar>
+            </headerToolbar>
+            <dependents>
+                <plugins:ColumnResizer ></plugins:ColumnResizer>
+            </dependents>
+            <columns>
+                <Column visible="false" width="15rem">
+                    <Label text="{i18n>ID}"></Label>
+                </Column>
+                <Column styleClass="border">
+                    <Label text="{i18n>CreationDate}"></Label>
+                </Column>
+                <Column styleClass="border">
+                    <Label text="{i18n>TripNumber}"></Label>
+                </Column>
+                <Column styleClass="border">
+                    <Label text="{i18n>ReferenceNo}"></Label>
+                </Column>
+                <Column styleClass="border">
+                    <Label text="{i18n>Travelcat}"></Label>
+                </Column>
+                <Column styleClass="border">
+                    <Label text="{i18n>EmployeeNo}"></Label>
+                </Column>
+                <Column styleClass="border">
+                    <Label text="{i18n>EmployeeFullName}"></Label>
+                </Column>
+                <Column styleClass="border">
+                    <Label text="{i18n>CompanyName}"></Label>
+                </Column>
+                <Column styleClass="border">
+                    <Label text="{i18n>Department}"></Label>
+                </Column>
+               
+                <Column styleClass="border">
+                    <Label text="{i18n>HomeCountry}"></Label>
+                </Column>
+
+                <Column styleClass="border">
+                    <Label text="{i18n>EffectiveStartDate}"></Label>
+                </Column>
+                <Column styleClass="border">
+                    <Label text="{i18n>Status}"></Label>
+                </Column>
+                <Column styleClass="border" width="3em" hAlign="Center">
+                  
+                </Column>
+            </columns>
+            <items>
+                <ColumnListItem>
+                    <Text text="{OJSON>ID}"></Text>
+                    <Text text="{path:'OJSON>CreationDate',formatter:'.formatter.convert_DateTime'}"></Text>
+                    <Text text="{OJSON>TrfNumber}"></Text>
+                    <Text text="{OJSON>ReferenceNumber}"></Text>
+                  
+                    <Text text="{path:'OJSON>TravelCategory',formatter: '.formatter.getTCLabel'}"></Text>
+                    <Text text="{OJSON>EmployeeID}"></Text>
+                    <Text text="{OJSON>EmployeeName}"></Text>
+                    <Text text="{path:'OJSON>CompanyCode',formatter:'.formatter.getCompanyDescription'}"></Text>
+                    <Text text="{OJSON>Department}"></Text>
+                
+                    <Text text="{path:'OJSON>HomeCountry',formatter:'.formatter.getCountryLabel'}"></Text>
+
+                    <Text text="{path:'OJSON>EffectiveStartDate',formatter:'.formatter.convert_Dateformat'}"></Text>
+                  
+                    <ObjectStatus text="{OJSON>Status}" state="{path:'OJSON>Status', formatter: '.formatter.getStatusColor'}"></ObjectStatus>
+                    <Button icon="sap-icon://detail-view" press="onColumnListItemPress" tooltip="Travel Details"></Button>
+                </ColumnListItem>
+            </items>
+
+        </Table>
+    </Page>
+   
+
+</mvc:View>

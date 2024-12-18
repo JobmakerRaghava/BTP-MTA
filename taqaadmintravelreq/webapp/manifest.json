@@ -1,0 +1,259 @@
+{
+    "_version": "1.59.0",
+    "sap.app": {
+        "id": "taqaadmintravelreq",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "0.0.1"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "resources": "resources.json",
+        "sourceTemplate": {
+            "id": "@sap/generator-fiori:basic",
+            "version": "1.13.2",
+            "toolsId": "9b98b619-d52b-467e-8825-7559b03a4b84"
+        },
+        "crossNavigation": {
+            "inbounds": {
+                "TaqaAdminTravelReq-display": {
+                    "semanticObject": "TaqaAdminTravelReq",
+                    "action": "display",
+                    "title": "{{flpTitle}}",
+                    "signature": {
+                        "parameters": {},
+                        "additionalParameters": "allowed"
+                    }
+                }
+            }
+        },
+        "dataSources": {
+            "v2": {
+                "uri": "/odata/v2",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/v2/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "taqa-srv": {
+                "uri": "/v2/taqa-srv/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/taqa-srv/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "API_PROJECT_V2": {
+                "uri": "/sap/opu/odata/sap/API_PROJECT_V2",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/API_PROJECT_V2/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "API_COSTCENTER_SRV_Annotation": {
+                "uri": "/destinations/TSDCLNT100/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='API_COSTCENTER_ANNO_MDL',Version='0001')/$value/",
+                "type": "ODataAnnotation",
+                "settings": {
+                    "localUri": "localService/API_COSTCENTER_SRV/API_COSTCENTER_SRV_Annotation.xml"
+                }
+            },
+            "API_COSTCENTER_SRV": {
+                "uri": "/sap/opu/odata/sap/API_COSTCENTER_SRV",
+                "type": "OData",
+                "settings": {
+                    "annotations": [
+                        "API_COSTCENTER_SRV_Annotation"
+                    ],
+                    "localUri": "localService/API_COSTCENTER_SRV/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "API_INTERNALORDER_SRV_Annotation": {
+                "uri": "/destinations/TSDCLNT100/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='API_INTERNALORDER_ANNO_MDL',Version='0001')/$value/",
+                "type": "ODataAnnotation",
+                "settings": {
+                    "localUri": "localService/API_INTERNALORDER_SRV/API_INTERNALORDER_SRV_Annotation.xml"
+                }
+            },
+            "API_INTERNALORDER_SRV": {
+                "uri": "/sap/opu/odata/sap/API_INTERNALORDER_SRV",
+                "type": "OData",
+                "settings": {
+                    "annotations": [
+                        "API_INTERNALORDER_SRV_Annotation"
+                    ],
+                    "localUri": "localService/API_INTERNALORDER_SRV/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "flexEnabled": true,
+        "dependencies": {
+            "minUI5Version": "1.123.1",
+            "libs": {
+                "sap.m": {},
+                "sap.ui.core": {},
+                "sap.f": {},
+                "sap.suite.ui.generic.template": {},
+                "sap.ui.comp": {},
+                "sap.ui.generic.app": {},
+                "sap.ui.table": {},
+                "sap.ushell": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "taqaadmintravelreq.i18n.i18n"
+                }
+            },
+            "travelType": {
+                "type": "sap.ui.model.json.JSONModel",
+                "uri": "model/travelType.json"
+            },
+            "country": {
+                "type": "sap.ui.model.json.JSONModel",
+                "uri": "model/country.json"
+            },
+            "homeairport": {
+                "type": "sap.ui.model.json.JSONModel",
+                "uri": "model/homeairport.json"
+            },
+            "": {
+                "preload": true,
+                "dataSource": "v2",
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
+            },
+            "taqa-srv": {
+                "dataSource": "taqa-srv",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
+            },
+            "API_PROJECT_V2": {
+                "dataSource": "API_PROJECT_V2",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
+            },
+            "API_COSTCENTER_SRV": {
+                "dataSource": "API_COSTCENTER_SRV",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
+            },
+            "API_INTERNALORDER_SRV": {
+                "dataSource": "API_INTERNALORDER_SRV",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
+            }
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/style.css"
+                }
+            ]
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "async": true,
+                "viewPath": "taqaadmintravelreq.view",
+                "controlAggregation": "pages",
+                "controlId": "app",
+                "clearControlAggregation": false
+            },
+            "routes": [
+                {
+                    "name": "RouteView1",
+                    "pattern": ":?query:",
+                    "target": [
+                        "TargetView1"
+                    ]
+                }
+            ],
+            "targets": {
+                "TargetView1": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "page",
+                    "viewName": "View1"
+                }
+            }
+        },
+        "rootView": {
+            "viewName": "taqaadmintravelreq.view.App",
+            "type": "XML",
+            "async": true,
+            "id": "app"
+        }
+    },
+    "sap.cloud": {
+        "public": true,
+        "service": "taqaadmintravelreq"
+    }
+}

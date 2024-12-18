@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="https://taqtsdap01.hec.taqa.com.sa:443/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://taqtsdap01.hec.taqa.com.sa:443/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://taqtsdap01.hec.taqa.com.sa:443/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://taqtsdap01.hec.taqa.com.sa:443/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CODELIST',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.CodeList.v1" Alias="SAP__CodeList"/>
+        <edmx:Include Namespace="com.sap.vocabularies.CodeList.v1" Alias="CodeList"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://taqtsdap01.hec.taqa.com.sa:443/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://taqtsdap01.hec.taqa.com.sa:443/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://taqtsdap01.hec.taqa.com.sa:443/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_MEASURES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://taqtsdap01.hec.taqa.com.sa:443/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://taqtsdap01.hec.taqa.com.sa:443/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://taqtsdap01.hec.taqa.com.sa:443/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Validation.V1" Alias="Validation"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="cds_api_project_v2" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="ProjectType" sap:label="Project Details" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ProjectInternalID"/>
+                </Key>
+                <Property Name="ProjectInternalID" Type="Edm.String" Nullable="false" MaxLength="8" sap:display-format="NonNegative" sap:label="Project def." sap:quickinfo="Project (internal)"/>
+                <Property Name="ProjectExternalID" Type="Edm.String" MaxLength="24" sap:display-format="UpperCase" sap:label="Project Definition" sap:quickinfo="Project Number (External) Edited"/>
+                <Property Name="ProjectDescription" Type="Edm.String" MaxLength="40" sap:label="Project Name"/>
+                <Property Name="ProjectLangBsdDescription" Type="Edm.String" MaxLength="40" sap:label="ShortTxt" sap:quickinfo="Language-Dependent Short Text"/>
+                <Property Name="ProjectProfileCode" Type="Edm.String" MaxLength="7" sap:display-format="UpperCase" sap:label="Project Profile"/>
+                <Property Name="CompanyCode" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Company Code"/>
+                <Property Name="ControllingArea" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Controlling Area"/>
+                <Property Name="FunctionalArea" Type="Edm.String" MaxLength="16" sap:display-format="UpperCase" sap:label="Functional Area"/>
+                <Property Name="ProfitCenter" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Profit Center"/>
+                <Property Name="PlannedStartDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Start date" sap:quickinfo="Project planned start date"/>
+                <Property Name="PlannedEndDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Finish date" sap:quickinfo="Project planned finish date"/>
+                <Property Name="WorkCenterLocation" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Location"/>
+                <Property Name="TaxJurisdiction" Type="Edm.String" MaxLength="15" sap:display-format="UpperCase" sap:label="Tax Jurisdiction"/>
+                <Property Name="ResponsiblePerson" Type="Edm.String" MaxLength="8" sap:display-format="NonNegative" sap:label="No. of Person Resp." sap:quickinfo="Number of the Responsible Person (Project Manager)"/>
+                <Property Name="ResponsiblePersonName" Type="Edm.String" MaxLength="25" sap:label="Name of Person Resp." sap:quickinfo="Name of responsible person (Project manager)"/>
+                <Property Name="ApplicantCode" Type="Edm.String" MaxLength="8" sap:display-format="NonNegative" sap:label="Applicant no." sap:quickinfo="Applicant number"/>
+                <Property Name="ApplicantName" Type="Edm.String" MaxLength="25" sap:label="Applicant"/>
+                <Property Name="CreatedByUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Created By" sap:quickinfo="Name of Person Responsible for Creating the Object"/>
+                <Property Name="CreationDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Created on" sap:quickinfo="Date on which the record was created"/>
+                <Property Name="LastChangedByUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Changed By" sap:quickinfo="Name of Person Who Changed Object"/>
+                <Property Name="LastChangeDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Last Changed On" sap:quickinfo="Changed On"/>
+                <Property Name="BasicDatesLastScheduledDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Last basic sched." sap:quickinfo="Date of last scheduling of the overall network (basic dates)"/>
+                <Property Name="FcstdDatesLastScheduledDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Last forecast sched." sap:quickinfo="Date of last scheduling of the overall network (forecast)"/>
+                <Property Name="FactoryCalendar" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Calendar" sap:quickinfo="Appointments: Calendar"/>
+                <Property Name="SchedulingDurationUnit" Type="Edm.String" MaxLength="3" sap:label="Time Unit" sap:quickinfo="Time Unit for Execution Duration" sap:semantics="unit-of-measure"/>
+                <Property Name="ForecastedStartDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Forecast Start Date"/>
+                <Property Name="ForecastedEndDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Forecast Finish Date"/>
+                <Property Name="BusinessArea" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Business Area"/>
+                <Property Name="Plant" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Plant"/>
+                <Property Name="Currency" Type="Edm.String" MaxLength="5" sap:label="Project Currency" sap:quickinfo="WBS currency (project definition)" sap:semantics="currency-code"/>
+                <Property Name="BudgetProfile" Type="Edm.String" MaxLength="6" sap:display-format="UpperCase" sap:label="Budget Profile"/>
+                <Property Name="PlanningProfile" Type="Edm.String" MaxLength="6" sap:display-format="UpperCase" sap:label="Planning Profile"/>
+                <Property Name="InvestmentProfile" Type="Edm.String" MaxLength="6" sap:display-format="UpperCase" sap:label="Investment Profile" sap:quickinfo="Investment Measure Profile"/>
+                <Property Name="ProjInterestCalcProfile" Type="Edm.String" MaxLength="7" sap:display-format="UpperCase" sap:label="Interest Profile" sap:quickinfo="Interest Profile for Project/Order Interest Calculation"/>
+                <Property Name="ResultAnalysisInternalID" Type="Edm.String" MaxLength="6" sap:display-format="UpperCase" sap:label="Results analysis key" sap:quickinfo="Results Analysis Key"/>
+                <Property Name="ControllingObjectClass" Type="Edm.String" MaxLength="2" sap:label="Object Class"/>
+                <Property Name="NetworkProfile" Type="Edm.String" MaxLength="7" sap:display-format="UpperCase" sap:label="Network Profile"/>
+                <Property Name="WBSSchedulingProfile" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="WBS Scheduling Profile" sap:quickinfo="Profile for WBS scheduling"/>
+                <Property Name="PlanningMethForProjBasicDate" Type="Edm.String" MaxLength="1" sap:display-format="NonNegative" sap:label="Dates Planning Metho" sap:quickinfo="Planning method for project basic dates"/>
+                <Property Name="PlanningMethForProjFcstdDate" Type="Edm.String" MaxLength="1" sap:display-format="NonNegative" sap:label="Forecast Dates Planning Method" sap:quickinfo="Planning method for project forecast dates"/>
+                <Property Name="NetworkAssignmentType" Type="Edm.String" MaxLength="1" sap:display-format="NonNegative" sap:label="Network asst" sap:quickinfo="Network assignment"/>
+                <Property Name="WBSIsStatisticalWBSElement" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Statistical" sap:quickinfo="Statistical WBS element"/>
+                <Property Name="WBSIsMarkedForIntegratedPlng" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Integrated Planning" sap:quickinfo="Indicator for Integrated Planning"/>
+                <Property Name="ProjectHasOwnStock" Type="Edm.Boolean" sap:label="Project Stock"/>
+                <Property Name="InventorySpecialStockValnType" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Spec. stk valuation" sap:quickinfo="Valuation of Special Stock"/>
+                <Property Name="WBSIsMarkedForAutomReqmtGrpg" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Auto.rqmnts grp." sap:quickinfo="Indicator: Automatic requirements grouping"/>
+                <Property Name="SalesOrganization" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Sales Organization"/>
+                <Property Name="DistributionChannel" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Distribution Channel"/>
+                <Property Name="Language" Type="Edm.String" MaxLength="2" sap:label="Language Key"/>
+                <Property Name="WBSElementExternalID" Type="Edm.String" MaxLength="24" sap:display-format="UpperCase" sap:label="Mask short ID" sap:quickinfo="Selection mask for WBS element short IDs"/>
+                <Property Name="Division" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Division"/>
+                <Property Name="DynItemProcessorPrfl" Type="Edm.String" MaxLength="8" sap:display-format="UpperCase" sap:label="DIP Profile" sap:quickinfo="Dynamic Item Processor Profile"/>
+                <Property Name="JointVenture" Type="Edm.String" MaxLength="6" sap:display-format="UpperCase" sap:label="Joint venture"/>
+                <Property Name="JointVentureCostRecoveryCode" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Recovery Indicator"/>
+                <Property Name="JointVentureEquityType" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Equity type"/>
+                <Property Name="JointVentureObjectType" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="JV Object Type" sap:quickinfo="Joint Venture Object Type"/>
+                <Property Name="JntIntrstBillgClass" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="JIB/JIBE Class"/>
+                <Property Name="JntIntrstBillgSubClass" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase" sap:label="JIB/JIBE Subclass A"/>
+                <Property Name="StatusProfile" Type="Edm.String" MaxLength="8" sap:display-format="UpperCase" sap:label="PD status profile" sap:quickinfo="Status profile for project definition"/>
+                <Property Name="WBSStatusProfile" Type="Edm.String" MaxLength="8" sap:display-format="UpperCase" sap:label="WBS status profile" sap:quickinfo="Status profile for WBS element"/>
+                <Property Name="SimulationProfile" Type="Edm.String" MaxLength="7" sap:display-format="UpperCase" sap:label="Simulation profile"/>
+                <Property Name="SchedulingScenario" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Scheduling scenario"/>
+                <Property Name="DistributionProfile" Type="Edm.String" MaxLength="6" sap:display-format="UpperCase" sap:label="Distribution profile"/>
+                <Property Name="PartnerDeterminationProcedure" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="PartnerDetermProced." sap:quickinfo="Partner Determination Procedure"/>
+                <Property Name="FreeDefinedTableFieldSemantic" Type="Edm.String" MaxLength="7" sap:display-format="UpperCase" sap:label="Field key" sap:quickinfo="Key word ID for user-defined fields"/>
+                <Property Name="FreeDefinedAttribute01" Type="Edm.String" MaxLength="20" sap:label="Ufield 1 WBS element" sap:quickinfo="1st user field for 20 characters - WBS element-"/>
+                <Property Name="FreeDefinedAttribute02" Type="Edm.String" MaxLength="20" sap:label="Ufield 2 WBS element" sap:quickinfo="2nd user field 20 digits - WBS element"/>
+                <Property Name="FreeDefinedAttribute03" Type="Edm.String" MaxLength="10" sap:label="Ufield 3 WBS element" sap:quickinfo="3rd user-defined field 10 digits -WBS element"/>
+                <Property Name="FreeDefinedAttribute04" Type="Edm.String" MaxLength="10" sap:label="Ufield 4 WBS element" sap:quickinfo="4th user-defined field 10 digits -WBS element"/>
+                <Property Name="FreeDefinedQuantity1" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="FreeDefinedQuantity1Unit" sap:label="Ufield Quanty 1 WBS" sap:quickinfo="1st user-defined field for quantity(length 10,3) WBS element"/>
+                <Property Name="FreeDefinedQuantity1Unit" Type="Edm.String" MaxLength="3" sap:label="UF unit 1 WBS" sap:quickinfo="1st user defined field for quantity field unit - WBS element" sap:semantics="unit-of-measure"/>
+                <Property Name="FreeDefinedQuantity2" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="FreeDefinedQuantity2Unit" sap:label="UF Qty 2 WBS" sap:quickinfo="2nd use field for quantity (length 10,3) WBS element"/>
+                <Property Name="FreeDefinedQuantity2Unit" Type="Edm.String" MaxLength="3" sap:label="UF unit 2 WBS" sap:quickinfo="2nd user defined field for quantity field unit - WBS element" sap:semantics="unit-of-measure"/>
+                <Property Name="FreeDefinedAmount1" Type="Edm.Decimal" Precision="10" Scale="3" sap:unit="FreeDefinedAmount1Currency" sap:variable-scale="true" sap:label="User field value 1 for Project"/>
+                <Property Name="FreeDefinedAmount1Currency" Type="Edm.String" MaxLength="5" sap:label="Ufield unit 1 WBS" sap:quickinfo="1st user defined field for value field unit - WBS element" sap:semantics="currency-code"/>
+                <Property Name="FreeDefinedAmount2" Type="Edm.Decimal" Precision="10" Scale="3" sap:unit="FreeDefinedAmount2Currency" sap:variable-scale="true" sap:label="User field value 2 for Project"/>
+                <Property Name="FreeDefinedAmount2Currency" Type="Edm.String" MaxLength="5" sap:label="Ufield unit 2 WBS" sap:quickinfo="2nd user defined field for value field unit - WBS element" sap:semantics="currency-code"/>
+                <Property Name="FreeDefinedDate1" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Ufield date 1 WBS" sap:quickinfo="1st user field for date -WBS element"/>
+                <Property Name="FreeDefinedDate2" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Ufield date 2 WBS" sap:quickinfo="2nd user field for date -WBS element"/>
+                <Property Name="FreeDefinedIndicator1" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Ufield Ind. 1 WBS" sap:quickinfo="1st user field for 'Ind. for evaluations' WBS elem."/>
+                <Property Name="FreeDefinedIndicator2" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Ufield Ind. 2 WBS" sap:quickinfo="2nd user field for 'Indicator for eval.s' WBS elemnt"/>
+                <NavigationProperty Name="to_WBSElement" Relationship="cds_api_project_v2.assoc_23D39A1CE34C88317921002070C6B985" FromRole="FromRole_assoc_23D39A1CE34C88317921002070C6B985" ToRole="ToRole_assoc_23D39A1CE34C88317921002070C6B985"/>
+            </EntityType>
+            <EntityType Name="WBSElementType" sap:label="WBS Element Details" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="WBSElementInternalID"/>
+                </Key>
+                <Property Name="WBSElementInternalID" Type="Edm.String" Nullable="false" MaxLength="8" sap:display-format="NonNegative" sap:label="WBS Internal ID" sap:quickinfo="WBS Element"/>
+                <Property Name="WBSElementExternalID" Type="Edm.String" MaxLength="24" sap:display-format="UpperCase" sap:label="WBS Element" sap:quickinfo="Work Breakdown Structure Element (WBS Element) Edited"/>
+                <Property Name="WBSElementShortID" Type="Edm.String" MaxLength="16" sap:display-format="UpperCase" sap:label="Short ID (WBS elem)" sap:quickinfo="WBS element short identification"/>
+                <Property Name="WBSDescription" Type="Edm.String" MaxLength="40" sap:label="WBS Element Name"/>
+                <Property Name="WBSElementLangBsdDescription" Type="Edm.String" MaxLength="40" sap:label="ShortTxt" sap:quickinfo="Language-Dependent Short Text"/>
+                <Property Name="ResponsiblePerson" Type="Edm.String" MaxLength="8" sap:display-format="NonNegative" sap:label="No. of Person Resp." sap:quickinfo="Number of the Responsible Person (Project Manager)"/>
+                <Property Name="ResponsiblePersonName" Type="Edm.String" MaxLength="25" sap:label="Name of Person Resp." sap:quickinfo="Name of responsible person (Project manager)"/>
+                <Property Name="ApplicantCode" Type="Edm.String" MaxLength="8" sap:display-format="NonNegative" sap:label="Applicant no." sap:quickinfo="Applicant number"/>
+                <Property Name="ApplicantName" Type="Edm.String" MaxLength="25" sap:label="Applicant"/>
+                <Property Name="CompanyCode" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Company Code"/>
+                <Property Name="BusinessArea" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Business Area"/>
+                <Property Name="ControllingArea" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Controlling Area"/>
+                <Property Name="FunctionalArea" Type="Edm.String" MaxLength="16" sap:display-format="UpperCase" sap:label="Functional Area"/>
+                <Property Name="ProfitCenter" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Profit Center"/>
+                <Property Name="ResponsibleCostCenter" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Responsible Cost Center"/>
+                <Property Name="Plant" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Plant"/>
+                <Property Name="FreeDefinedTableFieldSemantic" Type="Edm.String" MaxLength="7" sap:display-format="UpperCase" sap:label="Field key" sap:quickinfo="Key word ID for user-defined fields"/>
+                <Property Name="FactoryCalendar" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Calendar"/>
+                <Property Name="PriorityCode" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Priority"/>
+                <Property Name="Currency" Type="Edm.String" MaxLength="5" sap:label="Currency" sap:quickinfo="WBS element currency" sap:semantics="currency-code"/>
+                <Property Name="CostingSheet" Type="Edm.String" MaxLength="6" sap:display-format="UpperCase" sap:label="Costing Sheet"/>
+                <Property Name="CostCenter" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="CCtr posted actual" sap:quickinfo="Cost center to which costs are actually posted"/>
+                <Property Name="RequestingCostCenter" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Requesting Cost Center" sap:quickinfo="Requesting cost center"/>
+                <Property Name="ProjectInternalID" Type="Edm.String" MaxLength="8" sap:display-format="NonNegative" sap:label="Project def." sap:quickinfo="Project (internal)"/>
+                <Property Name="WBSElementIsBillingElement" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Billing Element" sap:quickinfo="Indicator: Billing element"/>
+                <Property Name="InvestmentProfile" Type="Edm.String" MaxLength="6" sap:display-format="UpperCase" sap:label="Investment Profile" sap:quickinfo="Investment Measure Profile"/>
+                <Property Name="WBSIsStatisticalWBSElement" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Statistical" sap:quickinfo="Statistical WBS element"/>
+                <Property Name="WBSIsAccountAssignmentElement" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Account Assignment Element" sap:quickinfo="Indicator: Account assignment element"/>
+                <Property Name="ProjectType" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Project Type"/>
+                <Property Name="WBSElementIsPlanningElement" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Planning Element" sap:quickinfo="Indicator: Planning element"/>
+                <Property Name="WorkCenterLocation" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Location"/>
+                <Property Name="ResultAnalysisInternalID" Type="Edm.String" MaxLength="6" sap:display-format="UpperCase" sap:label="Results analysis key" sap:quickinfo="Results Analysis Key"/>
+                <Property Name="TaxJurisdiction" Type="Edm.String" MaxLength="15" sap:display-format="UpperCase" sap:label="Tax Jurisdiction"/>
+                <Property Name="FunctionalLocation" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Functional location"/>
+                <Property Name="CreatedByUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Created By" sap:quickinfo="Name of Person Responsible for Creating the Object"/>
+                <Property Name="CreationDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Created on" sap:quickinfo="Date on which the record was created"/>
+                <Property Name="LastChangedByUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Changed By" sap:quickinfo="Name of Person Who Changed Object"/>
+                <Property Name="LastChangeDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Changed on" sap:quickinfo="Date on which object was last changed"/>
+                <Property Name="RespCostCenterControllingArea" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="CA resp. cost center" sap:quickinfo="Responsible Cost Center Controlling Area"/>
+                <Property Name="WBSIsMarkedForIntegratedPlng" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Integrated Planning" sap:quickinfo="Indicator 'Integrated Planning' for Cost Object Category"/>
+                <Property Name="Equipment" Type="Edm.String" MaxLength="18" sap:display-format="UpperCase" sap:label="Equipment" sap:quickinfo="Equipment Number"/>
+                <Property Name="ProjectObjectChangeNumber" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Change Number"/>
+                <Property Name="WBSElementHierarchyLevel" Type="Edm.Byte" sap:label="Level" sap:quickinfo="Level in Project Hierarchy"/>
+                <Property Name="OverheadCode" Type="Edm.String" MaxLength="6" sap:display-format="UpperCase" sap:label="Overhead Key"/>
+                <Property Name="ReferenceElement" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Reference Element" sap:quickinfo="Reference Element PM/PS"/>
+                <Property Name="ProjInterestCalcProfile" Type="Edm.String" MaxLength="7" sap:display-format="UpperCase" sap:label="Interest Profile" sap:quickinfo="Interest Profile for Project/Order Interest Calculation"/>
+                <Property Name="ProgressAnlysAggregationWeight" Type="Edm.Decimal" Precision="8" Scale="0" sap:label="POC Weight" sap:quickinfo="Aggregation weight for POC (PS progress)"/>
+                <Property Name="ReqgCostCenterControllingArea" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="CA req. cost center" sap:quickinfo="Controlling area of requesting cost center"/>
+                <Property Name="Language" Type="Edm.String" MaxLength="2" sap:label="Language Key"/>
+                <Property Name="IsMarkedForDeletion" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Flagged for Deletion" sap:quickinfo="Deletion Indicator"/>
+                <Property Name="WBSElementIsGroupingWBSElement" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Grouping WBS element" sap:quickinfo="Indicator: Grouping WBS element"/>
+                <Property Name="WBSElementIsUsedInProjSmmry" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Proj. summarization" sap:quickinfo="Indicator: WBS element used in project summarization"/>
+                <Property Name="CostingVariant" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Costing Variant"/>
+                <Property Name="BasicStartDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Start Date" sap:quickinfo="WBS element: Basic start date"/>
+                <Property Name="ForecastedStartDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Forecast Start Date" sap:quickinfo="Forecast Start Date of WBS Element"/>
+                <Property Name="ActualStartDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Actual Start Date" sap:quickinfo="Actual start date for the WBS element"/>
+                <Property Name="BasicEndDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Finish Date" sap:quickinfo="WBS element: Basic finish date"/>
+                <Property Name="ForecastedEndDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Forecast Finish Date" sap:quickinfo="Forecast Finish Date of WBS Element"/>
+                <Property Name="ActualEndDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Actual Finish Date" sap:quickinfo="Actual finish date of the WBS element"/>
+                <Property Name="BasicDuration" Type="Edm.Decimal" Precision="5" Scale="1" sap:unit="BasicDurationUnit" sap:label="Duration" sap:quickinfo="Length (duration) of the basic dates in the WBS element"/>
+                <Property Name="BasicDurationUnit" Type="Edm.String" MaxLength="3" sap:label="Duration Unit" sap:quickinfo="Unit for duration of basic WBS element dates" sap:semantics="unit-of-measure"/>
+                <Property Name="ForecastedDuration" Type="Edm.Decimal" Precision="5" Scale="1" sap:unit="ForecastedDurationUnit" sap:label="Forecast Duration" sap:quickinfo="Forecasted length (duration) of the WBS element"/>
+                <Property Name="ForecastedDurationUnit" Type="Edm.String" MaxLength="3" sap:label="Forecast Duration Unit" sap:quickinfo="Unit for duration of WBS element planned dates" sap:semantics="unit-of-measure"/>
+                <Property Name="ActualDuration" Type="Edm.Decimal" Precision="5" Scale="1" sap:unit="ActualDurationUnit" sap:label="Actual Duration" sap:quickinfo="Actual length (duration) of the WBS element"/>
+                <Property Name="ActualDurationUnit" Type="Edm.String" MaxLength="3" sap:label="Unit of measure" sap:quickinfo="Unit for duration of actual WBS element dates" sap:semantics="unit-of-measure"/>
+                <Property Name="SchedldBasicEarliestStartDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Earliest Start Date" sap:quickinfo="Earliest scheduled start date (Basic)"/>
+                <Property Name="ScheduledBasicLatestEndDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Latest Finish Date" sap:quickinfo="Latest scheduled finish date (basic)"/>
+                <Property Name="SchedldFcstdEarliestStartDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Earliest Forecast Start Date" sap:quickinfo="Scheduled start date (Forecast)"/>
+                <Property Name="LatestSchedldFcstdEndDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Latest Forecast Finish Date" sap:quickinfo="Latest scheduled  finish date (Forecast)"/>
+                <Property Name="TentativeActualStartDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Actual Tentative Start Date" sap:quickinfo="Tentative actual start date for WBS element"/>
+                <Property Name="TentativeActualEndDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Actual Tentative Finish Date" sap:quickinfo="Tentative actual finish date for WBS element"/>
+                <Property Name="JointVenture" Type="Edm.String" MaxLength="6" sap:display-format="UpperCase" sap:label="Joint venture"/>
+                <Property Name="JointVentureCostRecoveryCode" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Recovery Indicator"/>
+                <Property Name="JointVentureEquityType" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Equity type"/>
+                <Property Name="JntVntrProjectType" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="JV Object Type" sap:quickinfo="Joint Venture Object Type"/>
+                <Property Name="JntIntrstBillgClass" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="JIB/JIBE Class"/>
+                <Property Name="JntIntrstBillgSubClass" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase" sap:label="JIB/JIBE Subclass A"/>
+                <Property Name="SubProject" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Subproject" sap:quickinfo="Sub-project in work breakdown structure"/>
+                <Property Name="InvestmentReason" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Investment Reason" sap:quickinfo="Reason for Investment"/>
+                <Property Name="InvestmentScale" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Scale" sap:quickinfo="Scale of investment objects"/>
+                <Property Name="EnvironmentalInvestmentReason" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase" sap:label="Envir. Investment" sap:quickinfo="Reason for Environmental Investment"/>
+                <Property Name="RequestingCompanyCode" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Requesting co. code" sap:quickinfo="Requesting company code"/>
+                <Property Name="NetworkAssignmentType" Type="Edm.String" MaxLength="1" sap:display-format="NonNegative" sap:label="Network asst" sap:quickinfo="Network assignment"/>
+                <Property Name="CostObject" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Cost Object"/>
+                <Property Name="BillingPlan" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Billing plan no" sap:quickinfo="Billing plan number / invoicing plan number"/>
+                <Property Name="ControllingObjectClass" Type="Edm.String" MaxLength="2" sap:label="Object Class"/>
+                <Property Name="WBSElementParentInternalID" Type="Edm.String" MaxLength="8" sap:display-format="NonNegative" sap:label="Superior" sap:quickinfo="Number of the superior WBS element"/>
+                <Property Name="WBSElementChildInternalID" Type="Edm.String" MaxLength="8" sap:display-format="NonNegative" sap:label="1st subordinate" sap:quickinfo="Number of the 1. subordinate WBS element"/>
+                <Property Name="LeftSiblingWBSElmntInternalID" Type="Edm.String" MaxLength="8" sap:display-format="NonNegative" sap:label="Left adjacent" sap:quickinfo="Number of the left adjacent position in WBS"/>
+                <Property Name="RightSiblingWBSElmntInternalID" Type="Edm.String" MaxLength="8" sap:display-format="NonNegative" sap:label="Right adjacent" sap:quickinfo="Number of the right adjacent position in WBS"/>
+                <Property Name="FreeDefinedAttribute01" Type="Edm.String" MaxLength="20" sap:label="Ufield 1 WBS element" sap:quickinfo="1st user field for 20 characters - WBS element-"/>
+                <Property Name="FreeDefinedAttribute02" Type="Edm.String" MaxLength="20" sap:label="Ufield 2 WBS element" sap:quickinfo="2nd user field 20 digits - WBS element"/>
+                <Property Name="FreeDefinedAttribute03" Type="Edm.String" MaxLength="10" sap:label="Ufield 3 WBS element" sap:quickinfo="3rd user-defined field 10 digits -WBS element"/>
+                <Property Name="FreeDefinedAttribute04" Type="Edm.String" MaxLength="10" sap:label="Ufield 4 WBS element" sap:quickinfo="4th user-defined field 10 digits -WBS element"/>
+                <Property Name="FreeDefinedQuantity1" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="FreeDefinedQuantity1Unit" sap:label="Ufield Quanty 1 WBS" sap:quickinfo="1st user-defined field for quantity(length 10,3) WBS element"/>
+                <Property Name="FreeDefinedQuantity1Unit" Type="Edm.String" MaxLength="3" sap:label="UF unit 1 WBS" sap:quickinfo="1st user defined field for quantity field unit - WBS element" sap:semantics="unit-of-measure"/>
+                <Property Name="FreeDefinedQuantity2" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="FreeDefinedQuantity2Unit" sap:label="UF Qty 2 WBS" sap:quickinfo="2nd use field for quantity (length 10,3) WBS element"/>
+                <Property Name="FreeDefinedQuantity2Unit" Type="Edm.String" MaxLength="3" sap:label="UF unit 2 WBS" sap:quickinfo="2nd user defined field for quantity field unit - WBS element" sap:semantics="unit-of-measure"/>
+                <Property Name="FreeDefinedAmount1" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="FreeDefinedAmount1Currency" sap:variable-scale="true" sap:label="Ufield value 1 WBS" sap:quickinfo="1st user field for values (length 10,2) WBS element"/>
+                <Property Name="FreeDefinedAmount1Currency" Type="Edm.String" MaxLength="5" sap:label="Ufield unit 1 WBS" sap:quickinfo="1st user defined field for value field unit - WBS element" sap:semantics="currency-code"/>
+                <Property Name="FreeDefinedAmount2" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="FreeDefinedAmount1Currency" sap:variable-scale="true" sap:label="Ufield value 2 WBS" sap:quickinfo="2nd user field for values (length 10,2) WBS element"/>
+                <Property Name="FreeDefinedAmount2Currency" Type="Edm.String" MaxLength="5" sap:label="Ufield unit 2 WBS" sap:quickinfo="2nd user defined field for value field unit - WBS element" sap:semantics="currency-code"/>
+                <Property Name="FreeDefinedDate1" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Ufield date 1 WBS" sap:quickinfo="1st user field for date -WBS element"/>
+                <Property Name="FreeDefinedDate2" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Ufield date 2 WBS" sap:quickinfo="2nd user field for date -WBS element"/>
+                <Property Name="FreeDefinedIndicator1" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Ufield Ind. 1 WBS" sap:quickinfo="1st user field for 'Ind. for evaluations' WBS elem."/>
+                <Property Name="FreeDefinedIndicator2" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Ufield Ind. 2 WBS" sap:quickinfo="2nd user field for 'Indicator for eval.s' WBS elemnt"/>
+                <NavigationProperty Name="to_Project" Relationship="cds_api_project_v2.assoc_8A336DD76CCBED66ED60BBD3DEFE057F" FromRole="FromRole_assoc_8A336DD76CCBED66ED60BBD3DEFE057F" ToRole="ToRole_assoc_8A336DD76CCBED66ED60BBD3DEFE057F"/>
+            </EntityType>
+            <Association Name="assoc_23D39A1CE34C88317921002070C6B985" sap:content-version="1">
+                <End Type="cds_api_project_v2.ProjectType" Multiplicity="1" Role="FromRole_assoc_23D39A1CE34C88317921002070C6B985">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <End Type="cds_api_project_v2.WBSElementType" Multiplicity="*" Role="ToRole_assoc_23D39A1CE34C88317921002070C6B985"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_assoc_23D39A1CE34C88317921002070C6B985">
+                        <PropertyRef Name="ProjectInternalID"/>
+                    </Principal>
+                    <Dependent Role="ToRole_assoc_23D39A1CE34C88317921002070C6B985">
+                        <PropertyRef Name="ProjectInternalID"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_8A336DD76CCBED66ED60BBD3DEFE057F" sap:content-version="1">
+                <End Type="cds_api_project_v2.WBSElementType" Multiplicity="1" Role="FromRole_assoc_8A336DD76CCBED66ED60BBD3DEFE057F"/>
+                <End Type="cds_api_project_v2.ProjectType" Multiplicity="1" Role="ToRole_assoc_8A336DD76CCBED66ED60BBD3DEFE057F"/>
+            </Association>
+            <EntityContainer Name="cds_api_project_v2_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="Project" EntityType="cds_api_project_v2.ProjectType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="WBSElement" EntityType="cds_api_project_v2.WBSElementType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <AssociationSet Name="assoc_8A336DD76CCBED66ED60BBD3DEFE057F" Association="cds_api_project_v2.assoc_8A336DD76CCBED66ED60BBD3DEFE057F" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="WBSElement" Role="FromRole_assoc_8A336DD76CCBED66ED60BBD3DEFE057F"/>
+                    <End EntitySet="Project" Role="ToRole_assoc_8A336DD76CCBED66ED60BBD3DEFE057F"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_23D39A1CE34C88317921002070C6B985" Association="cds_api_project_v2.assoc_23D39A1CE34C88317921002070C6B985" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="Project" Role="FromRole_assoc_23D39A1CE34C88317921002070C6B985"/>
+                    <End EntitySet="WBSElement" Role="ToRole_assoc_23D39A1CE34C88317921002070C6B985"/>
+                </AssociationSet>
+            </EntityContainer>
+            <Annotation Term="Core.SchemaVersion" String="1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <Annotations Target="cds_api_project_v2.cds_api_project_v2_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ApplyMultiUnitBehaviorForSortingAndFiltering" Bool="true"/>
+            </Annotations>
+            <Annotations Target="cds_api_project_v2.cds_api_project_v2_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Org.OData.Capabilities.V1.BatchSupport">
+                    <Record Type="Org.OData.Capabilities.V1.BatchSupportType">
+                        <PropertyValue Property="ReferencesAcrossChangeSetsSupported" Bool="true"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <atom:link rel="self" href="https://taqtsdap01.hec.taqa.com.sa:443/sap/opu/odata/sap/API_PROJECT_V2/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="https://taqtsdap01.hec.taqa.com.sa:443/sap/opu/odata/sap/API_PROJECT_V2/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

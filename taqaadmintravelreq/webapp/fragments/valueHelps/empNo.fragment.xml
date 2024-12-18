@@ -1,0 +1,11 @@
+<c:FragmentDefinition xmlns="sap.m"
+    xmlns:c="sap.ui.core">
+    <SelectDialog  confirm="onPerPersonSelectDialogConfirm" cancel="onPerPersonSelectDialogConfirm" search="onPerPersonSelectDialogSearch" items="{ path : '/results',model:'AMPSEMP',
+         sorter : {
+            path : 'userId' 
+         }
+         }">
+        <StandardListItem title="{AMPSEMP>userId}"  type="Active"></StandardListItem>
+    </SelectDialog>
+<!-- description="{AMPSEMP>userNav/defaultFullName}" -->
+</c:FragmentDefinition>

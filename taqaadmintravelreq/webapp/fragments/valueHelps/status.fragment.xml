@@ -1,0 +1,13 @@
+<c:FragmentDefinition xmlns="sap.m"
+    xmlns:c="sap.ui.core">
+
+    <SelectDialog confirm="onStatusSelectDialogConfirm" cancel="onStatusSelectDialogConfirm" search="onStatusSelectDialogSearchTC" multiSelect="true">
+        <StandardListItem title="Open" type="Active"></StandardListItem>
+        <StandardListItem title="Reviewed" type="Active"></StandardListItem>
+        <StandardListItem title="Initiated to Travel Team" type="Active"></StandardListItem>
+        <StandardListItem title="LPO processed by Focal Person" type="Active"></StandardListItem>
+         <StandardListItem title="Reissued" type="Active"></StandardListItem>
+           <StandardListItem title="Cancelled" type="Active"></StandardListItem>
+
+    </SelectDialog>
+</c:FragmentDefinition>

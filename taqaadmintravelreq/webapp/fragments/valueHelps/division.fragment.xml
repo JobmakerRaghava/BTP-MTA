@@ -1,0 +1,7 @@
+<c:FragmentDefinition xmlns="sap.m"
+    xmlns:c="sap.ui.core">
+    
+    <SelectDialog search="onFODivisionTableSelectDialogSearch" confirm=".onFODivisionTableSelectDialogConfirm" cancel=".onFODivisionTableSelectDialogConfirm" items="{tableModel>/division}" multiSelect="true">
+        <StandardListItem title="{tableModel>divisionNav/results/0/name}" description="{tableModel>division}" type="Active" />
+    </SelectDialog>
+</c:FragmentDefinition>

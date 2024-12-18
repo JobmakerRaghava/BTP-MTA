@@ -1,0 +1,6 @@
+<c:FragmentDefinition xmlns="sap.m"
+  xmlns:c="sap.ui.core">
+  <SelectDialog confirm="SelectDialogConfirm" cancel="SelectDialogConfirm" search="onCCSelectDialogSearch" items="{ model: 'CC',path : '/results',filters:{path: 'CostCenter', operator: 'NE', value1: ''}}">
+    <StandardListItem title="{CC>to_Text/results/0/CostCenter}" description="{CC>to_Text/results/0/CostCenterDescription}" type="Active"></StandardListItem>
+  </SelectDialog>
+</c:FragmentDefinition>

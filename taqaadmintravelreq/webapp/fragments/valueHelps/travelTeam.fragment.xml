@@ -1,0 +1,10 @@
+<c:FragmentDefinition xmlns="sap.m"
+    xmlns:c="sap.ui.core">
+   
+    
+
+     <SelectDialog confirm="onAgentSelectDialogConfirm" cancel="onAgentSelectDialogConfirm" search="onAgentSelectDialogSearch" items="{TravelTeam>/}">
+        <StandardListItem title="{TravelTeam>personNav/displayName}" description="{TravelTeam>personNav/email}" type="Active"></StandardListItem>
+    </SelectDialog>
+
+</c:FragmentDefinition>

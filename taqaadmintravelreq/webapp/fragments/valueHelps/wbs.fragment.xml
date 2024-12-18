@@ -1,0 +1,8 @@
+<c:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:c="sap.ui.core"
+>
+  <SelectDialog confirm="SelectDialogConfirm" cancel="SelectDialogConfirm" search="onWbsSelectDialogSearch" items="{ model: 'WBS',path : '/results'}">
+        <StandardListItem title="{WBS>WBSElementExternalID}" description="{WBS>WBSDescription}"  type="Active"></StandardListItem>
+    </SelectDialog>
+</c:FragmentDefinition>

@@ -1,0 +1,9 @@
+<c:FragmentDefinition xmlns="sap.m"
+    xmlns:c="sap.ui.core">
+
+    <SelectDialog search="onFOLocationTableSelectDialogSearch" confirm=".onFOLocationTableSelectDialogConfirm" cancel=".onFOLocationTableSelectDialogConfirm" items="{tableModel>/location}" multiSelect="true">
+        <StandardListItem title="{tableModel>locationNav/results/0/name}" description="{tableModel>location}" type="Active" />
+    </SelectDialog>
+
+   
+</c:FragmentDefinition>

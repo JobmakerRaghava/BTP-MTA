@@ -1,0 +1,14 @@
+<c:FragmentDefinition xmlns="sap.m"
+    xmlns:c="sap.ui.core">
+
+    <SelectDialog confirm="onSelectDialogConfirm" cancel="onSelectDialogConfirm" search="onSelectDialogSearchTC" multiSelect="true">
+        <StandardListItem title="Rotation" description="RL" type="Active"></StandardListItem>
+        <StandardListItem title="Business Travel" description="BU" type="Active"></StandardListItem>
+        <StandardListItem title="Training" description="TR" type="Active"></StandardListItem>
+        <StandardListItem title="Annual Leave" description="AL" type="Active"></StandardListItem>
+        <StandardListItem title="Joining Travel" description="JN" type="Active"></StandardListItem>
+        <StandardListItem title="Separation Travel" description="SP" type="Active"></StandardListItem>
+        <StandardListItem title="Miscellaneous Travel" description="MS" type="Active"></StandardListItem>
+        <StandardListItem title="Job Travel" description="JT" type="Active"></StandardListItem>
+    </SelectDialog>
+</c:FragmentDefinition>

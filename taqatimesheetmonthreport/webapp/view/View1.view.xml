@@ -1,0 +1,753 @@
+<mvc:View controllerName="taqa.taqatimesheetmonthreport.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:table="sap.ui.table"
+    xmlns:filterbar="sap.ui.comp.filterbar">
+
+    <Page id="idPage">
+        <filterbar:FilterBar id="filterbar" search=".onSearch" showClearOnFB="true" clear="onFilterBarClear" useToolbar="false">
+            <filterbar:filterGroupItems>
+                <filterbar:FilterGroupItem name="Date" label="Date" groupName="Group10" visibleInFilterBar="true">
+                    <filterbar:control>
+                        <DateRangeSelection required="true" id="idDatePicker" name="Date" displayFormat="dd-MM-yyyy" valueFormat="dd-MM-yyyy"/>
+                    </filterbar:control>
+                </filterbar:FilterGroupItem>
+
+                <filterbar:FilterGroupItem name="Allowance" label="Allowance" groupName="Group10" visibleInFilterBar="true">
+                    <filterbar:control>
+                        <MultiComboBox id="allowanceSelect" selectionChange="onAllowanceChange" showSelectAll="true" items="{allowanceModel>/Allowances}">
+                            <core:Item key="{allowanceModel>key}" text="{allowanceModel>text}" />
+                        </MultiComboBox>
+                    </filterbar:control>
+                </filterbar:FilterGroupItem>
+
+                <filterbar:FilterGroupItem name="EmployeeID" label="Employee No" groupName="Group1" visibleInFilterBar="true">
+                    <filterbar:control>
+                        <MultiInput showValueHelp="false" id="idInput" name="EmployeeID"/>
+                    </filterbar:control>
+                </filterbar:FilterGroupItem>
+
+                <filterbar:FilterGroupItem name="EmployeeName" label="Employee Name" groupName="Group1" visibleInFilterBar="false">
+                    <filterbar:control>
+                        <Input name="EmployeeName" id="idInputEmployeeName" showValueHelp="false"/>
+                    </filterbar:control>
+                </filterbar:FilterGroupItem>
+
+                <filterbar:FilterGroupItem name="JobTitle" label="Job Title" groupName="Group1" visibleInFilterBar="false">
+                    <filterbar:control>
+                        <Input name="JobTitle" id="idInputJob" showValueHelp="false"/>
+                    </filterbar:control>
+                </filterbar:FilterGroupItem>
+
+                <filterbar:FilterGroupItem name="CompanyCodeDesc" label="Legal Entity" groupName="Group1" visibleInFilterBar="false">
+                    <filterbar:control>
+                        <Input name="CompanyCodeDesc" id="idInputLegal" showValueHelp="false"/>
+                    </filterbar:control>
+                </filterbar:FilterGroupItem>
+
+                <filterbar:FilterGroupItem name="LocationDesc" label="Location" groupName="Group1" visibleInFilterBar="false">
+                    <filterbar:control>
+                        <Input name="LocationDesc" id="idInputLocation" showValueHelp="false"/>
+                    </filterbar:control>
+                </filterbar:FilterGroupItem>
+
+                <filterbar:FilterGroupItem name="DivisionDesc" label="Division" groupName="Group1" visibleInFilterBar="false">
+                    <filterbar:control>
+                        <Input name="DivisionDesc" id="idInputDivision" showValueHelp="false"/>
+                    </filterbar:control>
+                </filterbar:FilterGroupItem>
+
+                <filterbar:FilterGroupItem name="Department" label="Department" groupName="Group1" visibleInFilterBar="true">
+                    <filterbar:control>
+                        <MultiInput name="Department" id="idInputDepartment" showValueHelp="true" valueHelpRequest="onMultiInputValueHelpRequest"/>
+                    </filterbar:control>
+                </filterbar:FilterGroupItem>
+            </filterbar:filterGroupItems>
+        </filterbar:FilterBar>
+
+        <!-- Fixed header with title and Excel button -->
+        <VBox>
+            <!-- <Toolbar id="headerToolbar" design="Transparent" style="position: fixed; top: 1rem; width: 100%; z-index: 1000;">
+                <Title id="idTitle" text="Employee Report"/>
+                <ToolbarSpacer/>
+                <Button icon="sap-icon://excel-attachment" tooltip="Download Report" press="onExcelButtonPress" type="Emphasized"/>
+            </Toolbar> -->
+            <table:Table id="employeeTable" rows="{/}" selectionMode="None" alternateRowColors="true" fixedColumnCount="2">
+                <table:extension>
+                    <OverflowToolbar >
+                        <Title id="idTitle"></Title>
+                        <ToolbarSpacer ></ToolbarSpacer>
+                        <Button text="Download Excel" id="idDownloadExcelButton" enabled="false" press="onExcelButtonPress" type="Emphasized"></Button>
+                    </OverflowToolbar>
+                </table:extension>
+                <table:Column width="7rem">
+                    <Label text="Employee No" />
+                    <table:template>
+                        <Text text="{EmployeeID}" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="10rem">
+                    <Label text="Employee Name" />
+                    <table:template>
+                        <Text text="{EmployeeName}" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="9rem">
+                    <Label text="Job Title" />
+                    <table:template>
+                        <Text text="{JobTitle}" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="10rem">
+                    <Label text="Legal Entity" />
+                    <table:template>
+                        <Text text="{LegalEntityDescription}" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="7rem">
+                    <Label text="Location" />
+                    <table:template>
+                        <Text text="{LocationDesc}" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="10rem">
+                    <Label text="Division" />
+                    <table:template>
+                        <Text text="{DivisionDesc}" />
+                    </table:template>
+                </table:Column>
+                <!-- <table:Column width="9rem">
+                <Label text="Division Description" />
+                <table:template>
+                    <Text text="{DivisionDesc}" />
+                </table:template>
+            </table:Column> -->
+                <table:Column width="7rem">
+                    <Label text="Department" />
+                    <table:template>
+                        <Text text="{DepartmentDesc}" />
+                    </table:template>
+                </table:Column>
+                <!-- <table:Column width="9rem">
+                <Label text="Department Description" />
+                <table:template>
+                    <Text text="{DepartmentDesc}" />
+                </table:template>
+            </table:Column> -->
+                <table:Column width="7rem">
+                    <Label text="Worked Days" />
+                    <table:template>
+                        <Text text="{WorkedDays}" />
+                    </table:template>
+                </table:Column>
+                <!-- Dynamic columns based on allowance type selection -->
+                <table:Column width="7rem" visible="false" id="UnpaidDays">
+                    <Label text="Unpaid Days" />
+                    <table:template>
+                        <Text text="{UnpaidDays}" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="7rem" visible="false" id="UnauthorizedAbsence">
+                    <Label text="UnauthorizedA bsence" />
+                    <table:template>
+                        <Text text="{UnauthorizedAbsence}" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="9rem" visible="false" id="AnnualLeave">
+                    <Label text="Annual Leave" />
+                    <table:template>
+                        <Text text="{AnnualLeave}" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="9rem" visible="false" id="RotationLeave">
+                    <Label text="Accrued day Off Leave" />
+                    <table:template>
+                        <Text text="{RotationLeave}" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="9rem" visible="false" id="SickLeave">
+                    <Label text="Sick Leave" />
+                    <table:template>
+                        <Text text="{SickLeave}" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="9rem" visible="false" id="OtherLeaves">
+                    <Label text="Other Leaves" />
+                    <table:template>
+                        <Text text="{OtherLeaves}" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="8rem" visible="false" id="JobBonusDays">
+                    <Label text="Job Bonus Days" />
+                    <table:template>
+                        <Text text="{JobBonusDays}" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="9rem" visible="false" id="JobBonusAmount">
+                    <Label text="Job Bonus Amount" />
+                    <table:template>
+                        <Text text="{JobBonusAmount}" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="9rem" visible="false" id="JobBonusper">
+                    <Label text="Job Bonus %" />
+                    <table:template>
+                        <Text text="{JobBonusper}" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="8rem" visible="false" id="MealAllowances">
+                    <Label text="Meal Allowances Days" />
+                    <table:template>
+                        <Text text="{MealAllowances}" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="8rem" visible="false" id="MealAllowancesAmount">
+                    <Label text="Meal Allowances Amount" />
+                    <table:template>
+                        <Text text="{MealAllowancesAmount}" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="6rem" visible="false" id="Tier1">
+                    <Label text="Tier 1 Days" />
+                    <table:template>
+                        <Text text="{Tier1}" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="6rem" visible="false" id="Tier1Amount">
+                    <Label text="Tier 1 Amount" />
+                    <table:template>
+                        <Text text="{Tier1Amount}" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="6rem" visible="false" id="Tier2">
+                    <Label text="Tier 2 Days" />
+                    <table:template>
+                        <Text text="{Tier2}" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="6rem" visible="false" id="Tier2Amount">
+                    <Label text="Tier 2 Amount" />
+                    <table:template>
+                        <Text text="{Tier2Amount}" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="6rem" visible="false" id="Tier3">
+                    <Label text="Tier 3 Days" />
+                    <table:template>
+                        <Text text="{Tier3}" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="6rem" visible="false" id="Tier3Amount">
+                    <Label text="Tier 3 Amount" />
+                    <table:template>
+                        <Text text="{Tier3Amount}" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="7rem" visible="false" id="LeaveAccrual">
+                    <Label text="Leave Accrual Days" />
+                    <table:template>
+                        <Text text="{LeaveAccrual}" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="8rem" visible="false" id="OvertimeHours">
+                    <Label text="Overtime Hours" />
+                    <table:template>
+                        <Text text="{OvertimeHours}" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="8rem" visible="false" id="OvertimeAmount">
+                    <Label text="Overtime Amount" />
+                    <table:template>
+                        <Text text="{OvertimeAmount}" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="8rem" visible="false" id="leaveBalance">
+                    <Label text="Leave Balance" />
+                    <table:template>
+                        <Text text="{leaveBalance}" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="9rem" visible="false" id="StandbyBonusdaystaqa">
+                    <Label text="Standby Bonus Days" />
+                    <table:template>
+                        <Text text="{StandbyBonusdaystaqa}" />
+                    </table:template>
+                </table:Column>
+
+                <table:Column width="9rem" visible="false" id="StandbyBonustaqa">
+                    <Label text="Stand by Bonus" />
+                    <table:template>
+                        <Text text="{StandbyBonustaqa}" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="9rem" visible="false" id="CriticalBonusDays">
+                    <Label text="Critical Bonus Days" />
+                    <table:template>
+                        <Text text="{CriticalBonusDays}" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="9rem" visible="false" id="CriticalBonus">
+                    <Label text="Critical Bonus" />
+                    <table:template>
+                        <Text text="{CriticalBonus}" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="9rem" visible="false" id="TripBonusDays">
+                    <Label text="Trip Bonus Days" />
+                    <table:template>
+                        <Text text="{TripBonusDays}" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="9rem" visible="false" id="TripBonus">
+                    <Label text="Trip Bonus" />
+                    <table:template>
+                        <Text text="{TripBonus}" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="9rem" visible="false" id="TravelBonusDays">
+                    <Label text="Travel Bonus Days" />
+                    <table:template>
+                        <Text text="{TravelBonusDays}" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="9rem" visible="false" id="TravelBonus">
+                    <Label text="Travel Bonus" />
+                    <table:template>
+                        <Text text="{TravelBonus}" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="9rem" visible="false" id="ZERONPTBonusDays">
+                    <Label text="Zero NPT Bonus Days" />
+                    <table:template>
+                        <Text text="{ZERONPTBonusDays}" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="9rem" visible="false" id="ZERONPTBonus">
+                    <Label text="Zero NPT Bonus" />
+                    <table:template>
+                        <Text text="{ZERONPTBonus}" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="9rem" visible="false" id="FTABonusDays">
+                    <Label text="FTA Bonus Days" />
+                    <table:template>
+                        <Text text="{FTABonusDays}" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="9rem" visible="false" id="FTABonus">
+                    <Label text="FTA Bonus" />
+                    <table:template>
+                        <Text text="{FTABonus}" />
+                    </table:template>
+                </table:Column>
+
+<!-- amps -->
+                <table:Column width="12rem" visible="false" id="LocationBonus">
+                    <Label text="Location Bonus" />
+                    <table:template>
+                        <Text text="{LocationBonus}" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="12rem" visible="false" id="FieldBonus">
+                    <Label text="Field Bonus" />
+                    <table:template>
+                        <Text text="{FieldBonus}" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="12rem" visible="false" id="MarineBonus">
+                    <Label text="Marine Bonus" />
+                    <table:template>
+                        <Text text="{MarineBonus}" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="12rem" visible="false" id="DPBonus">
+                    <Label text="DP Bonus" />
+                    <table:template>
+                        <Text text="{DPBonus}" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="12rem" visible="false" id="RigBonus">
+                    <Label text="Rig Bonus" />
+                    <table:template>
+                        <Text text="{RigBonus}" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="12rem" visible="false" id="StandbyBonus">
+                    <Label text="Stand by Bonus" />
+                    <table:template>
+                        <Text text="{StandbyBonus}" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="12rem" visible="false" id="Transportation">
+                    <Label text="Transportation" />
+                    <table:template>
+                        <Text text="{Transportation}" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="12rem" visible="false" id="WorkshopAllowanceDaily">
+                    <Label text="Workshop Allowance Daily" />
+                    <table:template>
+                        <Text text="{WorkshopAllowanceDaily}" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="12rem" visible="false" id="RiskAllowanceDaily">
+                    <Label text="Risk Allowance Daily" />
+                    <table:template>
+                        <Text text="{RiskAllowanceDaily}" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="12rem" visible="false" id="FieldAllowanceRate">
+                    <Label text="Field Allowance Rate" />
+                    <table:template>
+                        <Text text="{FieldAllowanceRate}" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="12rem" visible="false" id="FieldBonusINRate">
+                    <Label text="Field Bonus In Rate" />
+                    <table:template>
+                        <Text text="{FieldBonusINRate}" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="12rem" visible="false" id="FieldBonusOUTRate">
+                    <Label text="Field Bonus Out Rate" />
+                    <table:template>
+                        <Text text="{FieldBonusOUTRate}" />
+                    </table:template>
+                </table:Column>
+
+
+                <table:Column width="12rem" visible="false" id="LocationBonusINRate">
+                    <Label text="Location Bonus IN Rate" />
+                    <table:template>
+                        <Text text="{LocationBonusINRate}" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="12rem" visible="false" id="LocationBonusOUTRate">
+                    <Label text="Location Bonus OUT Rate" />
+                    <table:template>
+                        <Text text="{LocationBonusOUTRate}" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="12rem" visible="false" id="InternallowanceBonus">
+                    <Label text="Internallowance Bonus" />
+                    <table:template>
+                        <Text text="{InternallowanceBonus}" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="12rem" visible="false" id="DesertAllowancePerDay">
+                    <Label text="Desert Allowance Per Day" />
+                    <table:template>
+                        <Text text="{DesertAllowancePerDay}" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="12rem" visible="false" id="MarineOverstayBonusRate">
+                    <Label text="Marine Overstay Bonus Rate" />
+                    <table:template>
+                        <Text text="{MarineOverstayBonusRate}" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="12rem" visible="false" id="LocationOverstayBonusrate">
+                    <Label text="Location Overstay Bonus Rate" />
+                    <table:template>
+                        <Text text="{LocationOverstayBonusrate}" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="12rem" visible="false" id="RiskAllowanceIQRate">
+                    <Label text="Risk Allowance (IQ) Rate" />
+                    <table:template>
+                        <Text text="{RiskAllowanceIQRate}" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="12rem" visible="false" id="RiskAllowanceSARate">
+                    <Label text="Risk Allowances (SA) Rate" />
+                    <table:template>
+                        <Text text="{RiskAllowanceSARate}" />
+                    </table:template>
+                </table:Column>
+
+                <table:Column width="12rem" visible="false" id="FieldBonusCoefficientrate">
+                    <Label text="Field Bonus + Coefficient Rate" />
+                    <table:template>
+                        <Text text="{FieldBonusCoefficientrate}" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="12rem" visible="false" id="FoodAllowance">
+                    <Label text="Food Allowance" />
+                    <table:template>
+                        <Text text="{FoodAllowance}" />
+                    </table:template>
+                </table:Column>
+
+                <!-- new allownance for AMPS shared by Sudharshan -->
+                <table:Column width="12rem" visible="false" id="HalfRigBonus">
+                    <Label text="Half Rig Bonus" />
+                    <table:template>
+                        <Text text="{HalfRigBonus}" />
+                    </table:template>
+                </table:Column>
+
+                <table:Column width="12rem" visible="false" id="EIDBonusPublicHoliday">
+                    <Label text="EID Bonus /Public Holiday" />
+                    <table:template>
+                        <Text text="{EIDBonusPublicHoliday}" />
+                    </table:template>
+                </table:Column>
+
+                <table:Column width="12rem" visible="false" id="RestDayPay">
+                    <Label text="Rest Day Pay" />
+                    <table:template>
+                        <Text text="{RestDayPay}" />
+                    </table:template>
+                </table:Column>
+
+                <table:Column width="12rem" visible="false" id="3HrsOvertime">
+                    <Label text="3 Hours Overtime" />
+                    <table:template>
+                        <Text text="{3HrsOvertime}" />
+                    </table:template>
+                </table:Column>
+
+                <table:Column width="12rem" visible="false" id="RestDayPay130">
+                    <Label text="Rest Day Pay (130%)" />
+                    <table:template>
+                        <Text text="{RestDayPay130}" />
+                    </table:template>
+                </table:Column>
+
+                <table:Column width="12rem" visible="false" id="RestDayPay170">
+                    <Label text="Rest Day Pay (170%)" />
+                    <table:template>
+                        <Text text="{RestDayPay170}" />
+                    </table:template>
+                </table:Column>
+
+                <table:Column width="12rem" visible="false" id="EidBonusPublicHolidayOMN">
+                    <Label text="Eid Bonus /Public Holiday OMN" />
+                    <table:template>
+                        <Text text="{EidBonusPublicHolidayOMN}" />
+                    </table:template>
+                </table:Column>
+
+                <table:Column width="12rem" visible="false" id="TripAllowance">
+                    <Label text="Trip Allowance" />
+                    <table:template>
+                        <Text text="{TripAllowance}" />
+                    </table:template>
+                </table:Column>
+
+                <table:Column width="12rem" visible="false" id="GeographicalAllowOperat">
+                    <Label text="Geographical Allow Operation" />
+                    <table:template>
+                        <Text text="{GeographicalAllowOperat}" />
+                    </table:template>
+                </table:Column>
+
+                <table:Column width="12rem" visible="false" id="GeographicalAllowWorkShop">
+                    <Label text="Geographical Allow WorkShop" />
+                    <table:template>
+                        <Text text="{GeographicalAllowWorkShop}" />
+                    </table:template>
+                </table:Column>
+
+                <table:Column width="12rem" visible="false" id="GeographicalAllowStandBy">
+                    <Label text="Geographical Allow StandBy" />
+                    <table:template>
+                        <Text text="{GeographicalAllowStandBy}" />
+                    </table:template>
+                </table:Column>
+
+                <table:Column width="12rem" visible="false" id="GeographicalAllowance">
+                    <Label text="Geographical Allowance" />
+                    <table:template>
+                        <Text text="{GeographicalAllowance}" />
+                    </table:template>
+                </table:Column>
+
+                <table:Column width="12rem" visible="false" id="OtherVariable1">
+                    <Label text="Other Variable 1" />
+                    <table:template>
+                        <Text text="{OtherVariable1}" />
+                    </table:template>
+                </table:Column>
+
+                <table:Column width="12rem" visible="false" id="OtherVariable2">
+                    <Label text="Other Variable 2" />
+                    <table:template>
+                        <Text text="{OtherVariable2}" />
+                    </table:template>
+                </table:Column>
+
+                <table:Column width="12rem" visible="false" id="OtherVariable3">
+                    <Label text="Other Variable 3" />
+                    <table:template>
+                        <Text text="{OtherVariable3}" />
+                    </table:template>
+                </table:Column>
+
+                <table:Column width="12rem" visible="false" id="QarunBonus">
+                    <Label text="Qarun Bonus" />
+                    <table:template>
+                        <Text text="{QarunBonus}" />
+                    </table:template>
+                </table:Column>
+
+                <table:Column width="12rem" visible="false" id="FoodAllowanceQatar2">
+                    <Label text="Food Allowance(Qatar)2" />
+                    <table:template>
+                        <Text text="{FoodAllowanceQatar2}" />
+                    </table:template>
+                </table:Column>
+
+                <table:Column width="12rem" visible="false" id="PerDiem">
+                    <Label text="Per Diem" />
+                    <table:template>
+                        <Text text="{PerDiem}" />
+                    </table:template>
+                </table:Column>
+
+                <table:Column width="12rem" visible="false" id="FieldAllowanceDOnshore">
+                    <Label text="Field Allowance(D-Onshore)" />
+                    <table:template>
+                        <Text text="{FieldAllowanceDOnshore}" />
+                    </table:template>
+                </table:Column>
+
+                <table:Column width="12rem" visible="false" id="FieldAllowanceDOffshore">
+                    <Label text="Field Allowance(D-Offshore)" />
+                    <table:template>
+                        <Text text="{FieldAllowanceDOffshore}" />
+                    </table:template>
+                </table:Column>
+
+                <table:Column width="12rem" visible="false" id="HardshipAllowance">
+                    <Label text="Hardship Allowance" />
+                    <table:template>
+                        <Text text="{HardshipAllowance}" />
+                    </table:template>
+                </table:Column>
+
+
+            </table:Table>
+            <!-- <ScrollContainer horizontal="true" width="100%" height="calc(100% - 4rem)" style="margin-top: 4rem;">
+                <Table id="employeeTable" items="{/}" width="100%" alternateRowColors="true">
+                    <columns>
+                        <Column width="8rem" styleClass="border">
+                            <Text text="Employee No"/>
+                        </Column>
+                        <Column width="8rem" styleClass="border">
+                            <Text text="Employee Name"/>
+                        </Column>
+                        <Column width="8rem" styleClass="border">
+                            <Text text="Job Title"/>
+                        </Column>
+                        <Column width="8rem" styleClass="border">
+                            <Text text="Legal Entity"/>
+                        </Column>
+                         <Column width="8rem" styleClass="border">
+                            <Text text="Legal Entity Description"/>
+                        </Column> 
+                        <Column width="8rem" styleClass="border">
+                            <Text text="Location"/>
+                        </Column>
+                        <Column width="8rem" styleClass="border">
+                            <Text text="Division"/>
+                        </Column>
+                        <Column width="8rem" styleClass="border">
+                            <Text text="Department"/>
+                        </Column>
+                        <Column width="8rem" styleClass="border">
+                            <Text text="Worked Days"/>
+                        </Column>
+
+                       
+                        <Column width="8rem" visible="false" id="UnpaidDays" styleClass="border">
+                            <Text text="Unpaid Days"/>
+                        </Column>
+                        <Column width="8rem" visible="false" id="AnnualLeave" styleClass="border">
+                            <Text text="Annual Leave"/>
+                        </Column>
+                        <Column width="8rem" visible="false" id="RotationLeave" styleClass="border">
+                            <Text text="Rotation Leave"/>
+                        </Column>
+                        <Column width="8rem" visible="false" id="SickLeave" styleClass="border">
+                            <Text text="Sick Leave"/>
+                        </Column>
+                        <Column width="8rem" visible="false" id="OtherLeaves" styleClass="border">
+                            <Text text="Other Leaves"/>
+                        </Column>
+                        <Column width="8rem" visible="false" id="JobBonusDays" styleClass="border"> 
+                            <Text text="Job Bonus Days"/>
+                        </Column>
+                        <Column width="8rem" visible="false" id="JobBonusAmount" styleClass="border">
+                            <Text text="Job Bonus Amount"/>
+                        </Column>
+                        <Column width="8rem" visible="false" id="MealAllowances" styleClass="border">
+                            <Text text="Meal Allowances Days"/>
+                        </Column>
+                        <Column width="8rem" visible="false" id="MealAllowancesAmount" styleClass="border">
+                            <Text text="Meal Allowances Amount"/>
+                        </Column>
+                        <Column width="8rem" visible="false" id="Tier1" styleClass="border">
+                            <Text text="Tier 1 Days"/>
+                        </Column>
+                        <Column width="8rem" visible="false" id="Tier1Amount" styleClass="border">
+                            <Text text="Tier 1 Amount"/>
+                        </Column>
+                        <Column width="8rem" visible="false" id="Tier2" styleClass="border">
+                            <Text text="Tier 2 Days"/>
+                        </Column>
+                        <Column width="8rem" visible="false" id="Tier2Amount" styleClass="border">
+                            <Text text="Tier 2 Amount"/>
+                        </Column>
+                        <Column width="8rem" visible="false" id="Tier3" styleClass="border">
+                            <Text text="Tier 3 Days"/>
+                        </Column>
+                        <Column width="8rem" visible="false" id="Tier3Amount" styleClass="border">
+                            <Text text="Tier 3 Amount"/>
+                        </Column>
+                        <Column width="8rem" visible="false" id="LeaveAccrual" styleClass="border">
+                            <Text text="Leave Accrual"/>
+                        </Column>
+                        <Column width="8rem" visible="false" id="OvertimeHours" styleClass="border">
+                            <Text text="Overtime Hours"/>
+                        </Column>
+                    </columns>
+
+                    <items>
+                        <ColumnListItem>
+                            <cells>
+                                <Text text="{EmployeeID}"/>
+                                <Text text="{EmployeeName}"/>
+                                <Text text="{JobTitle}"/>
+                               
+                                <Text text="{LegalEntityDescription}"/>                            
+                                <Text text="{LocationDesc}"/>
+                                <Text text="{DivisionDesc}"/>
+                                <Text text="{DepartmentDesc}"/>
+                                <Text text="{WorkedDays}"/>
+                                <Text text="{UnpaidDays}"/>
+                                <Text text="{AnnualLeave}"/>
+                                <Text text="{RotationLeave}"/>
+                                <Text text="{SickLeave}"/>
+                                <Text text="{OtherLeaves}"/>
+                                <Text text="{JobBonusDays}"/>
+                                <Text text="{JobBonusAmount}"/>
+                                <Text text="{MealAllowances}"/>
+                                <Text text="{MealAllowancesAmount}"/>
+                                <Text text="{Tier1}"/>
+                                <Text text="{Tier1Amount}"/>
+                                <Text text="{Tier2}"/>
+                                <Text text="{Tier2Amount}"/>
+                                <Text text="{Tier3}"/>
+                                <Text text="{Tier3Amount}"/>
+                                <Text text="{LeaveAccrual}"/>
+                                <Text text="{OvertimeHours}"/>
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+            </ScrollContainer> -->
+        </VBox>
+    </Page>
+</mvc:View>

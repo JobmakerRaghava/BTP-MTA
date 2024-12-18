@@ -1,0 +1,103 @@
+<mvc:View xmlns:plugins="sap.m.plugins" controllerName="taqa.travelnewmdf.controller.Master"
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns:f="sap.f"
+  xmlns:filterbar="sap.ui.comp.filterbar" displayBlock="true"
+  xmlns="sap.m">
+  <Page id="page" showNavButton="true" navButtonPress="onNavBack" >
+
+    <!-- <filterbar:FilterBar id="filterbar" persistencyKey="myPersKey" useToolbar="false" search=".onSearch" showClearOnFB="true" clear="onFilterBarClear">
+            <filterbar:filterGroupItems>
+                <filterbar:FilterGroupItem name="Deparment" label="{i18n>Department}" groupName="Group1" visibleInFilterBar="true">
+                    <filterbar:control>
+                        <MultiInput name="Department" id="idMultiInputDepartment" valueHelpRequest="onMultiInputValueHelpRequest">
+
+                        </MultiInput>
+                    </filterbar:control>
+                </filterbar:FilterGroupItem>
+                <filterbar:FilterGroupItem name="Division" label="{i18n>Division}" groupName="Group2" visibleInFilterBar="true">
+                    <filterbar:control>
+                        <MultiInput name="Division" id="idMultiInputDivision" valueHelpRequest="onMultiInputValueHelpRequestDivision"></MultiInput>
+                    </filterbar:control>
+                </filterbar:FilterGroupItem>
+                <filterbar:FilterGroupItem name="Location" label="{i18n>Location}" groupName="Group3" visibleInFilterBar="true">
+                    <filterbar:control>
+                        <MultiInput name="Location" id="idMultiInputLocation" valueHelpRequest="onMultiInputValueHelpRequestLocation"></MultiInput>
+                    </filterbar:control>
+                </filterbar:FilterGroupItem>
+                <filterbar:FilterGroupItem name="EmployeeID" label="{i18n>EmployeeNo}" groupName="Group4" visibleInFilterBar="true">
+                    <filterbar:control>
+                        <Input name="EmployeeID" id="idInputEmpID" showValueHelp="true" valueHelpRequest="onEmpNoValuehelpOpen"></Input>
+                    </filterbar:control>
+                </filterbar:FilterGroupItem>
+            </filterbar:filterGroupItems>
+        </filterbar:FilterBar> -->
+
+    <Table growing="true" mode="None" alternateRowColors="true" id="idTravelDetailsTable" sticky="HeaderToolbar,ColumnHeaders" items="{path:'taqasrv>/'}">
+      <headerToolbar>
+        <Toolbar >
+          <Title text="{visible>/title}"></Title>
+          <ToolbarSpacer ></ToolbarSpacer>
+
+          <Button text="{i18n>create}" icon="sap-icon://add" press="onCreateRequestButtonPress" id="idCreateRequestButton" visible="{visible>/addbutton}"></Button>
+          <!-- <Button icon="sap-icon://refresh" press="onRefreshTable"></Button>
+          <Button icon="sap-icon://delete" press="onDeleteButtonPress"></Button> -->
+        </Toolbar>
+      </headerToolbar>
+      <dependents>
+        <plugins:ColumnResizer ></plugins:ColumnResizer>
+      </dependents>
+      <columns>
+        <Column visible="false">
+          <Label text="{i18n>ID}"></Label>
+        </Column>
+        <Column styleClass="border">
+          <Label text="{i18n>TripNumber}"></Label>
+        </Column>
+        <Column styleClass="border">
+          <Label text="{i18n>TravelType}"></Label>
+        </Column>
+        <Column styleClass="border">
+          <Label text="{i18n>TravelCountry}"></Label>
+        </Column>
+        <Column styleClass="border">
+          <Label text="{i18n>DepartureDate}"></Label>
+        </Column>
+        <Column styleClass="border">
+          <Label text="{i18n>ReturnDate}"></Label>
+        </Column>
+        <Column styleClass="border">
+          <Label text="{i18n>HomeCountry}"></Label>
+        </Column>
+        <!-- <Column styleClass="border">
+                    <Label text="{i18n>TravelCountry}"></Label>
+                </Column> -->
+        <Column styleClass="border">
+          <Label text="{i18n>Status}"></Label>
+        </Column>
+        <Column styleClass="border" hAlign="Center">
+          <Label text="{i18n>Details}"></Label>
+        </Column>
+      </columns>
+      <items>
+        <ColumnListItem>
+          <Text text="{taqasrv>ID}"></Text>
+          <Text text="{taqasrv>TravelId}"></Text>
+          <Text text="{taqasrv>TravelType}"></Text>
+          <Text text="{taqasrv>TravelCountry}"></Text>
+          <Text text="{taqasrv>Deparment}"></Text>
+          <Text text="{taqasrv>Division}"></Text>
+          <Text text="{taqasrv>HomeCountry}"></Text>
+          <!-- <Text text="{travel>TravelCountry}"></Text> -->
+          <!-- <ObjectStatus text="{travel>Status}" state="{=${travel>Status}==='Submitted'? 'Success':'Warning'}"></ObjectStatus> -->
+          <Text text="{taqasrv>Status}"></Text>
+          <Button icon="sap-icon://detail-view" press="onColumnListItemPress"></Button>
+        </ColumnListItem>
+      </items>
+
+    </Table>
+  </Page>
+  <!-- </f:content>
+    </f:DynamicPage> -->
+
+</mvc:View>
+

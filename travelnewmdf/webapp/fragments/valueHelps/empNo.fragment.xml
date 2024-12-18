@@ -1,0 +1,33 @@
+<c:FragmentDefinition xmlns="sap.m"
+    xmlns:c="sap.ui.core">
+     <!-- <SelectDialog confirm="onAgentSelectDialogConfirm" cancel="onAgentSelectDialogConfirm" search="onAgentSelectDialogSearch" items="{ model: 'taqa-srv',path : '/RowInfo', filters:{path: 'TableName', operator: 'EQ', value1: 'Travel Agents'}}">
+        <StandardListItem title="{taqa-srv>Column2}" description="{taqa-srv>Column1}" type="Active"></StandardListItem>
+    </SelectDialog> -->
+
+    <TableSelectDialog confirm="onPerPersonSelectDialogConfirm" cancel="onPerPersonSelectDialogConfirm" search="onPerPersonSelectDialogSearch" items="{ path : '/cust_businessTravelReqParent',
+        sorter : {
+            path : 'cust_EmployeeID' 
+         }}">
+        <columns>
+            <Column >
+
+                <Text text="{i18n>EmployeeNo}"></Text>
+            </Column>
+            <Column >
+                <Text text="{i18n>EmployeeFullName}"></Text>
+            </Column>
+            <Column >
+                <Text text="{i18n>National}"></Text>
+            </Column>
+
+        </columns>
+        <ColumnListItem >
+            <cells>
+                <ObjectNumber number="{cust_EmployeeID}"></ObjectNumber>
+                <Text text="{cust_EmployeeName}"></Text>
+                <Text text="{custNationality}"></Text>
+            </cells>
+        </ColumnListItem>
+    </TableSelectDialog>
+
+</c:FragmentDefinition>

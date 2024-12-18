@@ -1,0 +1,150 @@
+    <Page id="page">
+        <!-- <f:DynamicPage >
+        <f:header>
+            <f:DynamicPageHeader  > -->
+        <filterbar:FilterBar
+            id="filterbar"
+            persistencyKey="myPersKey"
+            useToolbar="false"
+            search=".onSearch"
+            showClearOnFB="true"
+            clear="onFilterBarClear"
+        >
+            <filterbar:filterGroupItems>
+                <filterbar:FilterGroupItem
+                    name="Deparment"
+                    label="{i18n>Department}"
+                    groupName="Group1"
+                    visibleInFilterBar="true"
+                >
+                    <filterbar:control>
+                        <MultiInput
+                            name="Department"
+                            id="idMultiInputDepartment"
+                            valueHelpRequest="onMultiInputValueHelpRequest"
+                        />
+                    </filterbar:control>
+                </filterbar:FilterGroupItem>
+                <filterbar:FilterGroupItem
+                    name="Division"
+                    label="{i18n>Division}"
+                    groupName="Group2"
+                    visibleInFilterBar="true"
+                >
+                    <filterbar:control>
+                        <MultiInput
+                            name="Division"
+                            id="idMultiInputDivision"
+                            valueHelpRequest="onMultiInputValueHelpRequestDivision"
+                        />
+                    </filterbar:control>
+                </filterbar:FilterGroupItem>
+                <filterbar:FilterGroupItem
+                    name="Location"
+                    label="{i18n>Location}"
+                    groupName="Group3"
+                    visibleInFilterBar="true"
+                >
+                    <filterbar:control>
+                        <MultiInput
+                            name="Location"
+                            id="idMultiInputLocation"
+                            valueHelpRequest="onMultiInputValueHelpRequestLocation"
+                        />
+                    </filterbar:control>
+                </filterbar:FilterGroupItem>
+                <filterbar:FilterGroupItem
+                    name="EmployeeID"
+                    label="{i18n>EmployeeNo}"
+                    groupName="Group4"
+                    visibleInFilterBar="true"
+                >
+                    <filterbar:control>
+                        <Input
+                            name="EmployeeID"
+                            id="idInputEmpID"
+                            showValueHelp="true"
+                            valueHelpRequest="onEmpNoValuehelpOpen"
+                        />
+                    </filterbar:control>
+                </filterbar:FilterGroupItem>
+            </filterbar:filterGroupItems>
+        </filterbar:FilterBar>
+        <!-- </f:DynamicPageHeader>
+        </f:header>
+        <f:content> -->
+        <Table
+            growing="true"
+            mode="MultiSelect"
+            alternateRowColors="true"
+            id="idTravelDetailsTable"
+            sticky="HeaderToolbar,ColumnHeaders"
+            items="{taqa-srv>/}"
+        >
+            <!-- <headerToolbar>
+                <Toolbar >
+                    <ToolbarSpacer ></ToolbarSpacer>
+                  
+                    <Button text="{i18n>create}" icon="sap-icon://add" press="onCreateRequestButtonPress"></Button>
+                 <Button icon="sap-icon://refresh" press="onRefreshTable"></Button>
+                 <Button icon="sap-icon://delete" press="onDeleteButtonPress"></Button>
+                </Toolbar>
+            </headerToolbar> -->
+            <dependents>
+                <plugins:ColumnResizer/>
+            </dependents>
+            <columns>
+                <!-- <Column visible="false">
+                    <Label text="{i18n>ID}"></Label>
+                </Column> -->
+                <Column styleClass="border">
+                    <Label text="{i18n>TripNumber}"/>
+                </Column>
+                <Column styleClass="border">
+                    <Label text="{i18n>TravelType}"/>
+                </Column>
+                <Column styleClass="border">
+                    <Label text="{i18n>EmployeeNo}"/>
+                </Column>
+                <Column styleClass="border">
+                    <Label text="{i18n>Department}"/>
+                </Column>
+                <Column styleClass="border">
+                    <Label text="{i18n>Division}"/>
+                </Column>
+                <Column styleClass="border">
+                    <Label text="{i18n>Location}"/>
+                </Column>
+                <!-- <Column styleClass="border">
+                    <Label text="{i18n>TravelCountry}"></Label>
+                </Column> -->
+                <Column styleClass="border">
+                    <Label text="{i18n>Status}"/>
+                </Column>
+                <Column
+                    styleClass="border"
+                    hAlign="Center"
+                >
+                    <Label text="{i18n>Details}"/>
+                </Column>
+            </columns>
+            <items>
+                <ColumnListItem>
+                    <!-- <Text text="{taqa-srv>ID}"></Text> -->
+                    <Text text="{taqa-srv>TravelId}"/>
+                    <Text text="{taqa-srv>TravelType}"/>
+                    <Text text="{taqa-srv>EmployeeID}"/>
+                    <Text text="{taqa-srv>Deparment}"/>
+                    <Text text="{taqa-srv>Division}"/>
+                    <Text text="{taqa-srv>Location}"/>
+                    <!-- <Text text="{taqa-srv>TravelCountry}"></Text> -->
+                    <!-- <ObjectStatus text="{taqa-srv>Status}" state="{=${taqa-srv>Status}==='Submitted'? 'Success':'Warning'}"></ObjectStatus> -->
+                    <Text text="{taqa-srv>Status}"/>
+                    <Button
+                        icon="sap-icon://detail-view"
+                        press="onColumnListItemPress"
+                    />
+                </ColumnListItem>
+            </items>
+        </Table>
+    </Page>

@@ -1,0 +1,13 @@
+/* Enter your custom styles here */
+.customLabel {
+    white-space: nowrap; /* Prevents line breaks in labels */
+    overflow: hidden;    /* Hides overflowed content */
+    text-overflow: ellipsis; /* Adds ellipsis for overflowed content */
+}
+.border {
+    border-left: 1px solid lightgrey;
+}
+.border2 {
+    border-left: 1px solid lightgrey;
+    border-right: 1px solid lightgrey;
+}

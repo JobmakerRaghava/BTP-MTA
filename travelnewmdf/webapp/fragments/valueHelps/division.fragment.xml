@@ -1,0 +1,38 @@
+<c:FragmentDefinition xmlns="sap.m"
+    xmlns:c="sap.ui.core">
+    <!-- <TableSelectDialog search="onFODivisionTableSelectDialogSearch" confirm="onFODivisionTableSelectDialogConfirm" cancel="onFODivisionTableSelectDialogConfirm" items="{
+            path: '/FODivision',
+            sorter: {
+                path: 'externalCode'
+            }
+        }" multiSelect="true" contentWidth="40%" contentHeight="70%">
+        <columns>
+            <Column>
+                <Label text="{i18n>Division}" />
+            </Column>
+            <Column>
+                <Label text="{i18n>name}" />
+            </Column>
+            <Column>
+                <Label text="{i18n>description}" />
+            </Column>
+        </columns>
+        <items>
+            <ColumnListItem>
+                <ObjectNumber number="{externalCode}" />
+                <Text text="{
+                    name: ''
+                }" />
+                <Text text="{description}" />
+            </ColumnListItem>
+        </items>
+    </TableSelectDialog> -->
+    <SelectDialog search="onFODivisionTableSelectDialogSearch" confirm=".onFODivisionTableSelectDialogConfirm" cancel=".onFODivisionTableSelectDialogConfirm" items="{
+            path: '/FODivision',
+            sorter: {
+                path: 'externalCode'
+            }
+        }" multiSelect="true">
+        <StandardListItem title="{externalCode}" description="{name}" type="Active" />
+    </SelectDialog>
+</c:FragmentDefinition>

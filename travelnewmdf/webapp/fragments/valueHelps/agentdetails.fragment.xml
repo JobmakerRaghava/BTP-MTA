@@ -1,0 +1,7 @@
+<c:FragmentDefinition xmlns="sap.m"
+    xmlns:c="sap.ui.core">
+    <SelectDialog confirm="onAgentSelectDialogConfirm" cancel="onAgentSelectDialogConfirm" search="onAgentSelectDialogSearch" items="{ model: 'taqa-srv',path : '/RowInfo', filters:{path: 'TableName', operator: 'EQ', value1: 'Travel Agents'}}">
+        <StandardListItem title="{taqa-srv>Column1}" description="{taqa-srv>Column2}" type="Active"></StandardListItem>
+    </SelectDialog>
+
+</c:FragmentDefinition>

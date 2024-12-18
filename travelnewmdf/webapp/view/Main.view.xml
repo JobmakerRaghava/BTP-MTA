@@ -1,0 +1,41 @@
+<mvc:View xmlns:form="sap.ui.layout.form" controllerName="taqa.travelnewmdf.controller.Main"
+	xmlns="sap.m"
+	xmlns:semantic="sap.f.semantic"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:core="sap.ui.core"
+	xmlns:l="sap.ui.layout">
+	<Page id="idPage">
+
+		<Panel class="sapUiResponsiveMargin" width="auto" headerText="{i18n>TravelReqForm}">
+
+			<HBox>
+				<HBox width="25%"></HBox>
+				<HBox >
+					<RadioButtonGroup id="idRadioButtonGroup" select="onRadioButtonGroupSelect" >
+						<RadioButton id="BU" text="{i18n>BusinessTravel}"  selected="true"></RadioButton>
+						<RadioButton id="TR" text="{i18n>Training}"></RadioButton>
+						<RadioButton id="AL" text="{i18n>AnnualTravel}"></RadioButton>
+						<RadioButton id="RL" text="{i18n>RotationalTravel}"></RadioButton>
+						<!-- <RadioButton id="JT" text="{i18n>JobTravel}"></RadioButton> -->
+						<RadioButton id="SP" text="{i18n>SeparationTravel}"></RadioButton>
+						<RadioButton id="NJ" text="{i18n>Joining}"></RadioButton>
+
+					</RadioButtonGroup>
+				</HBox>
+				<HBox>
+					<form:SimpleForm layout="ResponsiveGridLayout" editable="true" class="sapUiResponsiveMargin">
+						<Label text="{i18n>EmployeeNo}"></Label>
+						<Input id="idInputEmpid" showValueHelp="true" valueHelpRequest="onInputValueHelpRequest"></Input>
+						<Label text="{i18n>ExternalCode}"></Label>
+						<Input id="idInputnation" editable="false" showValueHelp="true"></Input>
+						<Button text="{i18n>Go}" type="Emphasized" press="onGoButtonPress"></Button>
+					</form:SimpleForm>
+
+				</HBox>
+			</HBox>
+
+		</Panel>
+
+
+	</Page>
+</mvc:View>

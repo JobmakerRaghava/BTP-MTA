@@ -1,0 +1,7 @@
+/* Enter your custom styles here */
+.multilines{
+    white-space: normal !important;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+}

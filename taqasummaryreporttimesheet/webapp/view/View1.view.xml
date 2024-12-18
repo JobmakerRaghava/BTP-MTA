@@ -1,0 +1,575 @@
+<mvc:View controllerName="taqasummaryreporttimesheet.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core" displayBlock="true"
+    xmlns:table="sap.ui.table"
+    xmlns:l="sap.ui.layout"
+    xmlns:filterbar="sap.ui.comp.filterbar"
+    xmlns:form="sap.ui.layout.form"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+        <content>
+            <filterbar:FilterBar id="filterbar" search=".onSearch" showClearOnFB="true" clear="onFilterBarClear" useToolbar="false">
+                <filterbar:filterGroupItems>
+                    <filterbar:FilterGroupItem name="Date" label="Date" groupName="Group10" visibleInFilterBar="true">
+                        <filterbar:control>
+                            <DateRangeSelection required="true" id="idDatePicker" name="Date" displayFormat="dd-MM-yyyy" valueFormat="dd-MM-yyyy" />
+                        </filterbar:control>
+                    </filterbar:FilterGroupItem>
+                    <filterbar:FilterGroupItem name="EmployeeID" label="Employee ID" groupName="Group1" visibleInFilterBar="true">
+                        <filterbar:control>
+                            <MultiInput showValueHelp="false" id="idInput" name="EmployeeID" />
+                        </filterbar:control>
+                    </filterbar:FilterGroupItem>
+                    <filterbar:FilterGroupItem name="Department" label="Department" groupName="Group1" visibleInFilterBar="true">
+                        <filterbar:control>
+                            <!-- <Input name="DepartmentDesc" id="idInputDepartment" showValueHelp="false">
+                            </Input> -->
+                            <MultiInput name="Department" id="idInputDepartment" showValueHelp="true" valueHelpRequest="onMultiInputValueHelpRequest" />
+                        </filterbar:control>
+                    </filterbar:FilterGroupItem>
+                </filterbar:filterGroupItems>
+            </filterbar:FilterBar>
+            <!-- <form:SimpleForm width="auto" class="sapUiResponsiveMargin" layout="ResponsiveGridLayout" editable="true" labelSpanL="3" labelSpanM="3" columnsL="1" columnsM="1" emptySpanL="4" emptySpanM="4" title="">
+                <form:content>
+                    <Label text="Start Date" />
+                    <DatePicker id="StartDate" valueFormat="yyyy-MM-dd" />
+                    
+
+                        <Label text="End Date" />
+                        <DatePicker id="EndDate" valueFormat="yyyy-MM-dd" />
+
+                    <DatePicker id="StartDate" afterValueHelpClose="onDate" value="{
+						'type': 'sap.ui.model.type.Date',
+						'formatOptions': {
+							'pattern': 'yyyy-MM-dd'
+						}
+					    }" valueFormat="yyyy-MM-dd" />
+
+
+                    <Label text="End Date" />
+                    <DatePicker id="EndDate" afterValueHelpClose="onDate" value="{
+						'type': 'sap.ui.model.type.Date',
+						'formatOptions': {
+							'pattern': 'yyyy-MM-dd'
+						}
+					    }" valueFormat="yyyy-MM-dd" />
+
+                     <Button icon="sap-icon://excel-attachment" press="onExport"/>
+
+                    <Button text="Search" press="._onSummaryPress" type="Emphasized" />
+                </form:content>
+            </form:SimpleForm> -->
+            <IconTabBar id="idIconTabBarNoIcons" expanded="{device>/isNoPhone}" class="sapUiResponsiveContentPadding">
+                <items>
+                    <IconTabFilter text="Summary Report" key="info">
+                        <!-- <Button text="Summary Data" press="onSummaryPress"/> -->
+                        <l:VerticalLayout class="sapUiContentPadding" width="100%">
+                            <MultiComboBox id="idMultiComboBox" selectionChange="handleSelectionChange" showSelectAll="true" selectionFinish="handleSelectionFinish" width="350px" items="{
+                                    path: 'allowanceTableModel>/'
+                                }">
+                                <core:Item key="{allowanceTableModel>Column9}" text="{allowanceTableModel>Column2}" />
+                            </MultiComboBox>
+                        </l:VerticalLayout>
+                        <table:Table id="SummaryTable" fixedColumnCount="2">
+                            <table:extension>
+                                <OverflowToolbar>
+                                    <ToolbarSpacer />
+                                    <Button text="Download Excel" id="idDownloadExcelButton" press=".onExportPress" type="Emphasized" enabled="false" />
+                                </OverflowToolbar>
+                            </table:extension>
+                        </table:Table>
+                        <!-- <Button text="Export" press=".onExportPress" type="Emphasized" /> -->
+                    </IconTabFilter>
+                    <IconTabFilter text="Detailed Report" key="attachments">
+                        <table:Table id="table" rows="{
+                                path: 'AdminStatusList>/'
+                            }" fixedColumnCount="2">
+                            <table:columns>
+                                <table:Column width="7em" sortProperty="AdminStatusList>EmployeeID">
+                                    <Label text="Employee ID" />
+                                    <table:template>
+                                        <Text text="{AdminStatusList>EmployeeID}" wrapping="false" />
+                                    </table:template>
+                                </table:Column>
+                                <table:Column width="7em" sortProperty="AdminStatusList>EmployeeName">
+                                    <Label text="Employee Name" />
+                                    <table:template>
+                                        <Text text="{AdminStatusList>EmployeeName}" wrapping="false" />
+                                    </table:template>
+                                </table:Column>
+                                <table:Column width="7em" sortProperty="AdminStatusList>Date">
+                                    <Label text="Date" />
+                                    <table:template>
+                                        <Text text="{
+                                                path: 'AdminStatusList>Date',
+                                                formatter: '.onFormateDate'
+                                            }" wrapping="false" />
+                                    </table:template>
+                                </table:Column>
+                                <table:Column width="7em" sortProperty="AdminStatusList>WbsCode">
+                                    <Label text="Project Code" />
+                                    <table:template>
+                                        <Text text="{AdminStatusList>ProjectCode} {AdminStatusList>CostCenter} {AdminStatusList>InternalOrder}" wrapping="false" />
+                                        <!-- <Text text="{AdminStatusList>ProjectCode}" wrapping="false" /> -->
+                                    </table:template>
+                                </table:Column>
+                                <table:Column width="7em" sortProperty="AdminStatusList>ProjectDesc">
+                                    <Label text="Project Desc" />
+                                    <table:template>
+                                        <Text text="{AdminStatusList>ProjectDesc}" wrapping="false" />
+                                    </table:template>
+                                </table:Column>
+                                <table:Column width="7em" sortProperty="AdminStatusList>WorkType">
+                                    <Label text="Working Type" />
+                                    <table:template>
+                                        <Text text="{AdminStatusList>WorkType}" wrapping="false" />
+                                    </table:template>
+                                </table:Column>
+                                <table:Column width="7em">
+                                    <Label text="Total Hours" />
+                                    <table:template>
+                                        <Text text="{AdminStatusList>TotalHours}" wrapping="false" />
+                                    </table:template>
+                                </table:Column>
+                                <table:Column width="7em">
+                                    <Label text="Overtime Hours" />
+                                    <table:template>
+                                        <Text text="{AdminStatusList>OvertimeHours}" wrapping="false" />
+                                    </table:template>
+                                </table:Column>
+                                <table:Column width="7em">
+                                    <Label text="Overtime Type" />
+                                    <table:template>
+                                        <Text text="{AdminStatusList>OvertimeType}" wrapping="false" />
+                                    </table:template>
+                                </table:Column>
+                                <table:Column width="7em" visible="{visible>/taqa}">
+                                    <Label text="Job Bonus" />
+                                    <table:template>
+                                        <Text text="{AdminStatusList>JobBonus}" wrapping="false" />
+                                    </table:template>
+                                </table:Column>
+                                <table:Column width="7em" visible="{visible>/taqa}">
+                                    <Label text="Critical Bonus" />
+                                    <table:template>
+                                        <Text text="{AdminStatusList>CriticalBonus}" wrapping="false" />
+                                    </table:template>
+                                </table:Column>
+                                <table:Column width="7em" visible="{visible>/taqa}">
+                                    <Label text="Job Bonus %" />
+                                    <table:template>
+                                        <Text text="{AdminStatusList>JobBonusPer}" wrapping="false" />
+                                    </table:template>
+                                </table:Column>
+                                <table:Column width="7em" visible="{visible>/taqa}">
+                                    <Label text="Meal Allowance" />
+                                    <table:template>
+                                        <Text text="{AdminStatusList>MealAllowance}" wrapping="false" />
+                                    </table:template>
+                                </table:Column>
+                                <table:Column width="7em" visible="{visible>/taqa}">
+                                    <Label text="Travel Bonus" />
+                                    <table:template>
+                                        <Text text="{AdminStatusList>TravelBonus}" wrapping="false" />
+                                    </table:template>
+                                </table:Column>
+                                <table:Column width="7em" visible="{visible>/taqa}">
+                                    <Label text="Trip Bonus" />
+                                    <table:template>
+                                        <Text text="{AdminStatusList>TripBonus}" wrapping="false" />
+                                    </table:template>
+                                </table:Column>
+                                <table:Column width="7em" visible="{visible>/taqa}">
+                                    <Label text="Tier1" />
+                                    <table:template>
+                                        <Text text="{AdminStatusList>Tier1Bonus}" wrapping="false" />
+                                    </table:template>
+                                </table:Column>
+                                <table:Column width="7em" visible="{visible>/taqa}">
+                                    <Label text="Tier2" />
+                                    <table:template>
+                                        <Text text="{AdminStatusList>Tier2Bonus}" wrapping="false" />
+                                    </table:template>
+                                </table:Column>
+                                <table:Column width="7em" visible="{visible>/taqa}">
+                                    <Label text="Tier3" />
+                                    <table:template>
+                                        <Text text="{AdminStatusList>Tier3Bonus}" wrapping="false" />
+                                    </table:template>
+                                </table:Column>
+                                <table:Column width="7em" visible="{visible>/taqa}">
+                                    <Label text="ZERO NPT Bonus" />
+                                    <table:template>
+                                        <Text text="{AdminStatusList>ZERONPTBonus}" wrapping="false" />
+                                    </table:template>
+                                </table:Column>
+                                <table:Column width="7em" visible="{visible>/taqa}">
+                                    <Label text="FTA Bonus" />
+                                    <table:template>
+                                        <Text text="{AdminStatusList>FTABonus}" wrapping="false" />
+                                    </table:template>
+                                </table:Column>
+                                <table:Column width="7em" visible="{visible>/taqa}">
+                                    <Label text="Standby Bonus" />
+                                    <table:template>
+                                        <Text text="{AdminStatusList>StandbyBonus}" wrapping="false" />
+                                    </table:template>
+                                </table:Column>
+                                <table:Column width="7em">
+                                    <Label text="Leave Accrual" />
+                                    <table:template>
+                                        <Text text="{AdminStatusList>LeaveAccrual}" wrapping="false" />
+                                    </table:template>
+                                </table:Column>
+
+                                <!-- amps -->
+                                <table:Column width="7em" visible="{visible>/amps}" id="LocationBonus">
+                                    <Label text="Location Bonus" />
+                                    <table:template>
+                                        <Text text="{AdminStatusList>LocationBonus}" />
+                                    </table:template>
+                                </table:Column>
+                                <table:Column width="7em" visible="{visible>/amps}" id="FieldBonus">
+                                    <Label text="Field Bonus" />
+                                    <table:template>
+                                        <Text text="{AdminStatusList>FieldBonus}" />
+                                    </table:template>
+                                </table:Column>
+                                <table:Column width="7em" visible="{visible>/amps}" id="MarineBonus">
+                                    <Label text="Marine Bonus" />
+                                    <table:template>
+                                        <Text text="{AdminStatusList>MarineBonus}" />
+                                    </table:template>
+                                </table:Column>
+                                <table:Column width="7em" visible="{visible>/amps}" id="DPBonus">
+                                    <Label text="DP Bonus" />
+                                    <table:template>
+                                        <Text text="{AdminStatusList>DPBonus}" />
+                                    </table:template>
+                                </table:Column>
+                                <table:Column width="7em" visible="{visible>/amps}" id="RigBonus">
+                                    <Label text="Rig Bonus" />
+                                    <table:template>
+                                        <Text text="{AdminStatusList>RigBonus}" />
+                                    </table:template>
+                                </table:Column>
+                                <table:Column width="7em" visible="{visible>/amps}" id="StandbyBonus">
+                                    <Label text="Stand by Bonus" />
+                                    <table:template>
+                                        <Text text="{AdminStatusList>StandbyBonus}" />
+                                    </table:template>
+                                </table:Column>
+                                <table:Column width="7em" visible="{visible>/amps}" id="Transportation">
+                                    <Label text="Transportation" />
+                                    <table:template>
+                                        <Text text="{AdminStatusList>Transportation}" />
+                                    </table:template>
+                                </table:Column>
+                                <table:Column width="7em" visible="{visible>/amps}" id="WorkshopAllowanceDaily">
+                                    <Label text="Workshop Allowance Daily" />
+                                    <table:template>
+                                        <Text text="{AdminStatusList>WorkshopAllowanceDaily}" />
+                                    </table:template>
+                                </table:Column>
+                                <table:Column width="7em" visible="{visible>/amps}" id="RiskAllowanceDaily">
+                                    <Label text="Risk Allowance Daily" />
+                                    <table:template>
+                                        <Text text="{AdminStatusList>RiskAllowanceDaily}" />
+                                    </table:template>
+                                </table:Column>
+                                <table:Column width="7em" visible="{visible>/amps}" id="FieldAllowanceRate">
+                                    <Label text="Field Allowance Rate" />
+                                    <table:template>
+                                        <Text text="{AdminStatusList>FieldAllowanceRate}" />
+                                    </table:template>
+                                </table:Column>
+                                <table:Column width="7em" visible="{visible>/amps}" id="FieldBonusINRate">
+                                    <Label text="Field Bonus In Rate" />
+                                    <table:template>
+                                        <Text text="{AdminStatusList>FieldBonusINRate}" />
+                                    </table:template>
+                                </table:Column>
+                                <table:Column width="7em" visible="{visible>/amps}" id="FieldBonusOUTRate">
+                                    <Label text="Field Bonus Out Rate" />
+                                    <table:template>
+                                        <Text text="{AdminStatusList>FieldBonusOUTRate}" />
+                                    </table:template>
+                                </table:Column>
+
+
+                                <table:Column width="7em" visible="{visible>/amps}" id="LocationBonusINRate">
+                                    <Label text="Location Bonus IN Rate" />
+                                    <table:template>
+                                        <Text text="{AdminStatusList>LocationBonusINRate}" />
+                                    </table:template>
+                                </table:Column>
+                                <table:Column width="7em" visible="{visible>/amps}" id="LocationBonusOUTRate">
+                                    <Label text="Location Bonus OUT Rate" />
+                                    <table:template>
+                                        <Text text="{AdminStatusList>LocationBonusOUTRate}" />
+                                    </table:template>
+                                </table:Column>
+                                <table:Column width="7em" visible="{visible>/amps}" id="InternallowanceBonus">
+                                    <Label text="Internallowance Bonus" />
+                                    <table:template>
+                                        <Text text="{AdminStatusList>InternallowanceBonus}" />
+                                    </table:template>
+                                </table:Column>
+                                <table:Column width="7em" visible="{visible>/amps}" id="DesertAllowancePerDay">
+                                    <Label text="Desert Allowance Per Day" />
+                                    <table:template>
+                                        <Text text="{AdminStatusList>DesertAllowancePerDay}" />
+                                    </table:template>
+                                </table:Column>
+                                <table:Column width="7em" visible="{visible>/amps}" id="MarineOverstayBonusRate">
+                                    <Label text="Marine Overstay Bonus Rate" />
+                                    <table:template>
+                                        <Text text="{AdminStatusList>MarineOverstayBonusRate}" />
+                                    </table:template>
+                                </table:Column>
+                                <table:Column width="7em" visible="{visible>/amps}" id="LocationOverstayBonusrate">
+                                    <Label text="Location Overstay Bonus Rate" />
+                                    <table:template>
+                                        <Text text="{AdminStatusList>LocationOverstayBonusrate}" />
+                                    </table:template>
+                                </table:Column>
+                                <table:Column width="7em" visible="{visible>/amps}" id="RiskAllowanceIQRate">
+                                    <Label text="Risk Allowance (IQ) Rate" />
+                                    <table:template>
+                                        <Text text="{AdminStatusList>RiskAllowanceIQRate}" />
+                                    </table:template>
+                                </table:Column>
+                                <table:Column width="7em" visible="{visible>/amps}" id="RiskAllowanceSARate">
+                                    <Label text="Risk Allowances (SA) Rate" />
+                                    <table:template>
+                                        <Text text="{AdminStatusList>RiskAllowanceSARate}" />
+                                    </table:template>
+                                </table:Column>
+
+                                <table:Column width="7em" visible="{visible>/amps}" id="FieldBonusCoefficientrate">
+                                    <Label text="Field Bonus + Coefficient Rate" />
+                                    <table:template>
+                                        <Text text="{AdminStatusList>FieldBonusCoefficientrate}" />
+                                    </table:template>
+                                </table:Column>
+                                <table:Column width="7em" visible="{visible>/amps}" id="FoodAllowance">
+                                    <Label text="Food Allowance" />
+                                    <table:template>
+                                        <Text text="{AdminStatusList>FoodAllowance}" />
+                                    </table:template>
+                                </table:Column>
+
+                                <!-- new allownance for AMPS shared by Sudharshan -->
+                                <table:Column width="7em" visible="{visible>/amps}" id="HalfRigBonus">
+                                    <Label text="Half Rig Bonus" />
+                                    <table:template>
+                                        <Text text="{AdminStatusList>HalfRigBonus}" />
+                                    </table:template>
+                                </table:Column>
+
+                                <table:Column width="7em" visible="{visible>/amps}" id="EIDBonusPublicHoliday">
+                                    <Label text="EID Bonus /Public Holiday" />
+                                    <table:template>
+                                        <Text text="{AdminStatusList>EIDBonusPublicHoliday}" />
+                                    </table:template>
+                                </table:Column>
+
+                                <table:Column width="7em" visible="{visible>/amps}" id="RestDayPay">
+                                    <Label text="Rest Day Pay" />
+                                    <table:template>
+                                        <Text text="{AdminStatusList>RestDayPay}" />
+                                    </table:template>
+                                </table:Column>
+
+                                <table:Column width="7em" visible="{visible>/amps}" id="3HrsOvertime">
+                                    <Label text="3 Hours Overtime" />
+                                    <table:template>
+                                        <Text text="{AdminStatusList>3HrsOvertime}" />
+                                    </table:template>
+                                </table:Column>
+
+                                <table:Column width="7em" visible="{visible>/amps}" id="RestDayPay130">
+                                    <Label text="Rest Day Pay (130%)" />
+                                    <table:template>
+                                        <Text text="{AdminStatusList>RestDayPay130}" />
+                                    </table:template>
+                                </table:Column>
+
+                                <table:Column width="7em" visible="{visible>/amps}" id="RestDayPay170">
+                                    <Label text="Rest Day Pay (170%)" />
+                                    <table:template>
+                                        <Text text="{AdminStatusList>RestDayPay170}" />
+                                    </table:template>
+                                </table:Column>
+
+                                <table:Column width="7em" visible="{visible>/amps}" id="EidBonusPublicHolidayOMN">
+                                    <Label text="Eid Bonus /Public Holiday OMN" />
+                                    <table:template>
+                                        <Text text="{AdminStatusList>EidBonusPublicHolidayOMN}" />
+                                    </table:template>
+                                </table:Column>
+
+                                <table:Column width="7em" visible="{visible>/amps}" id="TripAllowance">
+                                    <Label text="Trip Allowance" />
+                                    <table:template>
+                                        <Text text="{AdminStatusList>TripAllowance}" />
+                                    </table:template>
+                                </table:Column>
+
+                                <table:Column width="7em" visible="{visible>/amps}" id="GeographicalAllowOperat">
+                                    <Label text="Geographical Allow Operation" />
+                                    <table:template>
+                                        <Text text="{AdminStatusList>GeographicalAllowOperat}" />
+                                    </table:template>
+                                </table:Column>
+
+                                <table:Column width="7em" visible="{visible>/amps}" id="GeographicalAllowWorkShop">
+                                    <Label text="Geographical Allow WorkShop" />
+                                    <table:template>
+                                        <Text text="{AdminStatusList>GeographicalAllowWorkShop}" />
+                                    </table:template>
+                                </table:Column>
+
+                                <table:Column width="7em" visible="{visible>/amps}" id="GeographicalAllowStandBy">
+                                    <Label text="Geographical Allow StandBy" />
+                                    <table:template>
+                                        <Text text="{AdminStatusList>GeographicalAllowStandBy}" />
+                                    </table:template>
+                                </table:Column>
+
+                                <table:Column width="7em" visible="{visible>/amps}" id="GeographicalAllowance">
+                                    <Label text="Geographical Allowance" />
+                                    <table:template>
+                                        <Text text="{AdminStatusList>GeographicalAllowance}" />
+                                    </table:template>
+                                </table:Column>
+
+                                <table:Column width="7em" visible="{visible>/amps}" id="OtherVariable1">
+                                    <Label text="Other Variable 1" />
+                                    <table:template>
+                                        <Text text="{AdminStatusList>OtherVariable1}" />
+                                    </table:template>
+                                </table:Column>
+
+                                <table:Column width="7em" visible="{visible>/amps}" id="OtherVariable2">
+                                    <Label text="Other Variable 2" />
+                                    <table:template>
+                                        <Text text="{AdminStatusList>OtherVariable2}" />
+                                    </table:template>
+                                </table:Column>
+
+                                <table:Column width="7em" visible="{visible>/amps}" id="OtherVariable3">
+                                    <Label text="Other Variable 3" />
+                                    <table:template>
+                                        <Text text="{AdminStatusList>OtherVariable3}" />
+                                    </table:template>
+                                </table:Column>
+
+                                <table:Column width="7em" visible="{visible>/amps}" id="QarunBonus">
+                                    <Label text="Qarun Bonus" />
+                                    <table:template>
+                                        <Text text="{AdminStatusList>QarunBonus}" />
+                                    </table:template>
+                                </table:Column>
+
+                                <table:Column width="7em" visible="{visible>/amps}" id="FoodAllowanceQatar2">
+                                    <Label text="Food Allowance(Qatar)2" />
+                                    <table:template>
+                                        <Text text="{AdminStatusList>FoodAllowanceQatar2}" />
+                                    </table:template>
+                                </table:Column>
+
+                                <table:Column width="7em" visible="{visible>/amps}" id="PerDiem">
+                                    <Label text="Per Diem" />
+                                    <table:template>
+                                        <Text text="{AdminStatusList>PerDiem}" />
+                                    </table:template>
+                                </table:Column>
+
+                                <table:Column width="7em" visible="{visible>/amps}" id="FieldAllowanceDOnshore">
+                                    <Label text="Field Allowance(D-Onshore)" />
+                                    <table:template>
+                                        <Text text="{AdminStatusList>FieldAllowanceDOnshore}" />
+                                    </table:template>
+                                </table:Column>
+
+                                <table:Column width="7em" visible="{visible>/amps}" id="FieldAllowanceDOffshore">
+                                    <Label text="Field Allowance(D-Offshore)" />
+                                    <table:template>
+                                        <Text text="{AdminStatusList>FieldAllowanceDOffshore}" />
+                                    </table:template>
+                                </table:Column>
+
+                                <table:Column width="7em" visible="{visible>/amps}" id="HardshipAllowance">
+                                    <Label text="Hardship Allowance" />
+                                    <table:template>
+                                        <Text text="{AdminStatusList>HardshipAllowance}" />
+                                    </table:template>
+                                </table:Column>
+                                <!-- //commentedbygayathri -->
+                                <table:Column width="7em" visible="{visible>/amps}" id="MRPAllowance">
+                                    <Label text="MRP" />
+                                    <table:template>
+                                        <Text text="{AdminStatusList>MRP}" />
+                                    </table:template>
+                                </table:Column>
+                                    <table:Column width="7em" visible="{visible>/amps}" id="mplt">
+                                    <Label text="MPLT / MIT / Memory Camera" />
+                                    <table:template>
+                                        <Text text="{AdminStatusList>MPLT}" />
+                                    </table:template>
+                                </table:Column>
+                                  <table:Column width="7em" visible="{visible>/amps}" id="bottom">
+                                    <Label text="Bottom Hole Sampling SPS / PDS" />
+                                    <table:template>
+                                        <Text text="{AdminStatusList>BottomHole}" />
+                                    </table:template>
+                                </table:Column>
+                                    <table:Column width="7em" visible="{visible>/amps}" id="bottomAllowance">
+                                    <Label text="Memory Gauge/Echometer/Shut" />
+                                    <table:template>
+                                        <Text text="{AdminStatusList>MemoryGauge/Echometer/Shut}" />
+                                    </table:template>
+                                </table:Column>
+                                    <table:Column width="7em" visible="{visible>/amps}" id="memory">
+                                    <Label text="Supervising Bonus Rate" />
+                                    <table:template>
+                                        <Text text="{AdminStatusList>SupervisingBonus}" />
+                                    </table:template>
+                                </table:Column>
+                                      <table:Column width="7em" visible="{visible>/amps}" id="rig">
+                                    <Label text="Rig + Coefficient" />
+                                    <table:template>
+                                        <Text text="{AdminStatusList>Rig+Coefficient}" />
+                                    </table:template>
+                                </table:Column>
+                            
+                         
+                            </table:columns>
+                            <!-- <ColumnListItem>
+                        <Text text="{AdminStatusList>EmployeeID}" />
+                        <Text text="{AdminStatusList>EmployeeName}" />
+                        <Text text="{AdminStatusList>Date}" />
+                        <Text text="{AdminStatusList>WbsCode}" />
+                        <Text text="{AdminStatusList>WorkType}" />
+                        <Text text="{AdminStatusList>TotalHours}" />
+                        <Text text="{AdminStatusList>OvertimeHours}" />
+                        <Text text="{AdminStatusList>JobBonus}" />
+                        <Text text="{AdminStatusList>CriticalBonus}" />
+                        <Text text="{AdminStatusList>JobBonusPer}" />
+                        <Text text="{AdminStatusList>MealAllowance}" />
+                        <Text text="{AdminStatusList>TravelBonus}" />
+                        <Text text="{AdminStatusList>TripBonus}" />
+                        <Text text="{AdminStatusList>Tier1Bonus}" />
+                        <Text text="{AdminStatusList>Tier2Bonus}" />
+                        <Text text="{AdminStatusList>Tier3Bonus}" />
+                        <Text text="{AdminStatusList>ZERONPTBonus}" />
+                        <Text text="{AdminStatusList>FTABonus}" />
+                    </ColumnListItem> -->
+                        </table:Table>
+                    </IconTabFilter>
+                </items>
+            </IconTabBar>
+        </content>
+    </Page>
+</mvc:View>

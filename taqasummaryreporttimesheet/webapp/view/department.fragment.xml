@@ -1,0 +1,37 @@
+<c:FragmentDefinition xmlns="sap.m"
+    xmlns:c="sap.ui.core">
+    <!-- <TableSelectDialog search="onFODepartmentTableSelectDialogSearch" confirm="onFODepartmentTableSelectDialogConfirm" cancel="onFODepartmentTableSelectDialogConfirm" items="{path:'/FODepartment',
+    sorter:{path:'externalCode'}}" multiSelect="true" contentWidth="40%" contentHeight="70%">
+        <columns>
+            <Column >
+                <Label text="{i18n>Department}"></Label>
+            </Column>
+            <Column >
+                <Label text="{i18n>name}"></Label>
+            </Column>
+            <Column >
+                <Label text="{i18n>description}"></Label>
+            </Column>
+        </columns>
+        <items>
+            <ColumnListItem >
+                <ObjectNumber number="{externalCode}"></ObjectNumber>
+                <Text text="{name}"></Text>
+                <Text text="{description}"></Text>
+            </ColumnListItem>
+        </items>
+    </TableSelectDialog> -->
+    <!-- <SelectDialog search="onFODepartmentTableSelectDialogSearch" confirm=".onFODepartmentTableSelectDialogConfirm" cancel=".onFODepartmentTableSelectDialogConfirm" items="{
+            path: '/FODepartment',
+            model:'v2',
+            sorter: {
+                path: 'externalCode'
+            }
+          
+        }" multiSelect="true">
+        <StandardListItem title="{v2>externalCode}" description="{v2>name}" type="Active" />
+    </SelectDialog> -->
+     <SelectDialog search="onFODepartmentTableSelectDialogSearch" confirm=".onFODepartmentTableSelectDialogConfirm" cancel=".onFODepartmentTableSelectDialogConfirm" items="{tableModel>/emp}" multiSelect="true">
+        <StandardListItem title="{tableModel>departmentNav/results/0/name}" description="{tableModel>department}" type="Active" />
+    </SelectDialog>
+</c:FragmentDefinition>

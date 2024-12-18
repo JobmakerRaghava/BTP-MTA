@@ -1,0 +1,11 @@
+<c:FragmentDefinition xmlns="sap.m"
+    xmlns:c="sap.ui.core">
+    <SelectDialog title="{i18n>Tableselect}" confirm="onColumnInfoSelectDialogConfirm" cancel="onColumnInfoSelectDialogConfirm" search="onColumnInfoSelectDialogSearch" items="{ path : '/',model:'tables',
+         sorter : {
+            path : 'TableName' 
+         }}">
+        <StandardListItem title="{tables>TableName}" type="Active"></StandardListItem>
+
+    </SelectDialog>
+
+</c:FragmentDefinition>

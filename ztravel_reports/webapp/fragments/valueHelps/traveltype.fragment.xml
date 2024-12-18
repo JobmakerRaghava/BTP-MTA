@@ -1,0 +1,17 @@
+<c:FragmentDefinition xmlns="sap.m" xmlns:c="sap.ui.core">
+  <SelectDialog
+    title="Choose your Travel Category"
+    multiSelect="true"
+    items="{
+        path: 'travelCategoryModel>/TravelCategories'
+    }"
+    search="onFOTravelTypeDialogSearch"
+    confirm="onFOTravelTypeDialogConfirm"
+    cancel="onFOTravelTypeDialogCancel">
+    <StandardListItem
+        title="{travelCategoryModel>name}"
+        description="{travelCategoryModel>id}"
+        adaptTitleSize="false" />
+</SelectDialog>
+
+</c:FragmentDefinition>

@@ -1,0 +1,15 @@
+<c:FragmentDefinition xmlns="sap.m" xmlns:c="sap.ui.core">
+    <SelectDialog 
+        search="onFOTravelTypeDialogSearch" 
+        confirm=".onFOTravelTypeDialogConfirm" 
+        multiSelect="true">
+        
+        <StandardListItem title="Rotational Leave" description="RL" type="Active" />
+        <StandardListItem title="Business Travel" description="BU" type="Active" />
+        <StandardListItem title="Training" description="TR" type="Active" />
+        <StandardListItem title="Annual Leave" description="AL" type="Active" />
+        <StandardListItem title="Joining Travel" description="JN" type="Active" />
+        <StandardListItem title="Separation Travel" description="SP" type="Active" />
+        
+    </SelectDialog>
+</c:FragmentDefinition>

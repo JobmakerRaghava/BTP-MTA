@@ -1,0 +1,367 @@
+<mvc:View controllerName="com.taqa.travelreports.ztravelreports.controller.ReportsView"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns:table="sap.ui.table"
+    xmlns:l="sap.ui.layout"
+    xmlns:filterbar="sap.ui.comp.filterbar"
+    xmlns:form="sap.ui.layout.form"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>Employee Travel Report}" titleAlignment="Center" class="sapUiNoContentPadding sapUiSizeCompact">
+        <filterbar:FilterBar id="filterbar" search=".onSearch" showClearOnFB="true" clear="onFilterBarClear" useToolbar="false">
+            <filterbar:filterGroupItems>
+                <filterbar:FilterGroupItem name="CreationDate" label="Travel Request Created On" groupName="Group1" visibleInFilterBar="true">
+                    <filterbar:control>
+                        <DateRangeSelection required="true" id="idDatePicker" name="CreationDate" displayFormat="dd-MM-yyyy" valueFormat="dd-MM-yyyy" />
+                    </filterbar:control>
+                </filterbar:FilterGroupItem>
+                <filterbar:FilterGroupItem name="EmployeeID" label="Employee ID" groupName="Group1" visibleInFilterBar="true">
+                    <filterbar:control>
+                        <MultiInput showValueHelp="false" id="idEmployeeIDInput" name="EmployeeID" placeholder="Enter Employee ID"/>
+                    </filterbar:control>
+                </filterbar:FilterGroupItem>
+                <filterbar:FilterGroupItem name="Department" label="Department" groupName="Group1" visibleInFilterBar="false">
+                    <filterbar:control>
+                        <MultiInput showValueHelp="true" id="idDepartmentIDInput" name="Department" placeholder="Enter Department" valueHelpRequest="onMultiInputValueHelpRequest_department"/>
+                    </filterbar:control>
+                </filterbar:FilterGroupItem>
+                <filterbar:FilterGroupItem name="Location" label="Location" groupName="Group1" visibleInFilterBar="false">
+                    <filterbar:control>
+                        <MultiInput showValueHelp="true" id="idLocationIDInput" name="Location" placeholder="Enter Location" valueHelpRequest="onMultiInputValueHelpRequest_location"/>
+                    </filterbar:control>
+                </filterbar:FilterGroupItem>
+                <filterbar:FilterGroupItem name="TravelCategory" label="Travel Category" groupName="Group1" visibleInFilterBar="true">
+                    <filterbar:control>
+                        <MultiInput showValueHelp="true" id="TravelCategoryInput" name="TravelCategory" placeholder="Choose your Travel Category" valueHelpRequest="onMultiInputValueHelpRequest_TravelCategory" />
+                    </filterbar:control>
+                </filterbar:FilterGroupItem>
+                 <filterbar:FilterGroupItem name="Status" label="Status" groupName="Group1" visibleInFilterBar="false">
+                    <filterbar:control>
+                        <MultiInput showValueHelp="true" id="StatusInput" name="TravelCategory" placeholder="Choose your Status" valueHelpRequest="onMultiInputValueHelpRequest_Status" />
+                    </filterbar:control>
+                </filterbar:FilterGroupItem>
+                <filterbar:FilterGroupItem name="TrfNumber" label="TRF Number" groupName="Group1" visibleInFilterBar="false">
+                    <filterbar:control>
+                        <Input showValueHelp="false" id="TRFNumberInput" name="TrfNumber" placeholder="Enter TRF Number" />
+                    </filterbar:control>
+                </filterbar:FilterGroupItem>
+                 <filterbar:FilterGroupItem name="CompanyCode" label="Company Code" groupName="Group1" visibleInFilterBar="false">
+                    <filterbar:control>
+                        <MultiInput showValueHelp="true" id="CompanyCodeInput" name="CompanyCode" placeholder="Enter Company Code" valueHelpRequest="onMultiInputValueHelpRequestCompanyCode" />
+                    </filterbar:control>
+                </filterbar:FilterGroupItem>
+                <filterbar:FilterGroupItem name="LocationGroup" label="Location Group" groupName="Group1" visibleInFilterBar="false">
+                    <filterbar:control>
+                        <MultiInput showValueHelp="true" id="LocationInput" name="LocationGroup" placeholder="Enter Location Group" valueHelpRequest="onMultiInputValueHelpRequestLocation" />
+                    </filterbar:control>
+                </filterbar:FilterGroupItem>
+            </filterbar:filterGroupItems>
+        </filterbar:FilterBar>
+       <table:Table 
+        id="newTableId" 
+        rowMode="Interactive" 
+        class="sapUiTinyMargin" 
+        columnResize="onColumnResize" 
+        columnMove="onColumnMove" 
+        rows="{oProcessedModel>/results}" 
+        selectionMode="Multi" 
+        alternateRowColors="true"
+        fixedColumnCount="4">
+            <table:extension>
+                <OverflowToolbar>
+                    <Title id="idTitle"/>
+                    <ToolbarSpacer/>
+                    <Button text="Download Excel" icon="sap-icon://download" enabled="true" id="idDownloadExcelButton" press="onExcelButtonPress" tooltip="Download Employee Travel Report"/>
+                </OverflowToolbar>
+            </table:extension>
+            <table:noData>
+                <IllustratedMessage enableVerticalResponsiveness="true"/>
+            </table:noData>
+            <table:columns>
+                <table:Column width="11rem">
+                    <Label text="TRF Number" />
+                    <table:template>
+                        <core:HTML content="{path: 'oProcessedModel>TrfNumber', formatter: '.formatTrfNumber'}" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="11rem">
+                    <Label text="Reissuance Number" />
+                    <table:template>
+                        <Text text="{oProcessedModel>ReferenceNumber}" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="11rem">
+                    <Label text="Employee ID" />
+                    <table:template>
+                        <core:HTML content="{path: 'oProcessedModel>EmployeeID', formatter: '.formatEmployeeID', parts: [{path: 'oProcessedModel>TrfNumber'}, {path: 'oProcessedModel>EmployeeID'}]}" />
+                    </table:template>
+                </table:Column>
+                  <table:Column width="11rem">
+                    <Label text="Status" />
+                    <table:template>
+                        <ObjectStatus
+                            text="{= ${oProcessedModel>Status} === 'LPO processed by Focal Person' ? 'LPO processed by Focal Person' :
+                                ${oProcessedModel>Status} === 'Reissued' ? 'Reissued' : '' }"
+                            state="{= ${oProcessedModel>Status} === 'LPO processed by Focal Person' ? 'Success' :
+                                    ${oProcessedModel>Status} === 'Reissued' ? 'Warning' : 'None' }"
+                        />
+                     </table:template>
+                </table:Column>
+                <table:Column width="15rem">
+                    <Label text="Employee Name" />
+                    <table:template>
+                        <Text text="{oProcessedModel>EmployeeName}" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="15rem">
+                    <Label text="Company Code" />
+                    <table:template>
+                        <Text text="{oProcessedModel>CompanyCode}" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="15rem">
+                    <Label text="Company Name" />
+                    <table:template>
+                        <Text text="{path: 'oProcessedModel>CompanyCode', formatter: '.formatter.CompanyNameFormatter'}" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="15rem">
+                    <Label text="Designation" />
+                    <table:template>
+                        <Text text="{oProcessedModel>Designation}" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="15rem">
+                    <Label text="Function" />
+                    <table:template>
+                        <Text text="{oProcessedModel>Function}" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="15rem">
+                    <Label text="Department" />
+                    <table:template>
+                        <Text text="{oProcessedModel>Department}" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="15rem">
+                    <Label text="Division" />
+                    <table:template>
+                        <Text text="{oProcessedModel>Division}" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="15rem">
+                    <Label text="Location" />
+                    <table:template>
+                        <Text text="{oProcessedModel>Location}" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="15rem">
+                    <Label text="Location Group" />
+                    <table:template>
+                        <Text text="{oProcessedModel>LocationGroup}" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="15rem">
+                    <Label text="Expense Code" />
+                    <table:template>
+                        <Text text="{
+                        path: 'oProcessedModel>ExpenseCode',
+                        formatter: '.formatter.formatProjectCode'
+                    }" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="15rem">
+                    <Label text="Code" />
+                    <table:template>
+                        <Text text="{
+                        path: 'oProcessedModel>ProjectCode',
+                        formatter: '.formatter.formatProjectCode'
+                    }" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="15rem">
+                    <Label text="Travel Category" />
+                    <table:template>
+                        <Text text="{= ${oProcessedModel>TravelCategory} ? ${path: 'oProcessedModel>TravelCategory', formatter: '.formatter.getTCLabel'} : ${path: 'oProcessedModel>TravelCategoryTQ', formatter: '.formatter.getTCLabel'} }" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="15rem">
+                    <Label text="Creation Date and Time" />
+                    <table:template>
+                        <Text text="{path: 'oProcessedModel>CreationDate', formatter: '.formatter.formatDateforcreationdatealone'}"></Text>
+                    </table:template>
+                </table:Column>
+                <table:Column width="15rem">
+                    <Label text="Type of Travel" />
+                    <table:template>
+                        <Text text="{path: 'oProcessedModel>TypeofTravel', formatter: '.getTypeofTravel'}" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="15rem">
+                    <Label text="Travel Start Date" />
+                    <table:template>
+                        <Text text="{path: 'oProcessedModel>DepartureDate', formatter: '.formatter.formatDateStandard'}" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="15rem">
+                    <Label text="Return Date" />
+                    <table:template>
+                        <Text text="{path: 'oProcessedModel>ReturnDate', formatter: '.formatter.formatDateStandard'}" />
+                    </table:template>
+                </table:Column>
+                 <table:Column width="15rem">
+                    <Label text="Travel with Family" />
+                    <table:template>
+                        <Text text="{path: 'oProcessedModel>TravelwithFamily', formatter: '.formatter.fromatterfortravelwithfamily'}" />
+                        <!-- <Text text="{oProcessedModel>TravelwithFamily}" /> -->
+                    </table:template>
+                </table:Column>
+                <table:Column width="15rem">
+                    <Label text="Class" />
+                    <table:template>
+                        <Text text="{path: 'oProcessedModel>Class', formatter: '.getClass'}" />
+                    </table:template>
+                </table:Column>
+                 <table:Column width="15rem">
+                    <Label text="Local Mobile Number" />
+                    <table:template>
+                        <Text text="{oProcessedModel>MobileNo}" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="15rem">
+                    <Label text="Travel Focal Person" />
+                    <table:template>
+                        <Text text="{oProcessedModel>FocalPersonName}" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="15rem">
+                    <Label text="Travel Team Name" />
+                    <table:template>
+                        <Text text="{oProcessedModel>AgentDescription}" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="15rem">
+                    <Label text="Travel Agent Name" />
+                    <table:template>
+                        <Text text="{oProcessedModel>TravelAgentName}" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="15rem">
+                    <Label text="Sector Ticket" />
+                    <table:template>
+                        <Text text="{oProcessedModel>SectorTicket}" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="15rem">
+                    <Label text="Airlines" />
+                    <table:template>
+                        <Text text="{oProcessedModel>Airline}" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="15rem">
+                    <Label text="Ticket Number" />
+                    <table:template>
+                        <Text text="{oProcessedModel>TicketNumber}" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="15rem">
+                    <Label text="Base Amount" />
+                    <table:template>
+                        <Text text="{oProcessedModel>BaseAmount}" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="15rem">
+                    <Label text="Tax Amount" />
+                    <table:template>
+                        <Text text="{oProcessedModel>TaxAmount}" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="15rem">
+                    <Label text="GST" />
+                    <table:template>
+                        <Text text="{oProcessedModel>Gst}" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="15rem">
+                    <Label text="Total Amount" />
+                    <table:template>
+                        <Text text="{oProcessedModel>Amount}" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="15rem">
+                    <Label text="Currency" />
+                    <table:template>
+                        <Text text="{oProcessedModel>Currency}" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="15rem">
+                    <Label text="Comments" />
+                    <table:template>
+                        <Text text="{oProcessedModel>Sector}" />
+                    </table:template>
+                </table:Column>    
+               
+                <table:Column width="15rem" visible="false">
+                    <Label text="Date Of Birth" />
+                    <table:template>
+                        <Text text="{oProcessedModel>DateOfBirth}" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="15rem" visible="false">
+                    <Label text="Purpose of Travel" />
+                    <table:template>
+                        <Text text="{oProcessedModel>PurposeofTravel}" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="15rem" visible="false">
+                    <Label text="Departure Sector" />
+                    <table:template>
+                        <Text text="{oProcessedModel>DepartureSector}" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="15rem" visible="false">
+                    <Label text="Departure Time" />
+                    <table:template>
+                        <Text text="{oProcessedModel>Departure Time}" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="15rem" visible="false">
+                    <Label text="Return Sector" />
+                    <table:template>
+                        <Text text="{oProcessedModel>ReturnSector}" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="15rem" visible="false">
+                    <Label text="Return Time" />
+                    <table:template>
+                        <Text text="{oProcessedModel>ReturnTime}" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="15rem" visible="false">
+                    <Label text="Frequent FlyerNo" />
+                    <table:template>
+                        <Text text="{oProcessedModel>FrequentFlyerNo}" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="15rem">
+                    <Label text="Download TRF" />
+                    <table:template>
+                        <Button icon="sap-icon://pdf-attachment" text="Download PDF" tooltip="Download Travel Request Form" press="onPDFDownload" />
+                    </table:template>
+                </table:Column>
+                <table:Column visible="false">
+                    <Label text="Filename" />
+                    <table:template>
+                        <Text text="{oProcessedModel>FileName}" />
+                    </table:template>
+                </table:Column>
+                         
+                <table:Column visible="false">
+                    <Label text="Attachment" />
+                    <table:template>
+                        <Text text="{oProcessedModel>Attachment}" />
+                    </table:template>
+                </table:Column>
+            </table:columns>
+        </table:Table>
+    </Page>
+</mvc:View>

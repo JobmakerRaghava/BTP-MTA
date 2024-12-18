@@ -1,0 +1,18 @@
+<c:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:c="sap.ui.core"
+>
+    <SelectDialog
+        search="onFODepartmentDialogSearch"
+        confirm=".onFODepartmentDialogConfirm"
+        cancel=".onFODepartmentDialogCancel"
+        items="{oUniqueLocationModel>/results}" 
+        multiSelect="true"
+    >
+        <StandardListItem
+            title="{oUniqueLocationModel>Department}" 
+            description="{oUniqueLocationModel>Department}"
+            type="Active"
+        />
+    </SelectDialog>
+</c:FragmentDefinition>

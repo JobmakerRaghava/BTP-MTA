@@ -1,0 +1,15 @@
+<c:FragmentDefinition xmlns="sap.m" xmlns:c="sap.ui.core">
+    <SelectDialog
+        title="Choose Status"
+        items="{
+            path: 'statusModel>/Statuses'
+        }"
+        search="onFOStatusDialogSearch"
+        confirm="onFOStatusDialogConfirm"
+        multiSelect="true">
+        <StandardListItem
+            title="{statusModel>name}"
+            description="{statusModel>id}"
+            type="Active" />
+    </SelectDialog>
+</c:FragmentDefinition>
